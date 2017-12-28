@@ -18,4 +18,6 @@ var timeSlipSchema = new mongoose.Schema({
     }
 });
 
+var TimeSlip = mongoose.model('TimeSlip', timeSlipSchema);
+
 module.exports = TimeSlip;
