@@ -5,4 +5,4 @@ mongoose.connect('mongodb://localhost/tStudy-api');
 
 mongoose.Promise = Promise;
 
-module.exports.Todo = require("./timeSlip");
+module.exports.TimeSlip = require("./timeSlip");
