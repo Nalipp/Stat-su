@@ -5,5 +5,7 @@ var helpers = require("../helpers/timeSlips");
 
 router.route('/')
  .get(helpers.getTimeSlips)
+ .post(helpers.createTimeSlip)
+
 
 module.exports = router;

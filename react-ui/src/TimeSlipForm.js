@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class StudySlipForm extends Component {
+class TimeSlipForm extends Component {
   constructor(props) {
     super(props)
     this.state = { 
@@ -9,6 +9,7 @@ class StudySlipForm extends Component {
     }
     this.updateLanguageInput = this.updateLanguageInput.bind(this);
     this.updateDescriptionInput = this.updateDescriptionInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   updateLanguageInput(e) {
@@ -18,7 +19,13 @@ class StudySlipForm extends Component {
   updateDescriptionInput(e) {
     this.setState({descriptionInput: e.target.value})
   }
-
+  
+  handleSubmit(addTimeSlip) {
+    this.props.addTimeSlip(this.state.languageInput, this.state.descriptionInput)
+    this.setState({languageInput: ''});
+    this.setState({descriptionInput: ''});
+    // multiple setStates in one call?
+  }
   render() {
     return (
       <form>
@@ -29,9 +36,10 @@ class StudySlipForm extends Component {
         <input
           type="text"
           onChange={this.updateDescriptionInput} />
+        <button onClick={this.handleSubmit}>Add New Study Resource</button>
       </form>
     )
   }
 }
 
-export default StudySlipForm;
+export default TimeSlipForm;
