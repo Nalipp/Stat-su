@@ -10,7 +10,7 @@
   },
   "cacheDirectories": [
     "node_modules",
-    "todosfrontend/node_modules"
+    "react-ui/node_modules"
   ],
   "author": "",
   "license": "ISC",
