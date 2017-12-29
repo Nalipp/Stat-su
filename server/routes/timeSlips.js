@@ -7,5 +7,8 @@ router.route('/')
  .get(helpers.getTimeSlips)
  .post(helpers.createTimeSlip)
 
+router.route('/:timeSlipId')
+  .get(helpers.getTimeSlip)
+
 
 module.exports = router;

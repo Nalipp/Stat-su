@@ -44,6 +44,16 @@ describe('TimeSlipHelper database GET requests', () => {
         done();
       });
   });
+
+  it('should GET a TimeSlip by id from database', (done) => {
+    request(index)
+      .get(`/api/TimeSlips/${timeSlips[0]._id}`)
+      .end((err, res) => {
+        assert(timeSlips[0]._id.equals(res.body._id));
+        assert(res.body.language === timeSlips[0].language);
+        done();
+      });
+  });
 });
 
 describe('TimeSlipHelper database Post requests', () => {
@@ -56,8 +66,8 @@ describe('TimeSlipHelper database Post requests', () => {
       .post('/api/timeSlips/')
       .send(newTimeSlip)
       .end((err, res) => {
-        assert(res.body.language === 'langauge3');
-        assert(res.body.description === 'description3');
+        assert(res.body.language === newTimeSlip.language);
+        assert(res.body.description === newTimeSlip.description);
         done()
       })
   });

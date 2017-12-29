@@ -20,4 +20,14 @@ exports.createTimeSlip = function(req, res){
   })
 }
 
+exports.getTimeSlip = function(req, res){
+  db.TimeSlip.findById(req.params.timeSlipId)
+  .then(function(timeSlip){
+    res.json(timeSlip);
+  })
+  .catch(function(err){
+    res.send(err);
+  })
+}
+
 module.exports = exports;
