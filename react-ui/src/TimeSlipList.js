@@ -3,8 +3,8 @@ import TimeSlipForm from './TimeSlipForm';
 import TimeSlipItem from './TimeSlipItem';
 import * as apiCalls from './api';
 
-class TimeSlipList extends Component {
-  constructor(props) {
+class TimeSlipList extends Component{
+  constructor(props){
     super(props)
     this.state = {
       timeSlips: []
@@ -13,13 +13,12 @@ class TimeSlipList extends Component {
     this.addTimeSlip = this.addTimeSlip.bind(this);
   }
 
-  async loadTimeSlips() {
+  async loadTimeSlips(){
     let timeSlips = await apiCalls.getTimeSlips();
-    console.log('src/TimeSlipForm', timeSlips)
     this.setState({timeSlips});
   }
 
-  async addTimeSlip(language, description) {
+  async addTimeSlip(language, description){
     let newTimeSlip = await apiCalls.createTimeSlip(language, description);
     this.setState({timeSlips: [...this.state.timeSlips, newTimeSlip]});
   }
@@ -28,8 +27,7 @@ class TimeSlipList extends Component {
     let timeSlip = this.state.timeSlips.map(slip => (
       <TimeSlipItem 
         key={slip._id}
-        language={slip.language}
-        description={slip.description}
+        {...slip} 
       />
     ));
     return (

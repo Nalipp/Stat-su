@@ -1,10 +1,10 @@
-var express = require('express'),
-    app = express(),
-    port = process.env.PORT || 8000,
-    bodyParser = require('body-parser'),
-    path = require('path');
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 8000;
+const bodyParser = require('body-parser');
+const path = require('path');
 
-var timeSlipRoutes = require("./routes/timeSlips");
+const timeSlipRoutes = require("./routes/timeSlips");
     
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 app.use(bodyParser.json());

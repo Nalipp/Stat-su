@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var url;
+const mongoose = require('mongoose');
+let url;
 
 mongoose.set('debug', true);
 mongoose.Promise = global.Promise;

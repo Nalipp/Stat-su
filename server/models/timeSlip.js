@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var timeSlipSchema = new mongoose.Schema({
+const timeSlipSchema = new mongoose.Schema({
     language: {
         type: String
     },
@@ -18,6 +18,6 @@ var timeSlipSchema = new mongoose.Schema({
     }
 });
 
-var TimeSlip = mongoose.model('TimeSlip', timeSlipSchema);
+const TimeSlip = mongoose.model('TimeSlip', timeSlipSchema);
 
 module.exports = TimeSlip;

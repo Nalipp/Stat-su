@@ -1,12 +1,12 @@
-var db = require('../models');
+const db = require('../models');
 
 exports.getTimeSlips = function(req, res){
   db.TimeSlip.find()
   .then(function(timeSlips){
-      res.json(timeSlips);
+    res.json(timeSlips);
   })
   .catch(function(err){
-      res.send(err);
+    res.send(err);
   })
 }
 

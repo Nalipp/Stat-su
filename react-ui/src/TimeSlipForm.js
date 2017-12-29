@@ -22,10 +22,8 @@ class TimeSlipForm extends Component {
   
   handleSubmit(addTimeSlip) {
     this.props.addTimeSlip(this.state.languageInput, this.state.descriptionInput)
-    this.setState({languageInput: ''});
-    this.setState({descriptionInput: ''});
-    // multiple setStates in one call?
   }
+
   render() {
     return (
       <form>
