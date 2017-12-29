@@ -16,6 +16,12 @@ npm run lint
 npm run security-check
 ```
 
+testing (mocha)
+```
+npm run test
+npm run test-watch (automated)
+```
+
 ## What is Tstudy?
 
 TStudy is a place where aspiring developers can record what they are working on and share it with the world, Allowing you to find others who are studying what you are studying
