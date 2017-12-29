@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TimeSlipForm extends Component{
   constructor(props){
@@ -38,6 +39,10 @@ class TimeSlipForm extends Component{
       </form>
     )
   }
+}
+
+TimeSlipForm.propTypes = {
+  addTimeSlip: PropTypes.func
 }
 
 export default TimeSlipForm;
