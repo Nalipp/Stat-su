@@ -5,9 +5,3 @@ services:
 cache:
   directories:
   - node_modules
-deploy:
-  provider: heroku
-  skip_cleanup: true
-  local_dir: build
-  on:
-    branch: master
