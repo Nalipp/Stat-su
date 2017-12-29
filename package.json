@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server",
     "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "export NODE_ENV=dev || SET \"NODE_ENV=dev\" && npm start"
   },
   "cacheDirectories": [
     "node_modules",
