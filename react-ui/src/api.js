@@ -24,8 +24,7 @@ export async function createTimeSlip(language, description) {
     headers: new Headers({
       'Content-Type': 'application/json',
     }),
-    body: JSON.stringify({language: language, description: description})
-    // can be cleaned up?
+    body: JSON.stringify({language, description})
   })
   .then(res => {
     if(!res.ok) {

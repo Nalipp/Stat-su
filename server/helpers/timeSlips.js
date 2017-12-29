@@ -1,41 +1,41 @@
 const db = require('../models');
 
-exports.getTimeSlips = function(req, res){
+exports.getTimeSlips = (req, res) => {
   db.TimeSlip.find()
-  .then(function(timeSlips){
+  .then(timeSlips => {
     res.json(timeSlips);
   })
-  .catch(function(err){
+  .catch(err => {
     res.send(err);
   })
 }
 
-exports.createTimeSlip = function(req, res){
+exports.createTimeSlip = (req, res) => {
   db.TimeSlip.create(req.body)
-  .then(function(newTimeSlip){
+  .then(newTimeSlip => {
     res.status(201).json(newTimeSlip);
   })
-  .catch(function(err){
+  .catch(err => {
     res.send(err);
   })
 }
 
-exports.getTimeSlip = function(req, res){
+exports.getTimeSlip = (req, res) => {
   db.TimeSlip.findById(req.params.timeSlipId)
-  .then(function(timeSlip){
+  .then(timeSlip => {
     res.json(timeSlip);
   })
-  .catch(function(err){
+  .catch(err => {
     res.send(err);
   })
 }
 
-exports.deleteTimeSlip = function(req, res){
+exports.deleteTimeSlip = (req, res) => {
    db.TimeSlip.remove({_id: req.params.timeSlipId}) 
-   .then(function(){
+   .then(() => {
      res.json({message: 'Time slip has been deleted'});
    })
-   .catch(function(err){
+   .catch(err => {
      res.send(err);
    })  
 }
