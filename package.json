@@ -7,6 +7,7 @@
     "start": "node server",
     "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "dev": "export NODE_ENV=dev || SET \"NODE_ENV=dev\" && npm start",
+    "security-check": "nsp check",
     "lint": "esw server/helpers server/index.js, server/models, server/public, server/routes, server/tests, react-ui/public, react-ui/src"
   },
   "cacheDirectories": [
@@ -24,6 +25,7 @@
   "devDependencies": {
     "eslint": "^4.14.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-react": "^7.5.1"
+    "eslint-plugin-react": "^7.5.1",
+    "nsp": "^3.1.0"
   }
 }
