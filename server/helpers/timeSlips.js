@@ -12,7 +12,7 @@ exports.getTimeSlips = function(req, res){
 
 exports.createTimeSlip = function(req, res){
   db.TimeSlip.create(req.body)
-  .then(function(newTimeSlip) {
+  .then(function(newTimeSlip){
     res.status(201).json(newTimeSlip);
   })
   .catch(function(err){
