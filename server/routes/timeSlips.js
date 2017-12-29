@@ -9,6 +9,7 @@ router.route('/')
 
 router.route('/:timeSlipId')
   .get(helpers.getTimeSlip)
+  .delete(helpers.deleteTimeSlip)
 
 
 module.exports = router;

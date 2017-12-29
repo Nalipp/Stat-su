@@ -30,4 +30,14 @@ exports.getTimeSlip = function(req, res){
   })
 }
 
+exports.deleteTimeSlip = function(req, res){
+   db.TimeSlip.remove({_id: req.params.timeSlipId}) 
+   .then(function(){
+     res.json({message: 'Time slip has been deleted'});
+   })
+   .catch(function(err){
+     res.send(err);
+   })  
+}
+
 module.exports = exports;

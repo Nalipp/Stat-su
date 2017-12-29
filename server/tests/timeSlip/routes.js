@@ -35,7 +35,7 @@ describe('TimeSlipHelper page GET requests', () => {
   });
 });
 
-describe('TimeSlipHelper database GET requests', () => {
+describe('TimeSlipHelper database CRUD requests', () => {
   it('should GET all TimeSlips from database', (done) => {
     request(index)
       .get('/api/timeSlips/')
@@ -54,9 +54,7 @@ describe('TimeSlipHelper database GET requests', () => {
         done();
       });
   });
-});
 
-describe('TimeSlipHelper database Post requests', () => {
   it('should POST a new TimeSlip to the database', (done) => {
     newTimeSlip = new TimeSlip({
       language: 'langauge3', 
@@ -69,6 +67,19 @@ describe('TimeSlipHelper database Post requests', () => {
         assert(res.body.language === newTimeSlip.language);
         assert(res.body.description === newTimeSlip.description);
         done()
+      })
+  });
+
+  it('should DELETE a TimeSlip by id from database', (done) => {
+    request(index)
+      .delete(`/api/timeSlips/${timeSlips[1]._id}`)
+      .end((err, res) => {
+        request(index)
+          .get('/api/TimeSlips/')
+          .end((err, res) => {
+            assert(res.body.length === 1);
+            done();
+          });
       })
   });
 });
