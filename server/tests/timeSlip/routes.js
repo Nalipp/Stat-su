@@ -24,13 +24,42 @@ beforeEach((done) => {
   }).then(() => done());
 });
 
-describe('User get requests', () => {
+describe('TimeSlipHelper page GET requests', () => {
   it('should GET /api/timeSlips result', (done) => {
     request(index)
       .get('/api/timeSlips/')
-      .end((err, response) => {
-        assert(response.status === 200);
+      .end((err, res) => {
+        assert(res.status === 200);
         done();
       })
   });
 });
+
+describe('TimeSlipHelper database GET requests', () => {
+  it('should GET all TimeSlips from database', (done) => {
+    request(index)
+      .get('/api/timeSlips/')
+      .end((err, res) => {
+        assert(res.body.length === 2);
+        done();
+      });
+  });
+});
+
+describe('TimeSlipHelper database Post requests', () => {
+  it('should POST a new TimeSlip to the database', (done) => {
+    newTimeSlip = new TimeSlip({
+      language: 'langauge3', 
+      description: 'description3'
+    })
+    request(index)
+      .post('/api/timeSlips/')
+      .send(newTimeSlip)
+      .end((err, res) => {
+        assert(res.body.language === 'langauge3');
+        assert(res.body.description === 'description3');
+        done()
+      })
+  });
+});
+
