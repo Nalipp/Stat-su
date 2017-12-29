@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-class TimeSlipForm extends Component {
-  constructor(props) {
+class TimeSlipForm extends Component{
+  constructor(props){
     super(props)
     this.state = { 
       languageInput: '',
@@ -12,19 +12,19 @@ class TimeSlipForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  updateLanguageInput(e) {
+  updateLanguageInput(e){
     this.setState({languageInput: e.target.value})
   }
 
-  updateDescriptionInput(e) {
+  updateDescriptionInput(e){
     this.setState({descriptionInput: e.target.value})
   }
   
-  handleSubmit(addTimeSlip) {
+  handleSubmit(){
     this.props.addTimeSlip(this.state.languageInput, this.state.descriptionInput)
   }
 
-  render() {
+  render(){
     return (
       <form>
         <input 
