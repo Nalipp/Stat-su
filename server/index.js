@@ -12,6 +12,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/api/timeSlips', timeSlipRoutes);
 
-app.listen(port, function(){
-    console.log("APP IS RUNNING ON PORT " + port);
-})
+if(!module.parent) {
+  app.listen(port, function(){
+      console.log("APP IS RUNNING ON PORT " + port);
+  })
+}
+
+module.exports = app;

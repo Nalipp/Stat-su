@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 let url;
 
-mongoose.set('debug', true);
+mongoose.set('debug', false);
 mongoose.Promise = global.Promise;
 
 if (process.env.NODE_ENV === 'dev') url = 'mongodb://localhost/tStudy-api';
