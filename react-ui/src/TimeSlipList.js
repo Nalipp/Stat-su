@@ -30,11 +30,15 @@ class TimeSlipList extends Component{
         {...slip} 
       />
     ));
+    let ulStyle = {};
+    // let ulStyle = {'display': 'flex', 'alignContent': 'center'}
     return (
       <div>
-        <h1>the list</h1>
+        <h1>TStudy</h1>
         <TimeSlipForm addTimeSlip={this.addTimeSlip} />
-        {timeSlip}
+        <ul style={ulStyle}>
+          {timeSlip}
+        </ul>
       </div>
     )
   }
