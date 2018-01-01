@@ -5,11 +5,15 @@ class TimeSlipForm extends Component{
   constructor(props){
     super(props)
     this.state = { 
-      descriptionInput: '',
       languageInput: '',
+      descriptionInput: '',
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount(){
+    this.languageInput.focus();
   }
 
   handleInputChange(e) {
@@ -27,34 +31,24 @@ class TimeSlipForm extends Component{
   }
 
   render(){
-    const inputStyle = {
-      'display': 'block',
-      'fontSize': '16px',
-      'background': '#74C4F9',
-      'border': 'none',
-      'borderBottom': '2px solid #344559',
-      'margin': '12px 0px',
-      'padding': '2px 4px',
-      'width': '100%',
-      'color': '#344559',
-    }
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} style={{marginBottom: '50px'}}>
         <input 
           name="languageInput"
-          style={inputStyle}
+          ref={(input) => { this.languageInput = input; }}
+          autoComplete="off"
           type="text" 
-          placeholder="technology..."
+          placeholder="Technology..."
           value={this.state.languageInput} 
           onChange={this.handleInputChange} />
-        <input
+        <textarea
           name="descriptionInput"
-          style={inputStyle}
-          type="text"
-          placeholder="description..."
+          autoComplete="off"
           value={this.state.descriptionInput} 
-          onChange={this.handleInputChange} />
-        <button>
+          placeholder="Description..."
+          onChange={this.handleInputChange}>
+        </textarea>
+        <button style={{display: 'none'}}>
         Add New Study Resource</button>
       </form>
     )

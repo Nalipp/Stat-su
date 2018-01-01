@@ -4,6 +4,8 @@
 * {
   margin: 0px;
   padding: 0px;
+  color: #344559;
+  letter-spacing: 0.8px;
 }
 body {
   background: #74C4F9;
@@ -17,10 +19,25 @@ p {
   font-family: 'Roboto', sans-serif;
   color: #eee;
 }
-*:focus {
+input:focus, textarea:focus {
   outline: 0;
 }
-input::placeholder {
+input, textarea {
+  display: block;
+  font-size: 16px;
+  background: #74C4F9;
+  border: none;
+  margin: 34px 0px;
+  padding: 4px 8px;
+  width: 100%;
+  color: #344559;
+  border-left: 2px dashed #344559;
+  border-bottom:  2px solid #344559; 
+}
+textarea {
+  height: 60px;
+}
+input::placeholder, textarea::placeholder {
   color: #344559;
   font-style: italic;
 }
