@@ -1,11 +1,15 @@
 /* #74C4F9 light blue */
 /* #344559 grey blue */
 /* #EE715D red orange */
+/* #1CABA7 green */
 * {
   margin: 0px;
   padding: 0px;
   color: #344559;
   letter-spacing: 0.8px;
+}
+*::selection {
+  background: #ffb7b7;
 }
 body {
   background: #74C4F9;

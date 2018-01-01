@@ -33,7 +33,7 @@ class TimeSlipForm extends Component{
 
   handleKeyPress(e) {
     if(e.key === 'Enter' && e.shiftKey === false) {
-      this.handleSubmit(e); // <--- all the form values are in a prop
+      this.handleSubmit(e);
     }
   }
 

@@ -24,17 +24,32 @@ class TimeSlipList extends Component{
   }
 
   render () {
+    const wrapper = {
+      display: 'flex',
+      alignItems: 'center',
+      margin: '80px 0px 40px 0px',
+    }
     const h1Style = {
       fontSize: '60px',
-      margin: '80px 0px 40px 0px',
+      flexGrow: '2',
       color: '#344559',
       letterSpacing: '6px',
     }
-    const spanStyle = {
-      'color': '#fff',
-      letterSpacing: '6px',
+    const studyStyle = {
+      marginLeft: '12px',
+      borderRadius: '10px',
+      padding: '4px 10px',
+      color: 'white',
+      border: '2px solid green',
+      cursor: 'pointer',
     }
-    const timeSlip = this.state.timeSlips.map(slip => (
+    const buildStyle = {};
+    Object.keys(studyStyle).forEach(k => {
+      buildStyle[k] = studyStyle[k];
+    });
+    buildStyle.border = '2px solid #EE715D';
+
+    const timeSlip = this.state.timeSlips.reverse().map(slip => (
       <TimeSlipItem 
         key={slip._id}
         {...slip} 
@@ -42,7 +57,15 @@ class TimeSlipList extends Component{
     ));
     return (
       <div>
-        <h1 style={h1Style}>T<span style={spanStyle}>Study</span></h1>
+        <div style={wrapper}>
+          <h1 style={h1Style}>T
+            <span style={{color: '#fff'}}>Study</span>
+          </h1>
+          <div>
+            <span style={studyStyle}>study</span>
+            <span style={buildStyle}>build</span>
+          </div>
+        </div>
         <TimeSlipForm addTimeSlip={this.addTimeSlip} />
         <ul>
           {timeSlip}
