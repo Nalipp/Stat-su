@@ -2,12 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const TimeSlipItem = ({language, description}) => {
-
-/* #74C4F9 light blue */
-/* #344559 grey blue */
-/* #EE715D red orange */
-/* #1DADA3 green */
-
   const listStyle = {
     'listStyle': 'none',
     'margin': '10px 0',

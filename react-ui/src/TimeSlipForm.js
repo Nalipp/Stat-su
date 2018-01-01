@@ -5,24 +5,25 @@ class TimeSlipForm extends Component{
   constructor(props){
     super(props)
     this.state = { 
-      languageInput: '',
       descriptionInput: '',
+      languageInput: '',
     }
-    this.updateLanguageInput = this.updateLanguageInput.bind(this);
-    this.updateDescriptionInput = this.updateDescriptionInput.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  updateLanguageInput(e){
-    this.setState({languageInput: e.target.value})
-  }
+  handleInputChange(e) {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
 
-  updateDescriptionInput(e){
-    this.setState({descriptionInput: e.target.value})
+    this.setState({[name]: value});
   }
   
-  handleSubmit(){
+  handleSubmit(e){
+    e.preventDefault();
     this.props.addTimeSlip(this.state.languageInput, this.state.descriptionInput)
+    this.setState({languageInput: '', descriptionInput: ''});
   }
 
   render(){
@@ -35,21 +36,26 @@ class TimeSlipForm extends Component{
       'margin': '12px 0px',
       'padding': '2px 4px',
       'width': '100%',
+      'color': '#344559',
     }
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input 
+          name="languageInput"
           style={inputStyle}
           type="text" 
           placeholder="technology..."
           value={this.state.languageInput} 
-          onChange={this.updateLanguageInput} />
+          onChange={this.handleInputChange} />
         <input
+          name="descriptionInput"
           style={inputStyle}
           type="text"
           placeholder="description..."
-          onChange={this.updateDescriptionInput} />
-        <button onClick={this.handleSubmit}>Add New Study Resource</button>
+          value={this.state.descriptionInput} 
+          onChange={this.handleInputChange} />
+        <button>
+        Add New Study Resource</button>
       </form>
     )
   }
