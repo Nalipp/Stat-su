@@ -24,19 +24,24 @@ class TimeSlipList extends Component{
   }
 
   render () {
-    let timeSlip = this.state.timeSlips.map(slip => (
+    const h1Style = {
+      'fontSize': '60px',
+      'margin': '80px 0px 40px 0px'
+    }
+    const spanStyle = {
+      'color': '#fff',
+    }
+    const timeSlip = this.state.timeSlips.map(slip => (
       <TimeSlipItem 
         key={slip._id}
         {...slip} 
       />
     ));
-    let ulStyle = {};
-    // let ulStyle = {'display': 'flex', 'alignContent': 'center'}
     return (
       <div>
-        <h1>TStudy</h1>
+        <h1 style={h1Style}>T<span style={spanStyle}>Study</span></h1>
         <TimeSlipForm addTimeSlip={this.addTimeSlip} />
-        <ul style={ulStyle}>
+        <ul>
           {timeSlip}
         </ul>
       </div>

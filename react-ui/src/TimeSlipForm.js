@@ -26,14 +26,28 @@ class TimeSlipForm extends Component{
   }
 
   render(){
+    const inputStyle = {
+      'display': 'block',
+      'fontSize': '16px',
+      'background': '#74C4F9',
+      'border': 'none',
+      'borderBottom': '2px solid #344559',
+      'margin': '12px 0px',
+      'padding': '2px 4px',
+      'width': '100%',
+    }
     return (
       <form>
         <input 
+          style={inputStyle}
           type="text" 
+          placeholder="technology"
           value={this.state.languageInput} 
           onChange={this.updateLanguageInput} />
         <input
+          style={inputStyle}
           type="text"
+          placeholder="description"
           onChange={this.updateDescriptionInput} />
         <button onClick={this.handleSubmit}>Add New Study Resource</button>
       </form>

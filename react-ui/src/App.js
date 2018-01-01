@@ -4,8 +4,9 @@ import TimeSlipList from './TimeSlipList';
 
 class App extends Component {
   render() {
+    const divStyle = {'width': '60%', 'margin': 'auto'}
     return (
-      <div className="App">
+      <div style={divStyle}>
         <TimeSlipList />
       </div>
     );
