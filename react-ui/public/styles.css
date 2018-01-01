@@ -20,4 +20,8 @@ p {
 *:focus {
   outline: 0;
 }
+input::placeholder {
+  color: #344559;
+  font-style: italic;
+}
 

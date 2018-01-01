@@ -4,7 +4,11 @@ import TimeSlipList from './TimeSlipList';
 
 class App extends Component {
   render() {
-    const divStyle = {'width': '60%', 'margin': 'auto'}
+    const divStyle = {
+      'width': '60%',
+      'maxWidth': '600px',
+      'margin': 'auto'
+    }
     return (
       <div style={divStyle}>
         <TimeSlipList />

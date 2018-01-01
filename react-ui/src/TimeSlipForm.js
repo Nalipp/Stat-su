@@ -41,13 +41,13 @@ class TimeSlipForm extends Component{
         <input 
           style={inputStyle}
           type="text" 
-          placeholder="technology"
+          placeholder="technology..."
           value={this.state.languageInput} 
           onChange={this.updateLanguageInput} />
         <input
           style={inputStyle}
           type="text"
-          placeholder="description"
+          placeholder="description..."
           onChange={this.updateDescriptionInput} />
         <button onClick={this.handleSubmit}>Add New Study Resource</button>
       </form>
