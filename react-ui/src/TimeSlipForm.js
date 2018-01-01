@@ -10,6 +10,7 @@ class TimeSlipForm extends Component{
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount(){
@@ -23,11 +24,17 @@ class TimeSlipForm extends Component{
 
     this.setState({[name]: value});
   }
-  
+
   handleSubmit(e){
     e.preventDefault();
     this.props.addTimeSlip(this.state.languageInput, this.state.descriptionInput)
     this.setState({languageInput: '', descriptionInput: ''});
+  }
+
+  handleKeyPress(e) {
+    if(e.key === 'Enter' && e.shiftKey === false) {
+      this.handleSubmit(e); // <--- all the form values are in a prop
+    }
   }
 
   render(){
@@ -44,6 +51,7 @@ class TimeSlipForm extends Component{
         <textarea
           name="descriptionInput"
           autoComplete="off"
+          onKeyPress={this.handleKeyPress}
           value={this.state.descriptionInput} 
           placeholder="Description..."
           onChange={this.handleInputChange}>

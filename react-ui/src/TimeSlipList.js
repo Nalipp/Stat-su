@@ -25,11 +25,14 @@ class TimeSlipList extends Component{
 
   render () {
     const h1Style = {
-      'fontSize': '60px',
-      'margin': '80px 0px 40px 0px'
+      fontSize: '60px',
+      margin: '80px 0px 40px 0px',
+      color: '#344559',
+      letterSpacing: '6px',
     }
     const spanStyle = {
       'color': '#fff',
+      letterSpacing: '6px',
     }
     const timeSlip = this.state.timeSlips.map(slip => (
       <TimeSlipItem 
