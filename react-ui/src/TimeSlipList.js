@@ -38,16 +38,16 @@ class TimeSlipList extends Component{
     const studyStyle = {
       marginLeft: '12px',
       borderRadius: '10px',
-      padding: '4px 10px',
+      padding: '6px 10px',
       color: 'white',
-      border: '2px solid green',
+      background: '#1CABA7',
       cursor: 'pointer',
     }
     const buildStyle = {};
     Object.keys(studyStyle).forEach(k => {
       buildStyle[k] = studyStyle[k];
     });
-    buildStyle.border = '2px solid #EE715D';
+    buildStyle.background = '#EE715D';
 
     const timeSlip = this.state.timeSlips.reverse().map(slip => (
       <TimeSlipItem 
