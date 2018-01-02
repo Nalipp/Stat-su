@@ -18,13 +18,13 @@ export async function getTimeSlips() {
   })
 }
 
-export async function createTimeSlip(language, description) {
+export async function createTimeSlip(language, url, description) {
   return fetch(APIURL, {
     method: 'post',
     headers: new Headers({
       'Content-Type': 'application/json',
     }),
-    body: JSON.stringify({language, description})
+    body: JSON.stringify({language, url, description})
   })
   .then(res => {
     if(!res.ok) {

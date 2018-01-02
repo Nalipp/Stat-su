@@ -18,8 +18,8 @@ class TimeSlipList extends Component{
     this.setState({timeSlips});
   }
 
-  async addTimeSlip(language, description){
-    let newTimeSlip = await apiCalls.createTimeSlip(language, description);
+  async addTimeSlip(language, url, description){
+    let newTimeSlip = await apiCalls.createTimeSlip(language, url, description);
     this.setState({timeSlips: [...this.state.timeSlips, newTimeSlip]});
   }
 

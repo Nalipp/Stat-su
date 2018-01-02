@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TimeSlipItem = ({language, description, url}) => {
+const TimeSlipItem = ({language, url, description}) => {
   const listStyle = {
     listStyle: 'none',
     margin: '10px 0',
@@ -30,6 +30,7 @@ const TimeSlipItem = ({language, description, url}) => {
 
 TimeSlipItem.propTypes = {
   language: PropTypes.string,
+  url: PropTypes.string,
   description: PropTypes.string
 }
 
