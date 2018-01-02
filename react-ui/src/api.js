@@ -19,6 +19,7 @@ export async function getTimeSlips() {
 }
 
 export async function createTimeSlip(language, url, description) {
+  url = requireHttp(url);
   return fetch(APIURL, {
     method: 'post',
     headers: new Headers({
@@ -40,4 +41,10 @@ export async function createTimeSlip(language, url, description) {
     }
     return res.json()
   })
+}
+
+function requireHttp(url) {
+  let index = url.search(/http/);
+  if (index === 0) return url;
+  return `http://${url}`
 }
