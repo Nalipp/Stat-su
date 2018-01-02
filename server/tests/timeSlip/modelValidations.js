@@ -30,6 +30,13 @@ describe('Validates timeSlip records', () => {
     assert(message === 'Description must be valid length');
   });
 
+  it('requires a url length less than 10000 characters', () => {
+    const timeSlip = new TimeSlip({url: 'n'.repeat(10000)});
+    const validationResult = timeSlip.validateSync();
+    const { message } = validationResult.errors.url
+    assert(message === 'Url must be valid length');
+  });
+
   it('disallows invalid records from being saved', (done) => {
     const timeSlip = new TimeSlip({description: 'no'});
     timeSlip.save()
