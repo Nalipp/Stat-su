@@ -12,7 +12,7 @@ else url = 'mongodb://heroku_bjjvh2h6:jo0oosp6t55c8ju7ljepf5jgl2@ds135747.mlab.c
 
 mongoose.connect(url, err => {
   if (err) console.log("# Failed to connect to MongoDB ");
-  else console.log('# Connected to MongoDB', url)
+  else console.log('# Connected to MongoDB', url);
 })
 
 module.exports.TimeSlip = require("./timeSlip");
