@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TimeSlipItem = ({language, description}) => {
+const TimeSlipItem = ({language, description, url}) => {
   const listStyle = {
     listStyle: 'none',
     margin: '10px 0',
@@ -17,7 +17,7 @@ const TimeSlipItem = ({language, description}) => {
       <p>
         {description}
         <a 
-          href="https://www.google.com" 
+          href={url} 
           rel="noopener noreferrer"
           target="_blank"
           style={{color: '#fff', padding: '6px'}}>
