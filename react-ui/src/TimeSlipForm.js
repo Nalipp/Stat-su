@@ -5,72 +5,105 @@ class TimeSlipForm extends Component{
   constructor(props){
     super(props)
     this.state = { 
-      languageInput: '',
-      urlInput: '',
-      descriptionInput: '',
+      language: '',
+      url: '',
+      description: '',
+      languageValid: true,
+      urlValid: true,
+      descriptionValid: false,
+      formValid: false,
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.validateField = this.validateField.bind(this);
+    this.checkSubmit = this.checkSubmit.bind(this);
+    this.validateForm = this.validateForm.bind(this);
   }
 
   componentDidMount(){
-    this.languageInput.focus();
+    this.language.focus();
   }
 
   handleInputChange(e) {
-    const target = e.target;
-    const value = target.value;
-    const name = target.name;
+    const value = e.target.value;
+    const name = e.target.name;
 
-    this.setState({[name]: value});
+    this.setState({[name]: value}, () => this.validateField(name, value));
   }
+
+  validateField(inputName, value) {
+    switch(inputName) {
+    case 'language':
+      let languageValid = value.length <= 1000;
+      this.setState({languageValid}, () => this.validateForm());
+      break;
+    case 'url':
+      let urlValid = value.length <= 1000;
+      this.setState({urlValid}, () => this.validateForm());
+      break;
+    case 'description':
+      let descriptionValid = value.length <= 30000 && value.length > 2;
+      this.setState({descriptionValid}, () => this.validateForm());
+      break;
+    default:
+      break;
+  }
+}
+
+validateForm() {
+  this.setState({formValid: this.state.languageValid && this.state.urlValid && this.state.descriptionValid});
+}
 
   handleSubmit(e){
-    e.preventDefault();
     this.props.addTimeSlip(
-      this.state.languageInput, 
-      this.state.urlInput,
-      this.state.descriptionInput
+      this.state.language, 
+      this.state.url,
+      this.state.description
     )
-    this.setState({languageInput: '', urlInput: '', descriptionInput: ''});
-    this.languageInput.focus();
+    this.setState({language: '', url: '', description: '', descriptionValid: false, formValid: false});
+    this.language.focus();
   }
 
-  handleKeyPress(e) {
+  checkSubmit(e) {
     if(e.key === 'Enter' && e.shiftKey === false) {
-      this.handleSubmit(e);
+      if (this.state.formValid) {
+        this.handleSubmit(e);
+      } else {
+        // color the discription outline red
+      }
     }
   }
 
   render(){
     return (
-      <form onSubmit={this.handleSubmit} style={{marginBottom: '50px'}}>
+      <form style={{marginBottom: '50px'}}>
         <input 
-          name="languageInput"
-          ref={(input) => { this.languageInput = input; }}
+          name="language"
+          ref={(input) => { this.language = input; }}
           autoComplete="off"
+          onChange={this.handleInputChange}
+          onKeyPress={this.checkSubmit}
           type="text" 
           placeholder="Technology..."
-          value={this.state.languageInput} 
-          onChange={this.handleInputChange} />
+          value={this.state.language} />
         <input 
-          name="urlInput"
-          ref={(input) => { this.urlInput = input; }}
+          name="url"
+          ref={(input) => { this.url = input; }}
           autoComplete="off"
+          onChange={this.handleInputChange}
+          onKeyPress={this.checkSubmit}
           type="text" 
           placeholder="Url..."
-          value={this.state.urlInput} 
-          onChange={this.handleInputChange} />
+          value={this.state.url} />
         <textarea
-          name="descriptionInput"
+          name="description"
           autoComplete="off"
-          onKeyPress={this.handleKeyPress}
-          value={this.state.descriptionInput} 
-          placeholder="Description..."
-          onChange={this.handleInputChange}>
+          onChange={this.handleInputChange}
+          onKeyPress={this.checkSubmit}
+          value={this.state.description} 
+          placeholder="Description...">
         </textarea>
-        <button style={{display: 'none'}}>
+        <button type="button" style={{display: 'none'}}>
         Add New Study Resource</button>
       </form>
     )
