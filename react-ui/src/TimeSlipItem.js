@@ -12,17 +12,20 @@ const TimeSlipItem = ({language, url, description}) => {
   return (
     <li style={listStyle}>
       <div style={{display: 'flex', alignItems: 'center'}}>
-        <h2 style={h2Style}>{language}</h2>
+        <h2 style={h2Style}>{language ? language : '-'}</h2>
       </div>
       <p>
         {description}
-        <a 
-          href={url} 
-          rel="noopener noreferrer"
-          target="_blank"
-          style={{color: '#fff', padding: '6px'}}>
-          link
-        </a>
+        {url ? (
+          <a 
+            href={url} 
+            rel="noopener noreferrer"
+            target="_blank"
+            style={{color: '#fff', padding: '6px'}}>
+            link
+          </a>
+        ) : null
+        }
       </p>
     </li>
   )

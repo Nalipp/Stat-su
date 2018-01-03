@@ -44,7 +44,10 @@ export async function createTimeSlip(language, url, description) {
 }
 
 function requireHttp(url) {
-  let index = url.search(/http/);
-  if (index === 0) return url;
-  return `http://${url}`
+  if (url) {
+    let index = url.search(/http/);
+    if (index === 0) return url;
+    return `http://${url}`
+  }
+  return undefined;
 }
