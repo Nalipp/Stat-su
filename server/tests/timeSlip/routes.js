@@ -9,11 +9,13 @@ const timeSlips = [
   {
     _id: new ObjectID(),
     language: 'language1',
+    url: 'http://www.url1.com',
     description: 'description1'
   }, 
   {
     _id: new ObjectID(),
     language: 'language2',
+    url: 'http://www.url2.com',
     description: 'description2'
   }
 ]
@@ -58,6 +60,7 @@ describe('TimeSlipHelper database CRUD requests', () => {
   it('should POST a new TimeSlip to the database', (done) => {
     let newTimeSlip = new TimeSlip({
       language: 'langauge3', 
+      url: 'http://www.url3.com',
       description: 'description3'
     })
     request(index)
@@ -65,6 +68,7 @@ describe('TimeSlipHelper database CRUD requests', () => {
       .send(newTimeSlip)
       .end((err, res) => {
         assert(res.body.language === newTimeSlip.language);
+        assert(res.body.url === newTimeSlip.url);
         assert(res.body.description === newTimeSlip.description);
         done()
       })
