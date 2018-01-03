@@ -34,6 +34,7 @@ class TimeSlipForm extends Component{
       this.state.descriptionInput
     )
     this.setState({languageInput: '', urlInput: '', descriptionInput: ''});
+    this.languageInput.focus();
   }
 
   handleKeyPress(e) {

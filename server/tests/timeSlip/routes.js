@@ -61,7 +61,8 @@ describe('TimeSlipHelper database CRUD requests', () => {
     let newTimeSlip = new TimeSlip({
       language: 'langauge3', 
       url: 'http://www.url3.com',
-      description: 'description3'
+      description: 'description3',
+      completed: false
     })
     request(index)
       .post('/api/timeSlips/')
@@ -70,6 +71,8 @@ describe('TimeSlipHelper database CRUD requests', () => {
         assert(res.body.language === newTimeSlip.language);
         assert(res.body.url === newTimeSlip.url);
         assert(res.body.description === newTimeSlip.description);
+        assert(res.body.created_date !== null);
+        assert(res.body.completed === newTimeSlip.completed);
         done()
       })
   });
