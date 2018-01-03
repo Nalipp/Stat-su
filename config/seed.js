@@ -11,31 +11,43 @@ MongoClient.connect("mongodb://localhost/tStudy-api", function (err, database) {
           language: 'Sinatra',
           description: 'Project exploring web development through the sinatra framework',
           url: 'http://sinatrarb.com/documentation.html',
+          completed: false,
+          created_date: Date.now() - 800,
         },
         {
           language: 'Ruby', 
           description: 'Udacity Nano Degree, exploring the fundamentals of writing and reading from a database using the ruby language',
           url: 'http://ruby-doc.org/',
+          completed: false,
+          created_date: Date.now() - 700,
         },
         {
           language: 'PostGreSQL', 
           description: 'Launch School online web developer traning school, Programming and Back-end Development section 180 SQL and Relational Databases',
           url: 'https://www.postgresql.org/docs/',
+          completed: false,
+          created_date: Date.now() - 600,
         },
         {
           language: 'Node.js', 
           description: 'Complete Web Developer Bootcamp course, taught by former Galvanize Bootcamp instructor Colt Steele covering the fundamentals of web development including html, css, javaScript, jQuery, Node.js, MongoDb, mongoose',
           url: 'https://nodejs.org/en/docs/',
+          completed: false,
+          created_date: Date.now() - 500,
         },
         {
           language: 'React', 
           description: 'The Advanded Web Developer Bootcamp Udemy course, created by Rithm Bootcamp in San Francisco exploring modern frontend technologies including React, Node, ES6 and D3',
           url: 'https://reactjs.org/docs/hello-world.html',
+          completed: false,
+          created_date: Date.now() - 400,
         },
         {
           language: 'JavaScript', 
           description: 'You Don"t Know JavaScript book series, Scope and Closures Chapter 5',
           url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+          completed: false,
+          created_date: Date.now() - 300,
         },
       ]
     );

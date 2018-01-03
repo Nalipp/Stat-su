@@ -20,7 +20,7 @@ class TimeSlipList extends Component{
 
   async addTimeSlip(language, url, description){
     let newTimeSlip = await apiCalls.createTimeSlip(language, url, description);
-    this.setState({timeSlips: [...this.state.timeSlips, newTimeSlip]});
+    this.setState({timeSlips: [newTimeSlip, ...this.state.timeSlips]});
   }
 
   render () {
@@ -49,7 +49,7 @@ class TimeSlipList extends Component{
     });
     buildStyle.background = '#EE715D';
 
-    const timeSlip = this.state.timeSlips.reverse().map(slip => (
+    const timeSlip = this.state.timeSlips.map(slip => (
       <TimeSlipItem 
         key={slip._id}
         {...slip} 

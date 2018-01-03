@@ -2,6 +2,7 @@ const db = require('../models');
 
 exports.getTimeSlips = (req, res) => {
   db.TimeSlip.find()
+  .sort({created_date: -1})
   .then(timeSlips => {
     res.json(timeSlips);
   })

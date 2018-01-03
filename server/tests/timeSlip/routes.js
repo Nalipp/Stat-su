@@ -56,7 +56,7 @@ describe('TimeSlipHelper database CRUD requests', () => {
   });
 
   it('should POST a new TimeSlip to the database', (done) => {
-    newTimeSlip = new TimeSlip({
+    let newTimeSlip = new TimeSlip({
       language: 'langauge3', 
       description: 'description3'
     })
@@ -82,5 +82,6 @@ describe('TimeSlipHelper database CRUD requests', () => {
           });
       })
   });
+
 });
 
