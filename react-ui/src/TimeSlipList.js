@@ -29,6 +29,16 @@ class TimeSlipList extends Component{
     this.setState({timeSlips});
   }
 
+  async archiveTimeSlip(timeSlip) {
+    let updatedTimeSlip = await apiCalls.archiveTimeSlip(timeSlip); 
+    let timeSlips = this.state.timeSlips.map(timeSlip =>
+      (timeSlip._id === updatedTimeSlip._id) 
+        ? {...timeSlip, completed: !timeSlip.completed}
+        : timeSlip
+      );
+    this.setState({timeSlips});
+  }
+
   render () {
     const wrapper = {
       display: 'flex',
@@ -43,9 +53,9 @@ class TimeSlipList extends Component{
     }
     const timeSlipItem = this.state.timeSlips.map(slip => (
       <TimeSlipItem 
-        onDelete={this.deleteTimeSlip.bind(this, slip._id)}
         key={slip._id}
         {...slip} 
+        onArchive={this.archiveTimeSlip.bind(this, slip)}
       />
     ));
     return (

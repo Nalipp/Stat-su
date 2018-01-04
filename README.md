@@ -139,10 +139,14 @@ back inside react-ui run npm start and style the front end
   - xtrash icon (lower right corner)  
 
   xcreate delete functionality  
+  xarchive functionality
 
-  /--
-    change delete functionality to hidden in archive
-  /--
+  /-- current  
+
+    change delete functionality to hidden in archive  
+    archive tests
+
+  /-- current  
 
   timer screen
   - click on the stopwatch icon to begin timer screen

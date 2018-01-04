@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TimeSlipItem = ({language, url, description, onDelete}) => {
+const TimeSlipItem = ({language, url, description, onArchive}) => {
   const listStyle = {
     listStyle: 'none',
     margin: '10px 0',
@@ -59,8 +59,8 @@ const TimeSlipItem = ({language, url, description, onDelete}) => {
             ) : null
           }
         </p>
-        <p style={{cursor: 'pointer'}} onClick={onDelete}>
-          trash
+        <p style={{cursor: 'pointer'}} onClick={onArchive}>
+          archive
         </p>
       </div>
     </li>
@@ -71,7 +71,7 @@ TimeSlipItem.propTypes = {
   language: PropTypes.string,
   url: PropTypes.string,
   description: PropTypes.string,
-  onDelete: PropTypes.func
+  onArchive: PropTypes.func
 }
 
 export default TimeSlipItem;

@@ -41,4 +41,14 @@ exports.deleteTimeSlip = (req, res) => {
    })  
 }
 
+exports.toggleCompletedTimeSlip =  function(req, res){
+   db.TimeSlip.findOneAndUpdate({_id: req.params.timeSlipId}, req.body, {new: true})
+   .then(function(timeSlip){
+       res.json(timeSlip);
+   })
+   .catch(function(err){
+       res.send(err);
+   })
+}
+
 module.exports = exports;

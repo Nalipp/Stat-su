@@ -9,6 +9,7 @@ router.route('/')
 
 router.route('/:timeSlipId')
   .get(helpers.getTimeSlip)
+  .put(helpers.toggleCompletedTimeSlip)
   .delete(helpers.deleteTimeSlip)
 
 
