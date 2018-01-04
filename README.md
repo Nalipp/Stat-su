@@ -140,12 +140,8 @@ back inside react-ui run npm start and style the front end
 
   xcreate delete functionality  
   xarchive functionality
-
-  /-- current  
-
-    archive tests
-    change delete functionality to hidden in archive  
-    archive tests
+  xarchive tests
+  xupdate archive from delete to hide
 
   /-- current  
 
@@ -154,19 +150,20 @@ back inside react-ui run npm start and style the front end
   - when timer screen is ticking the background is green
   - when timer screen is stoped the background is red  
 
+  /-- current  
+
+  hamburger drop down
+  - unarchive screen  
+
   build mode slider  
 
   add icons
   - link
   - trash  
 
-  toggle switch for study and build  
-
   create a footer  
 
   refactor css (add multiple classes to single component)  
-
-  fix eslint for test files  
 
   fix travis  
 

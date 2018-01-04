@@ -52,11 +52,14 @@ class TimeSlipList extends Component{
       letterSpacing: '6px',
     }
     const timeSlipItem = this.state.timeSlips.map(slip => (
-      <TimeSlipItem 
-        key={slip._id}
-        {...slip} 
-        onArchive={this.archiveTimeSlip.bind(this, slip)}
-      />
+      (slip.completed === false ?
+        <TimeSlipItem 
+          key={slip._id}
+          {...slip} 
+          onArchive={this.archiveTimeSlip.bind(this, slip)}
+        />
+        : null
+      )
     ));
     return (
       <div>
