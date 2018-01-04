@@ -10,13 +10,15 @@ const timeSlips = [
     _id: new ObjectID(),
     language: 'language1',
     url: 'http://www.url1.com',
-    description: 'description1'
+    description: 'description1',
+    completed: false,
   }, 
   {
     _id: new ObjectID(),
     language: 'language2',
     url: 'http://www.url2.com',
-    description: 'description2'
+    description: 'description2',
+    completed: false,
   }
 ]
 
@@ -74,6 +76,22 @@ describe('TimeSlipHelper database CRUD requests', () => {
         assert(res.body.created_date !== null);
         assert(res.body.completed === newTimeSlip.completed);
         done()
+      })
+  });
+
+
+  it('should PUT toggleArchive on TimeSlip.completed', (done) => {
+    let status = !timeSlips[1].completed;
+    request(index)
+      .put(`/api/timeSlips/${timeSlips[1]._id}`)
+      .send({completed: status})
+      .end((err, res) => {
+        request(index)
+          .get(`/api/TimeSlips/${timeSlips[1]._id}`)
+          .end((err, res) => {
+            assert(res.body.completed === !timeSlips[1].completed);
+            done();
+          });
       })
   });
 
