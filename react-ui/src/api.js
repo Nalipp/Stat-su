@@ -43,6 +43,25 @@ export async function createTimeSlip(language, url, description) {
   })
 }
 
+export async function deleteTimeSlip(id) {
+  return fetch(APIURL + id, {
+    method: 'delete',
+  })
+  .then(res => {
+    if(!res.ok) {
+      if(res.status >= 400 && res.status <= 500) {
+        return res.json().then(data => {
+          let err = {errorMessage: data.message};
+          throw err;
+        })
+      } else {
+        let err = {errorMessage: 'Server is not responding'};
+        throw err;
+      }
+    }
+  })
+}
+
 function requireHttp(url) {
   if (url) {
     let index = url.search(/http/);

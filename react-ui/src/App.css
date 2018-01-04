@@ -2,4 +2,10 @@
   div {
     min-width: 85%;
   }
+  h2 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 12px;
+  }
 }

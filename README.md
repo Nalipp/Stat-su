@@ -63,4 +63,101 @@ from inside the root directory, seed the database and run the dev environemnt
 
 back inside react-ui run npm start and style the front end
 
+## Work Log (x denotes finished)
+  xinitial commit
 
+  xdeploy
+
+  xconfig different databases for dev, production, test
+
+  xclean up formatting
+  
+  xeslint
+  
+  xgithub travis ci
+  
+  xnsp security check
+  
+  xreadme
+  
+  xinitiate test suite
+  
+  xtest
+    model validations
+    
+  xupdate readme
+  
+  xtest
+    existing routes
+    
+  xwrite crud with tests
+    xcreate
+    xretrieve by id
+    xdelete by id
+    xclenup formating
+      xsrc/api.js 
+      xhelpers/timeslips.js (functions)
+      xtimSlip/routes.js (remove extra ('s and )'s)
+
+  xbuild react components
+  
+  xstyle page
+    xadd textarea
+    xlisten for button press
+    xdeploy
+    xreverse the order of the list items
+    xchange the highlight text color from default
+    xcreate work and study buttons
+
+  xcreate dummy data
+
+  xupdate readme
+
+  xadd url input on form
+    xwrite model tests
+    xupdate seed
+    xwrite route tests
+    xurl routes
+    xurl input on form
+    xadd https:// if missing
+    xonly show a link if there is a url
+    -test add https:// if missing
+
+  xfocus should reset to Technology after submit
+  xerror handling for too short or too long input
+  xerror handling required description
+  xerror handling page does not submit if form is not valid
+
+  xui styling
+    blue is the only main color
+    click on the slider to change to build mode but color page stays the same
+    click on the stopwatch icon to begin timer screen
+    when timer screen is ticking the background is green
+    when timer screen is stoped the background is red
+
+    xeach list item has in the header
+      xtechnology title (left)
+      xstart button with green border (right)
+      xtotal time summary (right)
+      
+    xafter discription
+      xlink icon (after sentence)
+      xtrash icon (lower right corner)
+
+  ---
+
+  delete functionality
+
+  ---
+
+  timer
+  add icons
+    link
+    trash
+  toggle switch for study and build
+  create a footer
+  refactor css (add multiple classes to single component)
+  fix eslint for test files
+  fix travis
+  change language to technology in entire project
+  drag and drop using React DnD

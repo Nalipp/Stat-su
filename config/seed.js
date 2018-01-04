@@ -17,7 +17,6 @@ MongoClient.connect("mongodb://localhost/tStudy-api", function (err, database) {
         {
           language: 'Ruby', 
           description: 'Udacity Nano Degree, exploring the fundamentals of writing and reading from a database using the ruby language',
-          url: 'http://ruby-doc.org/',
           completed: false,
           created_date: Date.now() - 700,
         },
@@ -31,7 +30,6 @@ MongoClient.connect("mongodb://localhost/tStudy-api", function (err, database) {
         {
           language: 'Node.js', 
           description: 'Complete Web Developer Bootcamp course, taught by former Galvanize Bootcamp instructor Colt Steele covering the fundamentals of web development including html, css, javaScript, jQuery, Node.js, MongoDb, mongoose',
-          url: 'https://nodejs.org/en/docs/',
           completed: false,
           created_date: Date.now() - 500,
         },

@@ -23,6 +23,12 @@ class TimeSlipList extends Component{
     this.setState({timeSlips: [newTimeSlip, ...this.state.timeSlips]});
   }
 
+  async deleteTimeSlip(id) {
+    await apiCalls.deleteTimeSlip(id);
+    let timeSlips = this.state.timeSlips.filter(slip => slip._id !== id);
+    this.setState({timeSlips});
+  }
+
   render () {
     const wrapper = {
       display: 'flex',
@@ -35,22 +41,9 @@ class TimeSlipList extends Component{
       color: '#344559',
       letterSpacing: '6px',
     }
-    const studyStyle = {
-      marginLeft: '12px',
-      borderRadius: '10px',
-      padding: '6px 10px',
-      color: 'white',
-      background: '#1CABA7',
-      cursor: 'pointer',
-    }
-    const buildStyle = {};
-    Object.keys(studyStyle).forEach(k => {
-      buildStyle[k] = studyStyle[k];
-    });
-    buildStyle.background = '#EE715D';
-
-    const timeSlip = this.state.timeSlips.map(slip => (
+    const timeSlipItem = this.state.timeSlips.map(slip => (
       <TimeSlipItem 
+        onDelete={this.deleteTimeSlip.bind(this, slip._id)}
         key={slip._id}
         {...slip} 
       />
@@ -61,14 +54,10 @@ class TimeSlipList extends Component{
           <h1 style={h1Style}>T
             <span style={{color: '#fff'}}>Study</span>
           </h1>
-          <div>
-            <span style={studyStyle}>study</span>
-            <span style={buildStyle}>build</span>
-          </div>
         </div>
         <TimeSlipForm addTimeSlip={this.addTimeSlip} />
         <ul>
-          {timeSlip}
+          {timeSlipItem}
         </ul>
       </div>
     )

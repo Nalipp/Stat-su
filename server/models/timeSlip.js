@@ -5,7 +5,7 @@ const timeSlipSchema = new mongoose.Schema({
         type: String,
         validate: {
           validator: (language) => 
-          language.length < 1000,
+          language.length < 30,
           message: 'Language must be valid length'
         }
     },
@@ -22,7 +22,7 @@ const timeSlipSchema = new mongoose.Schema({
         required: 'Description is required',
         validate: {
           validator: (description) => 
-          description.length > 2 && description.length < 30000,
+          description.length > 4 && description.length < 1000,
           message: 'Description must be valid length'
         }
     },

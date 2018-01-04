@@ -12,6 +12,7 @@ class TimeSlipForm extends Component{
       urlValid: true,
       descriptionValid: false,
       formValid: false,
+      triggerErrorBorder: false,
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,33 +35,40 @@ class TimeSlipForm extends Component{
   validateField(inputName, value) {
     switch(inputName) {
     case 'language':
-      let languageValid = value.length <= 1000;
+      var languageValid = value.length < 30;
       this.setState({languageValid}, () => this.validateForm());
       break;
     case 'url':
-      let urlValid = value.length <= 1000;
+      var urlValid = value.length < 10000;
       this.setState({urlValid}, () => this.validateForm());
       break;
     case 'description':
-      let descriptionValid = value.length <= 30000 && value.length > 2;
-      this.setState({descriptionValid}, () => this.validateForm());
+      var descriptionValid = value.length < 1000 && value.length > 4;
+      this.setState({descriptionValid, triggerErrorBorder: !descriptionValid}, 
+                    () => this.validateForm());
       break;
     default:
       break;
+    }
   }
-}
 
-validateForm() {
-  this.setState({formValid: this.state.languageValid && this.state.urlValid && this.state.descriptionValid});
-}
+  validateForm() {
+    this.setState({formValid: this.state.languageValid && 
+                              this.state.urlValid && 
+                              this.state.descriptionValid});
+  }
 
-  handleSubmit(e){
+  handleSubmit(){
     this.props.addTimeSlip(
       this.state.language, 
       this.state.url,
       this.state.description
     )
-    this.setState({language: '', url: '', description: '', descriptionValid: false, formValid: false});
+    this.setState({language: '', 
+                   url: '', 
+                   description: '', 
+                   descriptionValid: false, 
+                   formValid: false});
     this.language.focus();
   }
 
@@ -69,12 +77,14 @@ validateForm() {
       if (this.state.formValid) {
         this.handleSubmit(e);
       } else {
-        // color the discription outline red
+        this.setState({triggerErrorBorder: true});
       }
     }
   }
 
   render(){
+    const inputErrorStyle = {borderColor: '#EE715D'}
+    const textAreaErrorStyle = {borderLeftColor: '#EE715D'}
     return (
       <form style={{marginBottom: '50px'}}>
         <input 
@@ -85,6 +95,7 @@ validateForm() {
           onKeyPress={this.checkSubmit}
           type="text" 
           placeholder="Technology..."
+          style={this.state.languageValid ? null : inputErrorStyle}
           value={this.state.language} />
         <input 
           name="url"
@@ -93,6 +104,7 @@ validateForm() {
           onChange={this.handleInputChange}
           onKeyPress={this.checkSubmit}
           type="text" 
+          style={this.state.urlValid ? null : inputErrorStyle}
           placeholder="Url..."
           value={this.state.url} />
         <textarea
@@ -101,6 +113,7 @@ validateForm() {
           onChange={this.handleInputChange}
           onKeyPress={this.checkSubmit}
           value={this.state.description} 
+          style={this.state.triggerErrorBorder ? textAreaErrorStyle : null}
           placeholder="Description...">
         </textarea>
         <button type="button" style={{display: 'none'}}>
