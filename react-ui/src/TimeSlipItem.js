@@ -59,7 +59,7 @@ const TimeSlipItem = ({language, url, description, onDelete}) => {
             ) : null
           }
         </p>
-        <p onClick={onDelete}>
+        <p style={{cursor: 'pointer'}} onClick={onDelete}>
           trash
         </p>
       </div>
