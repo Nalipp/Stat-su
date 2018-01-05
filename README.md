@@ -145,10 +145,30 @@ back inside react-ui run npm start and style the front end
 
   /-- current  
 
-  timer screen
-  - click on the stopwatch icon to begin timer screen
-  - when timer screen is ticking the background is green
-  - when timer screen is stoped the background is red  
+  new TimeSlip document components
+  - startedTime // tracks the last time the timmer was started
+  - stoppedTime // tracks the last time the timmer was stopped
+  - totalTime   // tracks the total calculated times of all TimeSlipTimes
+
+  steps
+  - xclick the start button and display a green fullpage screen this page should have access to the list item data
+  - xclick on the x in the upper right hand corner to remove the screen
+
+  - create a start time component that changes the state.timeStopped === false (should be hidden if state.timeStopped === false)
+  - create a stop time component that changes the state.timeStopped === true (should be hidden if state.timeStopped === true) 
+  - turn the background screen red if state.timeStoped === true
+  - turn the background screen green if state.timeStoped === false
+
+  if start time is clicked
+  - post startedTime Date.now
+  - setState timeStopped === false 
+  - display timer
+
+  if stop time is clicked
+  - post stoppedTime Date.now
+  - post totalTime plus stoppedTime - startedTime
+  - setState timeStopped === true
+  - remove timer
 
   /-- current  
 
@@ -168,6 +188,8 @@ back inside react-ui run npm start and style the front end
   fix travis  
 
   change language to technology in entire project  
+  
+  keep track of all timeSubmissions in an array attached to the TimeSlip document
 
   drag and drop using React DnD  
 

@@ -30,12 +30,12 @@ class TimeSlipItem extends Component {
       flex: '9',
     }
     const startButtonStyle = {
-      fontSize: '10px',
-      borderRadius: '6px',
+      fontSize: '12px',
+      borderRadius: '8px',
       padding: '4px 6px',
       marginRight: '14px',
+      background: '#72DA66',
       color: 'white',
-      background: '#1CABA7',
       cursor: 'pointer',
       flex: '0.5',
     }
