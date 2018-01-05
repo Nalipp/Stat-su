@@ -1,49 +1,66 @@
-import React from 'react';
+import React, {Component} from 'react';
+import TimeSlipTimer from './TimeSlipTimer';
 import PropTypes from 'prop-types';
 
-const TimeSlipItem = ({language, url, description, onArchive}) => {
-  const listStyle = {
-    listStyle: 'none',
-    margin: '10px 0',
-    padding: '8px',
-    border: '1px dashed white',
+class TimeSlipItem extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showTimer: false,
+    }
+    this.toggleTimer = this.toggleTimer.bind(this);
   }
-  const h2Style = {
-    paddingRight: '10px',
-    flex: '9',
+
+  toggleTimer() {
+    this.setState({showTimer: !this.state.showTimer});
   }
-  const startButtonStyle = {
-    fontSize: '10px',
-    borderRadius: '6px',
-    padding: '4px 6px',
-    marginRight: '14px',
-    color: 'white',
-    background: '#1CABA7',
-    cursor: 'pointer',
-    flex: '0.5',
-  }
-  const totalStyle = {
-    color: 'white',
-    fontSize: '11px',
-    flex: '1.5',
-    textAlign: 'center',
-  }
-  const descriptionStyle = {
-    fontSize: '14px',
-    padding: '4px',
-    lineHeight: '20px',
-    letterSpacing: '2px',
-  }
-  const bottomNavStyle = {
-    display: 'flex',
-    justifyContent: 'space-between',
-  }
+
+  render() {
+
+    const { language, description, url, _id, onArchive} = this.props;
+
+    const listStyle = {
+      listStyle: 'none',
+      margin: '10px 0',
+      padding: '8px',
+      border: '1px dashed white',
+    }
+    const h2Style = {
+      paddingRight: '10px',
+      flex: '9',
+    }
+    const startButtonStyle = {
+      fontSize: '10px',
+      borderRadius: '6px',
+      padding: '4px 6px',
+      marginRight: '14px',
+      color: 'white',
+      background: '#1CABA7',
+      cursor: 'pointer',
+      flex: '0.5',
+    }
+    const totalStyle = {
+      color: 'white',
+      fontSize: '11px',
+      flex: '1.5',
+      textAlign: 'center',
+    }
+    const descriptionStyle = {
+      fontSize: '14px',
+      padding: '4px',
+      lineHeight: '20px',
+      letterSpacing: '2px',
+    }
+    const bottomNavStyle = {
+      display: 'flex',
+      justifyContent: 'space-between',
+    }
 
   return (
     <li style={listStyle}>
       <div style={{display: 'flex', alignItems: 'center'}}>
         <h2 style={h2Style}>{language ? language : '-'}</h2>
-        <p style={startButtonStyle}>start</p>
+        <p style={startButtonStyle} onClick={this.toggleTimer}>start</p>
         <p style={totalStyle}>1h 32m</p>
       </div><p style={descriptionStyle}>{description}</p>
       <div style={bottomNavStyle}>
@@ -63,11 +80,23 @@ const TimeSlipItem = ({language, url, description, onArchive}) => {
           archive
         </p>
       </div>
+
+        {this.state.showTimer ? 
+          <TimeSlipTimer
+            key={_id}
+            language={language} 
+            description={description} 
+            toggleTimer={this.toggleTimer}
+          />
+          : null
+        }
     </li>
-  )
+    )
+  }
 }
 
 TimeSlipItem.propTypes = {
+  _id: PropTypes.string,
   language: PropTypes.string,
   url: PropTypes.string,
   description: PropTypes.string,

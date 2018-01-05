@@ -7,7 +7,7 @@ class TimeSlipList extends Component{
   constructor(props){
     super(props)
     this.state = {
-      timeSlips: []
+      timeSlips: [],
     }
     this.loadTimeSlips();
     this.addTimeSlip = this.addTimeSlip.bind(this);
@@ -45,12 +45,14 @@ class TimeSlipList extends Component{
       alignItems: 'center',
       margin: '80px 0px 40px 0px',
     }
+
     const h1Style = {
       fontSize: '60px',
       flexGrow: '2',
       color: '#344559',
       letterSpacing: '6px',
     }
+
     const timeSlipItem = this.state.timeSlips.map(slip => (
       (slip.completed === false ?
         <TimeSlipItem 
