@@ -7,12 +7,18 @@ class TimeSlipItem extends Component {
     super(props)
     this.state = {
       showTimer: false,
+      timeStopped: true,
     }
     this.toggleTimer = this.toggleTimer.bind(this);
+    this.toggleTimeStopped = this.toggleTimeStopped.bind(this);
   }
 
   toggleTimer() {
     this.setState({showTimer: !this.state.showTimer});
+  }
+
+  toggleTimeStopped() {
+    this.setState({timeStopped: !this.state.timeStopped});
   }
 
   render() {
@@ -87,6 +93,8 @@ class TimeSlipItem extends Component {
             language={language} 
             description={description} 
             toggleTimer={this.toggleTimer}
+            toggleTimeStopped={this.toggleTimeStopped}
+            timeStopped={this.state.timeStopped}
           />
           : null
         }

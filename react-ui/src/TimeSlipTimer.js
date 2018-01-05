@@ -4,9 +4,21 @@ import PropTypes from 'prop-types';
 class Timer extends Component {
   render() {
 
-    const { language, description, toggleTimer} = this.props;
+    const { language, description, toggleTimer, toggleTimeStopped, timeStopped} = this.props;
 
-    const timerStyle = {
+    const stoppedTimerStyle = {
+      background: '#EE715D',
+      position: 'fixed',
+      width: '100%',
+      height: '100%',
+      top: '0',
+      bottom: '0',
+      right: '0',
+      left: '0',
+      margin: 'auto',
+    }
+
+    const startedTimerStyle = {
       background: '#72DA66',
       position: 'fixed',
       width: '100%',
@@ -36,14 +48,26 @@ class Timer extends Component {
 
     const pStyle = {
       textAlign: 'center',
+    }
 
+    const timmerButtonStyle = {
+      textAlign: 'center',
+      marginTop: '80px',
+      fontSize: '80px',
+      cursor: 'pointer',
+      userSelect: 'none',
     }
 
     return (
-      <div style={timerStyle}>
+      <div style={timeStopped ? stoppedTimerStyle : startedTimerStyle}>
         <h1 style={h1Style}>{language}</h1>
         <p style={pStyle}>{description}</p>
         <span style={spanStyle} onClick={toggleTimer}>x</span>
+        <h2 
+          style={timmerButtonStyle}
+          onClick={toggleTimeStopped}>
+          {(timeStopped ? 'start' : 'stop')}
+        </h2>
       </div>
     )
   }
