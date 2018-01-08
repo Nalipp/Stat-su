@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const db = require("../models");
 const helpers = require("../helpers/timeSlips");
 
 router.route('/')
@@ -9,7 +8,7 @@ router.route('/')
 
 router.route('/:timeSlipId')
   .get(helpers.getTimeSlip)
-  .put(helpers.toggleCompletedTimeSlip)
+  .put(helpers.updateTimeSlip)
   .delete(helpers.deleteTimeSlip)
 
 

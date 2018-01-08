@@ -2,8 +2,28 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class Timer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      timerRunning: false,
+    }
+    this.postStartTime = this.postStartTime.bind(this);
+    this.postStopTime = this.postStopTime.bind(this);
+  }
+
+  postStartTime(id) {
+    console.log('start time', Date.now());
+    this.setState({timerRunning: true});
+  }
+
+  postStopTime(id) {
+    console.log('stop time', Date.now());
+    this.setState({timerRunning: false});
+    // postToTimeTotal
+  }
+
   render() {
-    const { language, description, timerRunning, toggleTimerRunning, hideTimerScreen } = this.props;
+    const { language, description } = this.props;
 
     const stoppedTimerStyle = {
       background: '#EE715D',
@@ -58,25 +78,38 @@ class Timer extends Component {
     }
 
     return (
-      <div style={timerRunning ? startedTimerStyle : stoppedTimerStyle }>
+      <div style={this.state.timerRunning ? startedTimerStyle : stoppedTimerStyle }>
         <h1 style={h1Style}>{language}</h1>
         <p style={pStyle}>{description}</p>
-        <span style={spanStyle} onClick={hideTimerScreen}>x</span>
+        <span 
+          style={spanStyle} 
+          onClick={this.hideScreenAndPostStopTime}>x
+        </span>
         <h2 
           style={timmerButtonStyle}
-          onClick={toggleTimerRunning}>
-          {(timerRunning ? 'stop' : 'start')}
+          onClick={this.postStartOrStopTime}>
+          {(this.timerRunning ? 'stop' : 'start')}
         </h2>
       </div>
     )
+  }
+
+  hideScreenAndPostStopTime = () => {
+    if (this.state.timerRunning) {
+      this.postStopTime(this.props.id);
+    }
+    this.props.hideTimerScreen();
+  }
+
+  postStartOrStopTime = () => {
+    if (this.state.timerRunning) this.postStopTime(this.props.id);
+    else this.postStartTime(this.props.id);
   }
 }
 
 Timer.propTypes = {
   language: PropTypes.string,
   description: PropTypes.string,
-  timerRunning: PropTypes.bool,
-  toggleTimerRunning: PropTypes.func,
   hideTimerScreen: PropTypes.func,
 }
 

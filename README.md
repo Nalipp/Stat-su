@@ -177,9 +177,28 @@ back inside react-ui run npm start and style the front end
 
   /-- current  
 
+  move showTimerScreen to timeSlipTimer
 
   if timerRunning state is changed from false to true 
   - post to startedTime
+
+  react
+  x1. TimeSlipTimer
+  - move timerStatus to TimeSlipTimer
+    
+  2. TimeSlipList
+    async updateTimeSlipStartedTime
+    async updateTimeSlipStopedTime
+
+  3. api.js
+    updateTimeSlipStartedTime
+    updateTimeSlipStopedTime
+
+  4. models/timeslip.js
+    update the timeSlip model
+
+
+
 
   if timerRunning state is changed from true to false 
   - post to stoppedTime
@@ -194,6 +213,8 @@ back inside react-ui run npm start and style the front end
   render totalTime as sum of allTimes
 
   listen for escape keypress to close timmer popup
+
+  simplyfy the form validation 
 
   hamburger drop down
   - unarchive screen  
