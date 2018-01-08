@@ -20,13 +20,6 @@ class TimeSlipItem extends Component {
     this.setState({timerScreenShowing: false});
   }
 
-  // hideTimerScreen() {
-  //   this.setState({timerScreenShowing: false}, () => {
-  //     if (this.state.timerRunning) this.postStopTime();
-  //     this.setState({timerRunning: false})
-  //   });
-  // }
-
   render() {
     const { language, description, url, _id, onArchive} = this.props;
 

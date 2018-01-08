@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import * as apiCalls from './api';
 
-class Timer extends Component {
+class TimeSlipTimer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -9,17 +10,41 @@ class Timer extends Component {
     }
     this.postStartTime = this.postStartTime.bind(this);
     this.postStopTime = this.postStopTime.bind(this);
+    this.hideScreenAndPostStopTime = this.hideScreenAndPostStopTime.bind(this);
+    this.postStartOrStopTime = this.postStartOrStopTime.bind(this);
+  }
+
+  postSlipStartTime(id, startTime) {
+    apiCalls.postSlipStartTime(id, startTime); 
+  }
+
+  postSlipStopTime(id, stopTime) {
+    apiCalls.postSlipStopTime(id, stopTime); 
   }
 
   postStartTime(id) {
     console.log('start time', Date.now());
+    this.postSlipStartTime(id, Date.now());
     this.setState({timerRunning: true});
   }
 
   postStopTime(id) {
     console.log('stop time', Date.now());
+    this.postSlipStopTime(id, Date.now());
     this.setState({timerRunning: false});
     // postToTimeTotal
+  }
+
+  hideScreenAndPostStopTime() {
+    if (this.state.timerRunning) {
+      this.postStopTime(this.props.id);
+    }
+    this.props.hideTimerScreen();
+  }
+
+  postStartOrStopTime() {
+    if (this.state.timerRunning) this.postStopTime(this.props.id);
+    else this.postStartTime(this.props.id);
   }
 
   render() {
@@ -93,24 +118,13 @@ class Timer extends Component {
       </div>
     )
   }
-
-  hideScreenAndPostStopTime = () => {
-    if (this.state.timerRunning) {
-      this.postStopTime(this.props.id);
-    }
-    this.props.hideTimerScreen();
-  }
-
-  postStartOrStopTime = () => {
-    if (this.state.timerRunning) this.postStopTime(this.props.id);
-    else this.postStartTime(this.props.id);
-  }
 }
 
-Timer.propTypes = {
+TimeSlipTimer.propTypes = {
   language: PropTypes.string,
   description: PropTypes.string,
+  id: PropTypes.string, 
   hideTimerScreen: PropTypes.func,
 }
 
-export default Timer;
+export default TimeSlipTimer;

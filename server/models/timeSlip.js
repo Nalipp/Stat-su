@@ -26,6 +26,12 @@ const timeSlipSchema = new mongoose.Schema({
           message: 'Description must be valid length'
         }
     },
+    startTime: {
+      type: Number
+    },
+    stopTime: {
+      type: Number
+    },
     completed: {
         type: Boolean,
         default: false

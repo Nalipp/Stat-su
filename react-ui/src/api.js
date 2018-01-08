@@ -67,6 +67,52 @@ export async function archiveTimeSlip(timeSlip) {
   })
 }
 
+export async function postSlipStartTime(id, startTime) {
+  return fetch(APIURL + id, {
+    method: 'put',
+    headers: new Headers({
+      'Content-Type': 'application/json',
+    }),
+    body: JSON.stringify({startTime: startTime})
+  })
+  .then(res => {
+    if(!res.ok) {
+      if(res.status >= 400 && res.status <= 500) {
+        return res.json().then(data => {
+          let err = {errorMessage: data.message};
+          throw err;
+        })
+      } else {
+        let err = {errorMessage: 'Server is not responding'};
+        throw err;
+      }
+    }
+  })
+}
+
+export async function postSlipStopTime(id, stopTime) {
+  return fetch(APIURL + id, {
+    method: 'put',
+    headers: new Headers({
+      'Content-Type': 'application/json',
+    }),
+    body: JSON.stringify({stopTime: stopTime})
+  })
+  .then(res => {
+    if(!res.ok) {
+      if(res.status >= 400 && res.status <= 500) {
+        return res.json().then(data => {
+          let err = {errorMessage: data.message};
+          throw err;
+        })
+      } else {
+        let err = {errorMessage: 'Server is not responding'};
+        throw err;
+      }
+    }
+  })
+}
+
 export async function deleteTimeSlip(id) {
   return fetch(APIURL + id, {
     method: 'delete',
