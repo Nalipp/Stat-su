@@ -6,23 +6,29 @@ class TimeSlipItem extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      showTimer: false,
-      timeStopped: true,
+      timeStarted: false,
+      timerScreenShowing: false,
     }
-    this.toggleTimer = this.toggleTimer.bind(this);
-    this.toggleTimeStopped = this.toggleTimeStopped.bind(this);
+    this.toggleTimerStarted = this.toggleTimerStarted.bind(this);
+    this.showTimerScreen = this.showTimerScreen.bind(this);
+    this.hideTimerScreen = this.hideTimerScreen.bind(this);
   }
 
-  toggleTimer() {
-    this.setState({showTimer: !this.state.showTimer});
+  toggleTimerStarted() {
+    this.setState({timeStarted: !this.state.timeStarted});
   }
 
-  toggleTimeStopped() {
-    this.setState({timeStopped: !this.state.timeStopped});
+  showTimerScreen() {
+    this.setState({timerScreenShowing: true});
+  }
+
+  hideTimerScreen() {
+    this.setState({timeStarted: false}, () => {
+      this.setState({timerScreenShowing: false});
+    });
   }
 
   render() {
-
     const { language, description, url, _id, onArchive} = this.props;
 
     const listStyle = {
@@ -66,7 +72,7 @@ class TimeSlipItem extends Component {
     <li style={listStyle}>
       <div style={{display: 'flex', alignItems: 'center'}}>
         <h2 style={h2Style}>{language ? language : '-'}</h2>
-        <p style={startButtonStyle} onClick={this.toggleTimer}>start</p>
+        <p style={startButtonStyle} onClick={this.showTimerScreen}>start</p>
         <p style={totalStyle}>1h 32m</p>
       </div><p style={descriptionStyle}>{description}</p>
       <div style={bottomNavStyle}>
@@ -87,14 +93,14 @@ class TimeSlipItem extends Component {
         </p>
       </div>
 
-        {this.state.showTimer ? 
+        {this.state.timerScreenShowing ? 
           <TimeSlipTimer
             key={_id}
             language={language} 
             description={description} 
-            toggleTimer={this.toggleTimer}
-            toggleTimeStopped={this.toggleTimeStopped}
-            timeStopped={this.state.timeStopped}
+            timeStarted={this.state.timeStarted}
+            toggleTimerStarted={this.toggleTimerStarted}
+            hideTimerScreen={this.hideTimerScreen}
           />
           : null
         }

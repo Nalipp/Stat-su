@@ -154,21 +154,21 @@ back inside react-ui run npm start and style the front end
   - xclick the start button and display a green fullpage screen this page should have access to the list item data
   - xclick on the x in the upper right hand corner to remove the screen
 
-  - create a state.timeStopped in the TimeSlipItem component
-  - create a start time component that changes the state.timeStopped === false (should be hidden if state.timeStopped === false)
-  - create a stop time component that changes the state.timeStopped === true (should be hidden if state.timeStopped === true) 
-  - turn the background screen red if state.timeStoped === true
-  - turn the background screen green if state.timeStoped === false
+  - xcreate a state.timeStopped in the TimeSlipItem component
+  - xcreate a toggleTimer function that toggles the state of showTimer
+  - xcreate a toggleTimeStopped function that toggles the state of timeStopped
+  - xturn the background screen red if state.timeStoped === true
+  - xturn the background screen green if state.timeStoped === false
 
   toggleTimeStopped
 
-  if toggleTimeStopped === false
-  - hide start button
+  if timeStopped === false
+  - xhide start button
   - post startedTime Date.now using component did mount
   - display timer
 
-  if toggleTimeStopped === true
-  - hide stop button
+  if timeStopped === true
+  - xhide stop button
   - post stoppedTime Date.now using component did mount
   - post totalTime plus stoppedTime - startedTime if startTime is different that the current startTime
   - setState timeStopped === true
