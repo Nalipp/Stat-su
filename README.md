@@ -143,7 +143,6 @@ back inside react-ui run npm start and style the front end
   xarchive tests
   xupdate archive from delete to hide
 
-  /-- current  
 
   new TimeSlip document components
   - startedTime // tracks the last time the timmer was started
@@ -160,23 +159,41 @@ back inside react-ui run npm start and style the front end
   - xturn the background screen red if state.timeStoped === true
   - xturn the background screen green if state.timeStoped === false
 
-  toggleTimeStopped
+  if timerRunning === true
+  - xhide start button and show stop button
 
-  if timeStopped === false
-  - xhide start button
-  - post startedTime Date.now using component did mount
-  - display timer
+  if timerRunning === false
+  - xshow start button and hide stop button
 
-  if timeStopped === true
-  - xhide stop button
-  - post stoppedTime Date.now using component did mount
-  - post totalTime plus stoppedTime - startedTime if startTime is different that the current startTime
-  - setState timeStopped === true
-  - remove timer
+  if timerScreenShowing === true
+  - xshow timer screen
 
-  listen for escape keypress to close timmer popup
+  if timerScreenShowing === false
+  - xhide timer screen
+
+  xif user clicks start button -> timerScreenShowing === true
+  xif user clicks x button (inside timer screen) -> timerStarted === false, timerScreenShowing === false
+
 
   /-- current  
+
+
+  if timerRunning state is changed from false to true 
+  - post to startedTime
+
+  if timerRunning state is changed from true to false 
+  - post to stoppedTime
+
+
+  /-- current  
+
+
+  calculate times
+  - post to allTimes [{time: stoppedTime - startedTime, default date}]
+
+  render totalTime as sum of allTimes
+
+  listen for escape keypress to close timmer popup
 
   hamburger drop down
   - unarchive screen  

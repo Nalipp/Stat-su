@@ -6,16 +6,22 @@ class TimeSlipItem extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      timeStarted: false,
+      timerRunning: false,
       timerScreenShowing: false,
     }
-    this.toggleTimerStarted = this.toggleTimerStarted.bind(this);
+    this.toggleTimerRunning = this.toggleTimerRunning.bind(this);
     this.showTimerScreen = this.showTimerScreen.bind(this);
     this.hideTimerScreen = this.hideTimerScreen.bind(this);
   }
 
-  toggleTimerStarted() {
-    this.setState({timeStarted: !this.state.timeStarted});
+  toggleTimerRunning() {
+    this.setState({timerRunning: !this.state.timerRunning}, () => {
+      if (this.state.timerRunning) {
+        this.postStartTime();
+      } else {
+        this.postStopTime();
+      }
+    });
   }
 
   showTimerScreen() {
@@ -23,9 +29,19 @@ class TimeSlipItem extends Component {
   }
 
   hideTimerScreen() {
-    this.setState({timeStarted: false}, () => {
-      this.setState({timerScreenShowing: false});
+    this.setState({timerScreenShowing: false}, () => {
+      if (this.state.timerRunning) this.postStopTime();
+      this.setState({timerRunning: false})
     });
+  }
+
+  postStartTime() {
+    console.log('start time', Date.now());
+  }
+
+  postStopTime() {
+    console.log('stop time', Date.now());
+    // postToTimeTotal
   }
 
   render() {
@@ -98,8 +114,8 @@ class TimeSlipItem extends Component {
             key={_id}
             language={language} 
             description={description} 
-            timeStarted={this.state.timeStarted}
-            toggleTimerStarted={this.toggleTimerStarted}
+            timerRunning={this.state.timerRunning}
+            toggleTimerRunning={this.toggleTimerRunning}
             hideTimerScreen={this.hideTimerScreen}
           />
           : null

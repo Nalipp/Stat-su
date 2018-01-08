@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Timer extends Component {
   render() {
-    const { language, description, timeStarted, toggleTimerStarted, hideTimerScreen } = this.props;
+    const { language, description, timerRunning, toggleTimerRunning, hideTimerScreen } = this.props;
 
     const stoppedTimerStyle = {
       background: '#EE715D',
@@ -58,14 +58,14 @@ class Timer extends Component {
     }
 
     return (
-      <div style={timeStarted ? startedTimerStyle : stoppedTimerStyle }>
+      <div style={timerRunning ? startedTimerStyle : stoppedTimerStyle }>
         <h1 style={h1Style}>{language}</h1>
         <p style={pStyle}>{description}</p>
         <span style={spanStyle} onClick={hideTimerScreen}>x</span>
         <h2 
           style={timmerButtonStyle}
-          onClick={toggleTimerStarted}>
-          {(timeStarted ? 'stop' : 'start')}
+          onClick={toggleTimerRunning}>
+          {(timerRunning ? 'stop' : 'start')}
         </h2>
       </div>
     )
@@ -75,8 +75,8 @@ class Timer extends Component {
 Timer.propTypes = {
   language: PropTypes.string,
   description: PropTypes.string,
-  timeStarted: PropTypes.bool,
-  toggleTimerStarted: PropTypes.func,
+  timerRunning: PropTypes.bool,
+  toggleTimerRunning: PropTypes.func,
   hideTimerScreen: PropTypes.func,
 }
 
