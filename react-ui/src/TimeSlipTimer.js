@@ -9,6 +9,7 @@ class TimeSlipTimer extends Component {
     this.state = {
       timerRunning: false,
       timeCounter: 0,
+      timeConverted: '00:00',
       TimerId: null,
     }
     this.postStartTime = this.postStartTime.bind(this);
@@ -27,11 +28,27 @@ class TimeSlipTimer extends Component {
     apiCalls.postSlipStopTime(id, stopTime); 
   }
 
+  convertTime(seconds) {
+    let date = new Date(null);
+    date.setSeconds(seconds);
+    let baseConverstion = date.toISOString()
+    let timeConverted;
+
+    if (baseConverstion[12] === '0') {
+      timeConverted = baseConverstion.substr(14, 5);
+    } else {
+      timeConverted = baseConverstion.substr(11, 8);
+    }
+
+    this.setState({timeConverted});
+  }
+
   startTick() {
     let timeCounter = this.state.timeCounter;
     let TimerId = setInterval(() => {
       timeCounter += 1;
-      this.setState({timeCounter})
+      this.convertTime(timeCounter);
+      this.setState({timeCounter});
     }, 1000)
     this.setState({TimerId});
   }
@@ -64,6 +81,7 @@ class TimeSlipTimer extends Component {
     if (this.state.timerRunning) {
       this.stopTick();
       this.setState({timeCounter: 0});
+      this.setState({timeConverted: '00:00'});
       this.postStopTime(this.props.id);
     }
     else { 
@@ -131,12 +149,12 @@ class TimeSlipTimer extends Component {
     return (
       <div style={this.state.timerRunning ? startedTimerStyle : stoppedTimerStyle }>
         <h1 style={h1Style}>{language}</h1>
-        <p style={pStyle}>Total Time : {totalTime}</p>
+        <p style={pStyle}>Total Time {totalTime}</p>
         <span 
           style={spanStyle} 
           onClick={this.hideScreenAndPostStopTime}>x
         </span>
-        <TimerDisplay timeCounter={this.state.timeCounter} />
+        <TimerDisplay timeConverted={this.state.timeConverted} />
         <h2 
           style={timmerButtonStyle}
           onClick={this.postStartOrStopTime}>

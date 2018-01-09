@@ -200,12 +200,20 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
 
-  calculate times
-  - post to allTimes [{time: stoppedTime - startedTime, default date}]
+  convert seconds to minutes and hours
+  - convert TimerDisplay to pure function
+  - fix formating so the display is always the same length
 
 
   /-- current  
 
+
+  write tests for time posts
+
+  calculate times
+  - write tests first this time
+  - post to allTimes [{time: stoppedTime - startedTime, default date}]
+  - update ui
 
   render totalTime as sum of allTimes
 

@@ -7,7 +7,7 @@ class TimeSlipItem extends Component {
     super(props)
     this.state = {
       timerScreenShowing: false,
-      totalTime: '1h 32m',
+      totalTime: '1:32:10',
     }
     this.showTimerScreen = this.showTimerScreen.bind(this);
     this.hideTimerScreen = this.hideTimerScreen.bind(this);
