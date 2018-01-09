@@ -174,9 +174,6 @@ back inside react-ui run npm start and style the front end
   xif user clicks start button -> timerScreenShowing === true
   xif user clicks x button (inside timer screen) -> timerStarted === false, timerScreenShowing === false
 
-
-  /-- current  
-
   move showTimerScreen to timeSlipTimer
 
   if timerRunning state is changed from false to true 
@@ -186,22 +183,18 @@ back inside react-ui run npm start and style the front end
   x1. TimeSlipTimer
   - move timerStatus to TimeSlipTimer
     
-  2. TimeSlipList
-    async updateTimeSlipStartedTime
-    async updateTimeSlipStopedTime
+  x2. TimeSlipList
+  - async updateTimeSlipStartedTime
+  - async updateTimeSlipStopedTime
 
-  3. api.js
-    updateTimeSlipStartedTime
-    updateTimeSlipStopedTime
+  x3. api.js
+  - updateTimeSlipStartedTime
+  - updateTimeSlipStopedTime
 
-  4. models/timeslip.js
-    update the timeSlip model
+  x4. models/timeslip.js
+  - update the timeSlip model
 
-
-
-
-  if timerRunning state is changed from true to false 
-  - post to stoppedTime
+  xshow timer component
 
 
   /-- current  
@@ -209,6 +202,10 @@ back inside react-ui run npm start and style the front end
 
   calculate times
   - post to allTimes [{time: stoppedTime - startedTime, default date}]
+
+
+  /-- current  
+
 
   render totalTime as sum of allTimes
 

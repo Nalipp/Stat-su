@@ -7,6 +7,7 @@ class TimeSlipItem extends Component {
     super(props)
     this.state = {
       timerScreenShowing: false,
+      totalTime: '1h 32m',
     }
     this.showTimerScreen = this.showTimerScreen.bind(this);
     this.hideTimerScreen = this.hideTimerScreen.bind(this);
@@ -65,7 +66,7 @@ class TimeSlipItem extends Component {
       <div style={{display: 'flex', alignItems: 'center'}}>
         <h2 style={h2Style}>{language ? language : '-'}</h2>
         <p style={startButtonStyle} onClick={this.showTimerScreen}>start</p>
-        <p style={totalStyle}>1h 32m</p>
+        <p style={totalStyle}>{this.state.totalTime}</p>
       </div><p style={descriptionStyle}>{description}</p>
       <div style={bottomNavStyle}>
         <p>
@@ -90,7 +91,7 @@ class TimeSlipItem extends Component {
             key={_id}
             id={_id}
             language={language} 
-            description={description} 
+            totalTime={this.state.totalTime} 
             hideTimerScreen={this.hideTimerScreen}
             showTimerScreen={this.showTimerScreen}
           />

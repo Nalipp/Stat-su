@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import TimerDisplay from './TimeSlipTimerDisplay';
 import * as apiCalls from './api';
 
 class TimeSlipTimer extends Component {
@@ -7,11 +8,15 @@ class TimeSlipTimer extends Component {
     super(props)
     this.state = {
       timerRunning: false,
+      timeCounter: 0,
+      TimerId: null,
     }
     this.postStartTime = this.postStartTime.bind(this);
     this.postStopTime = this.postStopTime.bind(this);
     this.hideScreenAndPostStopTime = this.hideScreenAndPostStopTime.bind(this);
     this.postStartOrStopTime = this.postStartOrStopTime.bind(this);
+    this.startTick = this.startTick.bind(this);
+    this.stopTick = this.stopTick.bind(this);
   }
 
   postSlipStartTime(id, startTime) {
@@ -20,6 +25,19 @@ class TimeSlipTimer extends Component {
 
   postSlipStopTime(id, stopTime) {
     apiCalls.postSlipStopTime(id, stopTime); 
+  }
+
+  startTick() {
+    let timeCounter = this.state.timeCounter;
+    let TimerId = setInterval(() => {
+      timeCounter += 1;
+      this.setState({timeCounter})
+    }, 1000)
+    this.setState({TimerId});
+  }
+
+  stopTick() {
+    clearInterval(this.state.TimerId);
   }
 
   postStartTime(id) {
@@ -43,12 +61,19 @@ class TimeSlipTimer extends Component {
   }
 
   postStartOrStopTime() {
-    if (this.state.timerRunning) this.postStopTime(this.props.id);
-    else this.postStartTime(this.props.id);
+    if (this.state.timerRunning) {
+      this.stopTick();
+      this.setState({timeCounter: 0});
+      this.postStopTime(this.props.id);
+    }
+    else { 
+      this.startTick();
+      this.postStartTime(this.props.id); 
+    }
   }
 
   render() {
-    const { language, description } = this.props;
+    const { language, totalTime } = this.props;
 
     const stoppedTimerStyle = {
       background: '#EE715D',
@@ -92,11 +117,12 @@ class TimeSlipTimer extends Component {
 
     const pStyle = {
       textAlign: 'center',
+      fontSize: '22px',
     }
 
     const timmerButtonStyle = {
       textAlign: 'center',
-      marginTop: '80px',
+      marginTop: '30px',
       fontSize: '80px',
       cursor: 'pointer',
       userSelect: 'none',
@@ -105,15 +131,16 @@ class TimeSlipTimer extends Component {
     return (
       <div style={this.state.timerRunning ? startedTimerStyle : stoppedTimerStyle }>
         <h1 style={h1Style}>{language}</h1>
-        <p style={pStyle}>{description}</p>
+        <p style={pStyle}>Total Time : {totalTime}</p>
         <span 
           style={spanStyle} 
           onClick={this.hideScreenAndPostStopTime}>x
         </span>
+        <TimerDisplay timeCounter={this.state.timeCounter} />
         <h2 
           style={timmerButtonStyle}
           onClick={this.postStartOrStopTime}>
-          {(this.timerRunning ? 'stop' : 'start')}
+          {(this.state.timerRunning ? 'stop' : 'start')}
         </h2>
       </div>
     )
@@ -122,7 +149,7 @@ class TimeSlipTimer extends Component {
 
 TimeSlipTimer.propTypes = {
   language: PropTypes.string,
-  description: PropTypes.string,
+  totalTime: PropTypes.string,
   id: PropTypes.string, 
   hideTimerScreen: PropTypes.func,
 }
