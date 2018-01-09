@@ -196,19 +196,19 @@ back inside react-ui run npm start and style the front end
 
   xshow timer component
 
-
-  /-- current  
-
-
   convert seconds to minutes and hours
   - convert TimerDisplay to pure function
-  - fix formating so the display is always the same length
 
 
   /-- current  
 
 
   write tests for time posts
+
+
+  /-- current  
+
+
 
   calculate times
   - write tests first this time
@@ -236,9 +236,10 @@ back inside react-ui run npm start and style the front end
 
   fix travis  
 
-  change language to technology in entire project  
+  change language to topic in entire project  
   
   keep track of all timeSubmissions in an array attached to the TimeSlip document
 
   drag and drop using React DnD  
 
+  fix formating on TimeDisplay so the time width is always the same (less jolty)
