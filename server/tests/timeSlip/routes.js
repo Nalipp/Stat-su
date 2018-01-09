@@ -5,6 +5,7 @@ const timeSlipHelper = require('../../helpers/timeSlips');
 const TimeSlip = require('./../../models/timeSlip');
 const ObjectID = require('mongodb').ObjectID;
 
+const date = Date.now();
 const timeSlips = [
   {
     _id: new ObjectID(),
@@ -18,6 +19,9 @@ const timeSlips = [
     language: 'language2',
     url: 'http://www.url2.com',
     description: 'description2',
+    startTime: date,
+    stopTime: date + 800,
+    totalTime: 8000,
     completed: false,
   }
 ]
@@ -79,7 +83,6 @@ describe('TimeSlipHelper database CRUD requests', () => {
       })
   });
 
-
   it('should PUT toggleArchive on TimeSlip.completed', (done) => {
     let status = !timeSlips[1].completed;
     request(index)
@@ -95,35 +98,20 @@ describe('TimeSlipHelper database CRUD requests', () => {
       })
   });
 
-  it('should PUT update TimeSlip.startTime', (done) => {
-    let date = Date.now()
-    request(index)
-      .put(`/api/timeSlips/${timeSlips[0]._id}`)
-      .send({startTime: date})
-      .end((err, res) => {
-        request(index)
-          .get(`/api/TimeSlips/${timeSlips[0]._id}`)
-          .end((err, res) => {
-            assert(res.body.startTime === date);
-            done();
-          });
-      })
-  });
-
-  it('should PUT update TimeSlip.stopTime', (done) => {
-    let date = Date.now()
-    request(index)
-      .put(`/api/timeSlips/${timeSlips[0]._id}`)
-      .send({stopTime: date})
-      .end((err, res) => {
-        request(index)
-          .get(`/api/TimeSlips/${timeSlips[0]._id}`)
-          .end((err, res) => {
-            assert(res.body.stopTime === date);
-            done();
-          });
-      })
-  });
+  // it('should PUT update TimeSlip.total_time', (done) => {
+  //   let date = Date.now()
+  //   request(index)
+  //     .put(`/api/timeSlips/${timeSlips[0]._id}`)
+  //     .send({startTime: date})
+  //     .end((err, res) => {
+  //       request(index)
+  //         .get(`/api/TimeSlips/${timeSlips[0]._id}`)
+  //         .end((err, res) => {
+  //           assert(res.body.startTime === date);
+  //           done();
+  //         });
+  //     })
+  // });
 
   it('should DELETE a TimeSlip by id from database', (done) => {
     request(index)

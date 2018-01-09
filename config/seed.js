@@ -13,12 +13,14 @@ MongoClient.connect("mongodb://localhost/tStudy-api", function (err, database) {
           url: 'http://sinatrarb.com/documentation.html',
           completed: false,
           created_date: Date.now() - 800,
+          total_time: 142820,
         },
         {
           language: 'Ruby', 
           description: 'Udacity Nano Degree, exploring the fundamentals of writing and reading from a database using the ruby language',
           completed: false,
           created_date: Date.now() - 700,
+          total_time: 292436,
         },
         {
           language: 'PostGreSQL', 
@@ -26,12 +28,14 @@ MongoClient.connect("mongodb://localhost/tStudy-api", function (err, database) {
           url: 'https://www.postgresql.org/docs/',
           completed: false,
           created_date: Date.now() - 600,
+          total_time: 492822,
         },
         {
           language: 'Node.js', 
           description: 'Complete Web Developer Bootcamp course, taught by former Galvanize Bootcamp instructor Colt Steele covering the fundamentals of web development including html, css, javaScript, jQuery, Node.js, MongoDb, mongoose',
           completed: false,
           created_date: Date.now() - 500,
+          total_time: 199939,
         },
         {
           language: 'React', 
@@ -39,6 +43,7 @@ MongoClient.connect("mongodb://localhost/tStudy-api", function (err, database) {
           url: 'https://reactjs.org/docs/hello-world.html',
           completed: false,
           created_date: Date.now() - 400,
+          total_time: 122839,
         },
         {
           language: 'JavaScript', 
@@ -46,6 +51,7 @@ MongoClient.connect("mongodb://localhost/tStudy-api", function (err, database) {
           url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
           completed: false,
           created_date: Date.now() - 300,
+          total_time: 652839,
         },
       ]
     );

@@ -8,24 +8,58 @@ class TimeSlipTimer extends Component {
     super(props)
     this.state = {
       timerRunning: false,
+      startTime: null,
+      stopTime: null,
       timeCounter: 0,
       timeConverted: '00:00',
       TimerId: null,
     }
-    this.postStartTime = this.postStartTime.bind(this);
-    this.postStopTime = this.postStopTime.bind(this);
-    this.hideScreenAndPostStopTime = this.hideScreenAndPostStopTime.bind(this);
-    this.postStartOrStopTime = this.postStartOrStopTime.bind(this);
+    this.postTime = this.postTime.bind(this);
+    this.hideScreenAndPostTime = this.hideScreenAndPostTime.bind(this);
+    this.setStartOrStopTime = this.setStartOrStopTime.bind(this);
     this.startTick = this.startTick.bind(this);
     this.stopTick = this.stopTick.bind(this);
   }
 
-  postSlipStartTime(id, startTime) {
-    apiCalls.postSlipStartTime(id, startTime); 
+  componentDidMount() {
+    console.log('totalTime :', this.props.totalTime);
+  }
+  
+  postTime(id) {
+    let slipTime = {
+      // startTime: this.state.startTime,
+      // stopTime: this.state.stopTime,
+      total_time: this.state.stopTime - this.state.startTime,
+    }
+    apiCalls.postTime(id, slipTime); 
   }
 
-  postSlipStopTime(id, stopTime) {
-    apiCalls.postSlipStopTime(id, stopTime); 
+  hideScreenAndPostTime() {
+    if (this.state.timerRunning) {
+      this.setState({stopTime: Date.now()});
+      this.postTime(this.props.id);
+    }
+    this.props.hideTimerScreen();
+  }
+
+  setStartOrStopTime() {
+    if (this.state.timerRunning) {
+      this.setState({stopTime: Date.now()}, () => {
+        console.log('stopTime', this.state.stopTime);
+        this.postTime(this.props.id);
+      });
+      this.setState({timerRunning: false});
+      this.stopTick();
+      this.setState({timeCounter: 0});
+      this.setState({timeConverted: '00:00'});
+    }
+    else { 
+      this.setState({startTime: Date.now()}, () => {
+        console.log('startTime', this.state.startTime);
+      });
+      this.setState({timerRunning: true});
+      this.startTick();
+    }
   }
 
   convertTime(seconds) {
@@ -55,39 +89,6 @@ class TimeSlipTimer extends Component {
 
   stopTick() {
     clearInterval(this.state.TimerId);
-  }
-
-  postStartTime(id) {
-    console.log('start time', Date.now());
-    this.postSlipStartTime(id, Date.now());
-    this.setState({timerRunning: true});
-  }
-
-  postStopTime(id) {
-    console.log('stop time', Date.now());
-    this.postSlipStopTime(id, Date.now());
-    this.setState({timerRunning: false});
-    // postToTimeTotal
-  }
-
-  hideScreenAndPostStopTime() {
-    if (this.state.timerRunning) {
-      this.postStopTime(this.props.id);
-    }
-    this.props.hideTimerScreen();
-  }
-
-  postStartOrStopTime() {
-    if (this.state.timerRunning) {
-      this.stopTick();
-      this.setState({timeCounter: 0});
-      this.setState({timeConverted: '00:00'});
-      this.postStopTime(this.props.id);
-    }
-    else { 
-      this.startTick();
-      this.postStartTime(this.props.id); 
-    }
   }
 
   render() {
@@ -152,12 +153,12 @@ class TimeSlipTimer extends Component {
         <p style={pStyle}>Total Time {totalTime}</p>
         <span 
           style={spanStyle} 
-          onClick={this.hideScreenAndPostStopTime}>x
+          onClick={this.hideScreenAndPostTime}>x
         </span>
         <TimerDisplay timeConverted={this.state.timeConverted} />
         <h2 
           style={timmerButtonStyle}
-          onClick={this.postStartOrStopTime}>
+          onClick={this.setStartOrStopTime}>
           {(this.state.timerRunning ? 'stop' : 'start')}
         </h2>
       </div>
@@ -167,7 +168,7 @@ class TimeSlipTimer extends Component {
 
 TimeSlipTimer.propTypes = {
   language: PropTypes.string,
-  totalTime: PropTypes.string,
+  totalTime: PropTypes.number,
   id: PropTypes.string, 
   hideTimerScreen: PropTypes.func,
 }

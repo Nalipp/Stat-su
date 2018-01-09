@@ -1,16 +1,25 @@
 import React, {Component} from 'react';
 import TimeSlipTimer from './TimeSlipTimer';
 import PropTypes from 'prop-types';
+import * as apiCalls from './api';
 
 class TimeSlipItem extends Component {
   constructor(props) {
     super(props)
     this.state = {
       timerScreenShowing: false,
-      totalTime: '1:32:10',
+      totalTime: null,
     }
     this.showTimerScreen = this.showTimerScreen.bind(this);
     this.hideTimerScreen = this.hideTimerScreen.bind(this);
+    this.loadTimeSlip = this.loadTimeSlip.bind(this);
+    this.loadTimeSlip(this.props._id)
+  }
+
+  async loadTimeSlip(id) {
+    let timeSlip = await apiCalls.getTimeSlip(id);
+    let totalTime = timeSlip.total_time;
+    this.setState({totalTime}, () => console.log('this.state.totalTime loaded', this.state.totalTime));
   }
 
   showTimerScreen() {

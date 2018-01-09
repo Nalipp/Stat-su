@@ -18,6 +18,24 @@ export async function getTimeSlips() {
   })
 }
 
+export async function getTimeSlip(id) {
+  return fetch(APIURL + id)
+  .then(res => {
+    if(!res.ok) {
+      if(res.status >= 400 && res.status <= 500) {
+        return res.json().then(data => {
+          let err = {errorMessage: data.message};
+          throw err;
+        })
+      } else {
+        let err = {errorMessage: 'Server is not responding'};
+        throw err;
+      }
+    }
+    return res.json()
+  })
+}
+
 export async function createTimeSlip(language, url, description) {
   url = requireHttp(url);
   return fetch(APIURL, {
@@ -67,36 +85,14 @@ export async function archiveTimeSlip(timeSlip) {
   })
 }
 
-export async function postSlipStartTime(id, startTime) {
+export async function postTime(id, body) {
+  console.log('api.js postTime body', body)
   return fetch(APIURL + id, {
     method: 'put',
     headers: new Headers({
       'Content-Type': 'application/json',
     }),
-    body: JSON.stringify({startTime: startTime})
-  })
-  .then(res => {
-    if(!res.ok) {
-      if(res.status >= 400 && res.status <= 500) {
-        return res.json().then(data => {
-          let err = {errorMessage: data.message};
-          throw err;
-        })
-      } else {
-        let err = {errorMessage: 'Server is not responding'};
-        throw err;
-      }
-    }
-  })
-}
-
-export async function postSlipStopTime(id, stopTime) {
-  return fetch(APIURL + id, {
-    method: 'put',
-    headers: new Headers({
-      'Content-Type': 'application/json',
-    }),
-    body: JSON.stringify({stopTime: stopTime})
+    body: JSON.stringify(body)
   })
   .then(res => {
     if(!res.ok) {

@@ -17,3 +17,19 @@ TimerDisplay.propTypes = {
 export default TimerDisplay;
 
 
+
+
+
+
+// update totalTime from parent component so that it actually gets a milisecond value from the database
+
+// display the value instead of the hardcoded 'h m s' value there now
+
+
+// postTime in TimeSlipTimer should post the total time plus the current time total
+
+
+//push
+
+
+// later refactor the timeConverter function to be accessable to both components

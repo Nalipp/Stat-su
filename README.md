@@ -147,7 +147,8 @@ back inside react-ui run npm start and style the front end
   new TimeSlip document components
   - startedTime // tracks the last time the timmer was started
   - stoppedTime // tracks the last time the timmer was stopped
-  - totalTime   // tracks the total calculated times of all TimeSlipTimes
+  - allTimes    // array that tracks all the times
+  - totalTime   // tracks the total calculated times of all TimeSlip.allTimes
 
   steps
   - xclick the start button and display a green fullpage screen this page should have access to the list item data
@@ -203,16 +204,15 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
 
-  write tests for time posts
+  write tests for getting timeSlip by id
+  load totalTime for each component
 
 
   /-- current  
 
 
-
   calculate times
-  - write tests first this time
-  - post to allTimes [{time: stoppedTime - startedTime, default date}]
+  - write tests for calculating component time
   - update ui
 
   render totalTime as sum of allTimes
@@ -223,8 +223,6 @@ back inside react-ui run npm start and style the front end
 
   hamburger drop down
   - unarchive screen  
-
-  build mode slider  
 
   add icons
   - link
@@ -242,4 +240,10 @@ back inside react-ui run npm start and style the front end
 
   drag and drop using React DnD  
 
-  fix formating on TimeDisplay so the time width is always the same (less jolty)
+  ui
+  - fix formating on TimeDisplay so the time width is always the same (less jolty)
+  - reset to 00:00 more gradually
+
+  fix errors
+  - An unknown error occurred when fetching the script.
+  - Failed to load resource: net::ERR_CONNECTION_REFUSED

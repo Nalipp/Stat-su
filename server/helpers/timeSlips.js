@@ -41,7 +41,7 @@ exports.deleteTimeSlip = (req, res) => {
    })  
 }
 
-exports.updateTimeSlip =  function(req, res){
+exports.updateTimeSlip = function(req, res){
    db.TimeSlip.findOneAndUpdate({_id: req.params.timeSlipId}, req.body, {new: true})
    .then(function(timeSlip){
        res.json(timeSlip);
