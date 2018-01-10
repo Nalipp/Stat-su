@@ -14,12 +14,19 @@ class TimeSlipItem extends Component {
     this.hideTimerScreen = this.hideTimerScreen.bind(this);
     this.loadTimeSlip = this.loadTimeSlip.bind(this);
     this.loadTimeSlip(this.props._id)
+    this.postTime = this.postTime.bind(this);
   }
 
   async loadTimeSlip(id) {
     let timeSlip = await apiCalls.getTimeSlip(id);
     let totalTime = timeSlip.total_time;
-    this.setState({totalTime}, () => console.log('this.state.totalTime loaded', this.state.totalTime));
+    this.setState({totalTime});
+  }
+
+  postTime(id, currentTotal) {
+    let totalTime = this.state.totalTime + currentTotal;
+    this.setState({totalTime});
+    apiCalls.postTime(id, {totalTime}); 
   }
 
   showTimerScreen() {
@@ -103,6 +110,7 @@ class TimeSlipItem extends Component {
             totalTime={this.state.totalTime} 
             hideTimerScreen={this.hideTimerScreen}
             showTimerScreen={this.showTimerScreen}
+            postTime={this.postTime}
           />
           : null
         }
@@ -116,6 +124,7 @@ TimeSlipItem.propTypes = {
   language: PropTypes.string,
   url: PropTypes.string,
   description: PropTypes.string,
+  totalTime: PropTypes.number,
   onArchive: PropTypes.func
 }
 

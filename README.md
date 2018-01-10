@@ -182,40 +182,36 @@ back inside react-ui run npm start and style the front end
 
   react
   x1. TimeSlipTimer
-  - move timerStatus to TimeSlipTimer
+  - xmove timerStatus to TimeSlipTimer
     
   x2. TimeSlipList
-  - async updateTimeSlipStartedTime
-  - async updateTimeSlipStopedTime
+  - xasync updateTimeSlipStartedTime
+  - xasync updateTimeSlipStopedTime
 
   x3. api.js
-  - updateTimeSlipStartedTime
-  - updateTimeSlipStopedTime
+  - xupdateTimeSlipStartedTime
+  - xupdateTimeSlipStopedTime
 
   x4. models/timeslip.js
-  - update the timeSlip model
+  - xupdate the timeSlip model
 
   xshow timer component
 
-  convert seconds to minutes and hours
-  - convert TimerDisplay to pure function
+  xconvert seconds to minutes and hours
+  - xconvert TimerDisplay to pure function
+
+  xwrite tests for getting timeSlip by id
+  xload totalTime for each component
 
 
   /-- current  
 
 
-  write tests for getting timeSlip by id
-  load totalTime for each component
+  refactor the timeConverter function to be accessable to both components
 
 
   /-- current  
 
-
-  calculate times
-  - write tests for calculating component time
-  - update ui
-
-  render totalTime as sum of allTimes
 
   listen for escape keypress to close timmer popup
 
@@ -223,6 +219,12 @@ back inside react-ui run npm start and style the front end
 
   hamburger drop down
   - unarchive screen  
+
+  add to TimeSlipItem
+  - created
+  - updated
+
+  check responsive screen (add tablet queries?)
 
   add icons
   - link
@@ -232,18 +234,12 @@ back inside react-ui run npm start and style the front end
 
   refactor css (add multiple classes to single component)  
 
-  fix travis  
-
   change language to topic in entire project  
   
-  keep track of all timeSubmissions in an array attached to the TimeSlip document
-
   drag and drop using React DnD  
 
   ui
   - fix formating on TimeDisplay so the time width is always the same (less jolty)
-  - reset to 00:00 more gradually
+  - reset to 00:00 more gradually (blinks?, could also blink the total time)
 
-  fix errors
-  - An unknown error occurred when fetching the script.
-  - Failed to load resource: net::ERR_CONNECTION_REFUSED
+  fix travis  

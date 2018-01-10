@@ -86,7 +86,6 @@ export async function archiveTimeSlip(timeSlip) {
 }
 
 export async function postTime(id, body) {
-  console.log('api.js postTime body', body)
   return fetch(APIURL + id, {
     method: 'put',
     headers: new Headers({
