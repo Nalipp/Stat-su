@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import TimerDisplay from './TimeSlipTimerDisplay';
 import './TimeSlipTimer.css';
+import startImage from './images/startImage.png';
+import stopImage from './images/stopImage.png';
 
 class TimeSlipTimer extends Component {
   constructor(props) {
@@ -119,16 +121,6 @@ class TimeSlipTimer extends Component {
       margin: 'auto',
     }
 
-    const spanStyle = {
-      position: 'absolute',
-      top: '0',
-      right: '0',
-      padding: '5px 35px 35px 35px',
-      fontSize: '80px',
-      color: 'white',
-      cursor: 'pointer',
-    }
-
     const pStyle = {
       textAlign: 'center',
       fontSize: '22px',
@@ -142,19 +134,29 @@ class TimeSlipTimer extends Component {
       userSelect: 'none',
     }
 
+    const startStopImgStyle = {
+      opacity: '0.6',
+      height: '140px',
+    }
+
     return (
       <div style={this.state.timerRunning ? startedTimerStyle : stoppedTimerStyle } onKeyPress={this.handleKeyPress}>
         <h1>{language}</h1>
         <p style={pStyle}>Total Time {totalTimeConverted}</p>
         <span 
-          style={spanStyle} 
+          className="closeStyle" 
           onClick={this.hideScreenAndPostTime}>x
         </span>
         <TimerDisplay timeConverted={this.state.timeConverted} />
         <h2 
           style={timmerButtonStyle}
           onClick={this.setStartOrStopTime}>
-          {(this.state.timerRunning ? 'stop' : 'start')}
+          {( 
+            this.state.timerRunning ?
+            <img style={startStopImgStyle} src={stopImage} alt="stop"/>
+             : 
+            <img style={startStopImgStyle} src={startImage} alt="start" />
+          )}
         </h2>
       </div>
     )

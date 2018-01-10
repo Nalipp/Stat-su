@@ -215,19 +215,20 @@ back inside react-ui run npm start and style the front end
   - xupdated (on TimeSlip ui with seed data)
   - xupdate when posting to TimeSlip
 
+  xlisten for escape keypress to close timmer popup
 
   /-- current  
 
-
-  listen for escape keypress to close timmer popup
-
-
-  /-- current  
 
   add icons
   - link
   - trash  
   - play
+  - stop
+
+
+  /-- current  
+
 
   create a footer  
 
@@ -278,6 +279,13 @@ back inside react-ui run npm start and style the front end
 
   authentication
 
+  React Router
+
+  Redux 
+
+
+  ---- phase 3 -----
+
   user summary with d3
 
   better data tracking
@@ -286,7 +294,7 @@ back inside react-ui run npm start and style the front end
   convert milliseconds to hours above 99 hours
 
 
-  ---- phase 3 -----
+  ---- phase 4 -----
 
   profesional deploy
 

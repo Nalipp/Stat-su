@@ -43,7 +43,6 @@ class TimeSlipList extends Component{
     const wrapper = {
       display: 'flex',
       alignItems: 'center',
-      margin: '80px 0px 40px 0px',
     }
 
     const h1Style = {
