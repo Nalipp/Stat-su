@@ -9,24 +9,35 @@ class TimeSlipItem extends Component {
     this.state = {
       timerScreenShowing: false,
       totalTime: null,
+      totalTimeConverted: '00:00:00',
     }
     this.showTimerScreen = this.showTimerScreen.bind(this);
     this.hideTimerScreen = this.hideTimerScreen.bind(this);
     this.loadTimeSlip = this.loadTimeSlip.bind(this);
     this.loadTimeSlip(this.props._id)
     this.postTime = this.postTime.bind(this);
+    this.convertTime = this.convertTime.bind(this);
   }
 
   async loadTimeSlip(id) {
     let timeSlip = await apiCalls.getTimeSlip(id);
     let totalTime = timeSlip.total_time;
-    this.setState({totalTime});
+    this.setState({totalTime}, () => this.convertTime());
   }
 
   postTime(id, currentTotal) {
     let totalTime = this.state.totalTime + currentTotal;
-    this.setState({totalTime});
+    this.setState({totalTime}, () => this.convertTime());
     apiCalls.postTime(id, {totalTime}); 
+  }
+
+  convertTime() {
+    let date = new Date(null);
+    date.setMilliseconds(this.state.totalTime);
+    let baseConverstion = date.toISOString()
+    let totalTimeConverted = baseConverstion.substr(11, 8);
+
+    this.setState({totalTimeConverted});
   }
 
   showTimerScreen() {
@@ -82,7 +93,7 @@ class TimeSlipItem extends Component {
       <div style={{display: 'flex', alignItems: 'center'}}>
         <h2 style={h2Style}>{language ? language : '-'}</h2>
         <p style={startButtonStyle} onClick={this.showTimerScreen}>start</p>
-        <p style={totalStyle}>{this.state.totalTime}</p>
+        <p style={totalStyle}>{this.state.totalTimeConverted}</p>
       </div><p style={descriptionStyle}>{description}</p>
       <div style={bottomNavStyle}>
         <p>
@@ -107,7 +118,7 @@ class TimeSlipItem extends Component {
             key={_id}
             id={_id}
             language={language} 
-            totalTime={this.state.totalTime} 
+            totalTimeConverted={this.state.totalTimeConverted}
             hideTimerScreen={this.hideTimerScreen}
             showTimerScreen={this.showTimerScreen}
             postTime={this.postTime}

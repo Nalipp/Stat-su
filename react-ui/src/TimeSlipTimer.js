@@ -79,7 +79,7 @@ class TimeSlipTimer extends Component {
   }
 
   render() {
-    const { language, totalTime } = this.props;
+    const { language, totalTimeConverted } = this.props
 
     const stoppedTimerStyle = {
       background: '#EE715D',
@@ -131,7 +131,7 @@ class TimeSlipTimer extends Component {
     return (
       <div style={this.state.timerRunning ? startedTimerStyle : stoppedTimerStyle }>
         <h1>{language}</h1>
-        <p style={pStyle}>Total Time {totalTime}</p>
+        <p style={pStyle}>Total Time {totalTimeConverted}</p>
         <span 
           style={spanStyle} 
           onClick={this.hideScreenAndPostTime}>x
@@ -149,7 +149,7 @@ class TimeSlipTimer extends Component {
 
 TimeSlipTimer.propTypes = {
   language: PropTypes.string,
-  totalTime: PropTypes.number,
+  totalTimeConverted: PropTypes.string,
   id: PropTypes.string, 
   hideTimerScreen: PropTypes.func,
   postTime: PropTypes.func,

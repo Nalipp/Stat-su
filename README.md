@@ -203,17 +203,18 @@ back inside react-ui run npm start and style the front end
   xwrite tests for getting timeSlip by id
   xload totalTime for each component
 
-
-  /-- current  
-
-
-  fix timeSlip post bug
+  xfix timeSlip post bug
 
 
   /-- current  
+
 
   add timeConverter function to totalTime
   refactor the timeConverter function to be accessable to both components
+
+
+  /-- current  
+
 
   add to TimeSlipItem
   - created
@@ -275,6 +276,9 @@ back inside react-ui run npm start and style the front end
 
   better data tracking
   - record timestamp for each subbmission
+
+  convert milliseconds to hours above 99
+
 
   ---- phase 4 -----
 
