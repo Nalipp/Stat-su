@@ -20,6 +20,20 @@ class TimeSlipTimer extends Component {
     this.stopTick = this.stopTick.bind(this);
     this.calculateAndPost = this.calculateAndPost.bind(this);
     this.saveAndReset = this.saveAndReset.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  handleKeyPress(e) {
+    if(e.keyCode === 27) this.hideScreenAndPostTime()
+    if(e.keyCode === 32 || e.keyCode === 13) this.setStartOrStopTime()
+  }
+
+  componentDidMount(){
+    document.addEventListener("keydown", this.handleKeyPress, false);
+  }
+
+  componentWillUnmount(){
+    document.removeEventListener("keydown", this.handleKeyPress, false);
   }
  
   hideScreenAndPostTime() {
@@ -129,7 +143,7 @@ class TimeSlipTimer extends Component {
     }
 
     return (
-      <div style={this.state.timerRunning ? startedTimerStyle : stoppedTimerStyle }>
+      <div style={this.state.timerRunning ? startedTimerStyle : stoppedTimerStyle } onKeyPress={this.handleKeyPress}>
         <h1>{language}</h1>
         <p style={pStyle}>Total Time {totalTimeConverted}</p>
         <span 

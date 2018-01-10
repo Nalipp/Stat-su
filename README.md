@@ -210,15 +210,10 @@ back inside react-ui run npm start and style the front end
   xadd to TimeSlipItem
   - xcreated (convert to date)
 
-  /-- current  
-
-
   post last updated time and add to TimeSlip Item
   - xtests
   - xupdated (on TimeSlip ui with seed data)
-  - update when posting to TimeSlip
-
-  move completed and updated to right of TimeSlipItem component
+  - xupdate when posting to TimeSlip
 
 
   /-- current  
@@ -226,10 +221,17 @@ back inside react-ui run npm start and style the front end
 
   listen for escape keypress to close timmer popup
 
+
+  /-- current  
+
   add icons
   - link
   - trash  
   - play
+
+  create a footer  
+
+  change language to topic in entire project  
 
   ui
   - simplyfy the form validation 
@@ -239,24 +241,23 @@ back inside react-ui run npm start and style the front end
   - move Url below Description
   - remove auto caplitailization on mobile devices
 
-  - review css animations
+  - review css animations /Users/natelipp/code/web_development/advanced_web_developer_bootcamp/css/css_animations
+  - review bem naming convention
+  - refactor all css
   - check responsive screen (add tablet queries?)
   - actually check the site on different device sizes
   - remove rounded corners from input fields
   - fix formating on TimeDisplay so the time width is always the same (less jolty)
   - reset to 00:00 more gradually (blinks?, could also blink the total time)
   - remove some space above main heading
+  - move completed and updated to right of TimeSlipItem component
 
   - change to statsu.io
   - change heroku url
 
-  refactor css (add multiple classes to single component)  
+  - refactor
   check entire codebase for possible refactors or better implementation
   refactor api calls
-
-  create a footer  
-
-  change language to topic in entire project  
   
   drag and drop using React DnD  
 
@@ -269,33 +270,34 @@ back inside react-ui run npm start and style the front end
   fix travis  
 
 
+  \* ****************************************************************************** \*
   future plans
 
 
   ---- phase 2 -----
 
-  user summary with d3
-
   authentication
+
+  user summary with d3
 
   better data tracking
   - record timestamp for each subbmission
 
-  convert milliseconds to hours above 99
+  convert milliseconds to hours above 99 hours
 
 
-  ---- phase 4 -----
+  ---- phase 3 -----
 
   profesional deploy
 
-  accept payment
-
   premium users 
+
+  accept payment
 
   new notebook option
   - summary of notebook
   - summary of all notebooks
 
   external links for user summary
-  billable summary page that can be easily integrated with existing 
+  billable summary page 
 
