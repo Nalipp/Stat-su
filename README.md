@@ -207,11 +207,13 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
 
-  add timeConverter function to totalTime
-  refactor the timeConverter function to be accessable to both components
+  fix timeSlip post bug
 
 
   /-- current  
+
+  add timeConverter function to totalTime
+  refactor the timeConverter function to be accessable to both components
 
   add to TimeSlipItem
   - created
@@ -245,6 +247,7 @@ back inside react-ui run npm start and style the front end
 
   refactor css (add multiple classes to single component)  
   check entire codebase for possible refactors or better implementation
+  refactor api calls
 
   create a footer  
 
@@ -268,20 +271,12 @@ back inside react-ui run npm start and style the front end
 
   user summary with d3
 
-
-  ---- phase 3 -----
-
   authentication
 
-
-  ---- phase 4 -----
-
   better data tracking
-
   - record timestamp for each subbmission
 
-
-  ---- phase 5 -----
+  ---- phase 4 -----
 
   profesional deploy
 
