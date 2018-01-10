@@ -225,6 +225,9 @@ back inside react-ui run npm start and style the front end
   - updated
 
   check responsive screen (add tablet queries?)
+  - actually check the site on different device sizes
+  - remove rounded corners from input fields
+  - remove auto caplitailization on mobile devices
 
   add icons
   - link

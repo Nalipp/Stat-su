@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import TimerDisplay from './TimeSlipTimerDisplay';
+import './TimeSlipTimer.css';
 
 class TimeSlipTimer extends Component {
   constructor(props) {
@@ -104,11 +105,11 @@ class TimeSlipTimer extends Component {
       margin: 'auto',
     }
 
-    const h1Style = {
-      textAlign: 'center',
-      fontSize: '120px',
-      marginTop: '100px',
-    }
+    // const h1Style = {
+    //   textAlign: 'center',
+    //   // fontSize: '120px',
+    //   marginTop: '100px',
+    // }
 
     const spanStyle = {
       position: 'absolute',
@@ -128,14 +129,14 @@ class TimeSlipTimer extends Component {
     const timmerButtonStyle = {
       textAlign: 'center',
       marginTop: '30px',
-      fontSize: '80px',
+      fontSize: '50px',
       cursor: 'pointer',
       userSelect: 'none',
     }
 
     return (
       <div style={this.state.timerRunning ? startedTimerStyle : stoppedTimerStyle }>
-        <h1 style={h1Style}>{language}</h1>
+        <h1>{language}</h1>
         <p style={pStyle}>Total Time {totalTime}</p>
         <span 
           style={spanStyle} 
