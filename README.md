@@ -205,20 +205,21 @@ back inside react-ui run npm start and style the front end
 
   xfix timeSlip post bug
 
-
-  /-- current  
-
-
-  add timeConverter function to totalTime
-  refactor the timeConverter function to be accessable to both components
-
+  xadd timeConverter function to totalTime
 
   /-- current  
 
 
   add to TimeSlipItem
-  - created
-  - updated
+  - created (convert to date)
+
+
+  /-- current  
+
+
+  post last updated time and add to TimeSlip Item
+  - tests
+  - updated (on TimeSlip ui)
 
   listen for escape keypress to close timmer popup
 

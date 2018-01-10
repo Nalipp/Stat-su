@@ -49,7 +49,7 @@ class TimeSlipItem extends Component {
   }
 
   render() {
-    const { language, description, url, _id, onArchive} = this.props;
+    const { language, description, url, _id, onArchive, created_date} = this.props;
 
     const listStyle = {
       listStyle: 'none',
@@ -71,11 +71,10 @@ class TimeSlipItem extends Component {
       cursor: 'pointer',
       flex: '0.5',
     }
-    const totalStyle = {
+    const pStyle = {
       color: 'white',
       fontSize: '11px',
       flex: '1.5',
-      textAlign: 'center',
     }
     const descriptionStyle = {
       fontSize: '14px',
@@ -85,7 +84,8 @@ class TimeSlipItem extends Component {
     }
     const bottomNavStyle = {
       display: 'flex',
-      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginTop: '4px',
     }
 
   return (
@@ -93,8 +93,9 @@ class TimeSlipItem extends Component {
       <div style={{display: 'flex', alignItems: 'center'}}>
         <h2 style={h2Style}>{language ? language : '-'}</h2>
         <p style={startButtonStyle} onClick={this.showTimerScreen}>start</p>
-        <p style={totalStyle}>{this.state.totalTimeConverted}</p>
-      </div><p style={descriptionStyle}>{description}</p>
+        <p style={pStyle}>{this.state.totalTimeConverted}</p>
+      </div>
+      <p style={descriptionStyle}>{description}</p>
       <div style={bottomNavStyle}>
         <p>
           {url ? (
@@ -108,9 +109,13 @@ class TimeSlipItem extends Component {
             ) : null
           }
         </p>
-        <p style={{cursor: 'pointer'}} onClick={onArchive}>
+        <p style={{cursor: 'pointer', paddingLeft: '12px'}} onClick={onArchive}>
           archive
         </p>
+        <div style={{display: 'flex', flexDirection: 'column', marginLeft: '20px', fontSize: '10px'}}>
+          <p>Created: <span style={{color: 'white', fontSize: '8px'}}>{created_date.slice(0, 10)}</span></p>
+          <p>Updated: <span style={{color: 'white', fontSize: '8px'}}>{created_date.slice(0, 10)}</span></p>
+        </div>
       </div>
 
         {this.state.timerScreenShowing ? 
@@ -133,6 +138,7 @@ class TimeSlipItem extends Component {
 TimeSlipItem.propTypes = {
   _id: PropTypes.string,
   language: PropTypes.string,
+  created_date: PropTypes.string,
   url: PropTypes.string,
   description: PropTypes.string,
   totalTime: PropTypes.number,
