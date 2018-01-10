@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import TimerDisplay from './TimeSlipTimerDisplay';
 import './TimeSlipTimer.css';
 import startImage from './images/startImage.png';
-import stopImage from './images/stopImage.png';
+import pauseImage from './images/pauseImage.png';
 
 class TimeSlipTimer extends Component {
   constructor(props) {
@@ -47,8 +47,6 @@ class TimeSlipTimer extends Component {
     this.calculateAndPost()
     this.stopTick();
     this.setState({timerRunning: false});
-    this.setState({timeCounter: 0});
-    this.setState({timeConverted: '00:00'});
   }
 
   calculateAndPost() {
@@ -153,7 +151,7 @@ class TimeSlipTimer extends Component {
           onClick={this.setStartOrStopTime}>
           {( 
             this.state.timerRunning ?
-            <img style={startStopImgStyle} src={stopImage} alt="stop"/>
+            <img style={startStopImgStyle} src={pauseImage} alt="pause"/>
              : 
             <img style={startStopImgStyle} src={startImage} alt="start" />
           )}
