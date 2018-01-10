@@ -13,6 +13,7 @@ const timeSlips = [
     url: 'http://www.url1.com',
     description: 'description1',
     completed: false,
+    last_update: Date.now(),
   }, 
   {
     _id: new ObjectID(),
@@ -21,6 +22,7 @@ const timeSlips = [
     description: 'description2',
     totalTime: 8000,
     completed: false,
+    last_update: Date.now(),
   }
 ]
 
@@ -96,7 +98,7 @@ describe('TimeSlipHelper database CRUD requests', () => {
       })
   });
 
-  it('should PUT update TimeSlip.total_time', (done) => {
+  it('should PUT update to TimeSlip.total_time', (done) => {
     let total_time = 800;
 
     request(index)
@@ -107,6 +109,27 @@ describe('TimeSlipHelper database CRUD requests', () => {
           .get(`/api/TimeSlips/${timeSlips[0]._id}`)
           .end((err, res) => {
             assert(res.body.total_time === 800);
+            done();
+          });
+      })
+  });
+
+  it('should PUT update to TimeSlip.last_update', (done) => {
+     let dateNow = Date.now();
+     var newDate = new Date(null);
+     newDate.setMilliseconds(dateNow);
+     let last_update = newDate;
+
+    request(index)
+      .put(`/api/timeSlips/${timeSlips[1]._id}`)
+      .send({last_update})
+      .end((err, res) => {
+        request(index)
+          .get(`/api/TimeSlips/${timeSlips[0]._id}`)
+          .end((err, res) => {
+            let resString = res.body.last_update.slice(0, 16);
+            let dateString = newDate.toISOString().slice(0, 16);
+            assert(resString === dateString);
             done();
           });
       })

@@ -31,12 +31,16 @@ const timeSlipSchema = new mongoose.Schema({
       default: 0
     },
     completed: {
-        type: Boolean,
-        default: false
+      type: Boolean,
+      default: false
     },
     created_date: {
-        type: Date,
-        default: Date.now
+      type: Date,
+      default: Date.now
+    },
+    last_update: {
+      type: Date,
+      default: Date.now
     }
 });
 

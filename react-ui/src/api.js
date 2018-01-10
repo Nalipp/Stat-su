@@ -91,7 +91,7 @@ export async function postTime(id, body) {
     headers: new Headers({
       'Content-Type': 'application/json',
     }),
-    body: JSON.stringify({total_time: body.totalTime})
+    body: JSON.stringify({total_time: body.totalTime, last_update: Date.now()})
   })
   .then(res => {
     if(!res.ok) {

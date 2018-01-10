@@ -207,19 +207,22 @@ back inside react-ui run npm start and style the front end
 
   xadd timeConverter function to totalTime
 
-  /-- current  
-
-
-  add to TimeSlipItem
-  - created (convert to date)
-
+  xadd to TimeSlipItem
+  - xcreated (convert to date)
 
   /-- current  
 
 
   post last updated time and add to TimeSlip Item
-  - tests
-  - updated (on TimeSlip ui)
+  - xtests
+  - xupdated (on TimeSlip ui with seed data)
+  - update when posting to TimeSlip
+
+  move completed and updated to right of TimeSlipItem component
+
+
+  /-- current  
+
 
   listen for escape keypress to close timmer popup
 

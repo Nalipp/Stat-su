@@ -49,7 +49,7 @@ class TimeSlipItem extends Component {
   }
 
   render() {
-    const { language, description, url, _id, onArchive, created_date} = this.props;
+    const { language, description, url, _id, onArchive, created_date, last_update} = this.props;
 
     const listStyle = {
       listStyle: 'none',
@@ -114,7 +114,7 @@ class TimeSlipItem extends Component {
         </p>
         <div style={{display: 'flex', flexDirection: 'column', marginLeft: '20px', fontSize: '10px'}}>
           <p>Created: <span style={{color: 'white', fontSize: '8px'}}>{created_date.slice(0, 10)}</span></p>
-          <p>Updated: <span style={{color: 'white', fontSize: '8px'}}>{created_date.slice(0, 10)}</span></p>
+          <p>Updated: <span style={{color: 'white', fontSize: '8px'}}>{last_update.slice(0, 10)}</span></p>
         </div>
       </div>
 
@@ -139,6 +139,7 @@ TimeSlipItem.propTypes = {
   _id: PropTypes.string,
   language: PropTypes.string,
   created_date: PropTypes.string,
+  last_update: PropTypes.string,
   url: PropTypes.string,
   description: PropTypes.string,
   totalTime: PropTypes.number,
