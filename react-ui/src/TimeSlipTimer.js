@@ -105,12 +105,6 @@ class TimeSlipTimer extends Component {
       margin: 'auto',
     }
 
-    // const h1Style = {
-    //   textAlign: 'center',
-    //   // fontSize: '120px',
-    //   marginTop: '100px',
-    // }
-
     const spanStyle = {
       position: 'absolute',
       top: '0',

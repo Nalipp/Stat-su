@@ -207,42 +207,92 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
 
+  add timeConverter function to totalTime
   refactor the timeConverter function to be accessable to both components
 
 
   /-- current  
 
-
-  listen for escape keypress to close timmer popup
-
-  simplyfy the form validation 
-
-  hamburger drop down
-  - unarchive screen  
-
   add to TimeSlipItem
   - created
   - updated
 
-  check responsive screen (add tablet queries?)
-  - actually check the site on different device sizes
-  - remove rounded corners from input fields
-  - remove auto caplitailization on mobile devices
+  listen for escape keypress to close timmer popup
 
   add icons
   - link
   - trash  
+  - play
 
-  create a footer  
+  ui
+  - simplyfy the form validation 
+  - Put * behind Description and make red
+  - change Technology to Topic
+  - change Url to Link
+  - move Url below Description
+  - remove auto caplitailization on mobile devices
+
+  - review css animations
+  - check responsive screen (add tablet queries?)
+  - actually check the site on different device sizes
+  - remove rounded corners from input fields
+  - fix formating on TimeDisplay so the time width is always the same (less jolty)
+  - reset to 00:00 more gradually (blinks?, could also blink the total time)
+  - remove some space above main heading
+
+  - change to statsu.io
+  - change heroku url
 
   refactor css (add multiple classes to single component)  
+  check entire codebase for possible refactors or better implementation
+
+  create a footer  
 
   change language to topic in entire project  
   
   drag and drop using React DnD  
 
-  ui
-  - fix formating on TimeDisplay so the time width is always the same (less jolty)
-  - reset to 00:00 more gradually (blinks?, could also blink the total time)
+  hamburger drop down to user page
+  - user summary screen with unarchive option for each deleted timeSlip (white background)
+  - page should show all archived and unarchived timeSlips with concatenated discriptions with option to delete permentantly and add time
+  - link main title, total, createAt, lastUpdated to summary page
+  - seed more archived data
 
   fix travis  
+
+
+  future plans
+
+
+  ---- phase 2 -----
+
+  user summary with d3
+
+
+  ---- phase 3 -----
+
+  authentication
+
+
+  ---- phase 4 -----
+
+  better data tracking
+
+  - record timestamp for each subbmission
+
+
+  ---- phase 5 -----
+
+  profesional deploy
+
+  accept payment
+
+  premium users 
+
+  new notebook option
+  - summary of notebook
+  - summary of all notebooks
+
+  external links for user summary
+  billable summary page that can be easily integrated with existing 
+
