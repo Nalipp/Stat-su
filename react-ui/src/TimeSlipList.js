@@ -47,7 +47,6 @@ class TimeSlipList extends Component{
 
     const h1Style = {
       fontSize: '60px',
-      flexGrow: '2',
       color: '#344559',
       letterSpacing: '6px',
     }
