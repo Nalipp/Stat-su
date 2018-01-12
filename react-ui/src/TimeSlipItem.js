@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import TimeSlipTimer from './TimeSlipTimer';
 import PropTypes from 'prop-types';
+import Icons from './Icons';
 import * as apiCalls from './api';
 
 class TimeSlipItem extends Component {
@@ -104,13 +105,13 @@ class TimeSlipItem extends Component {
               rel="noopener noreferrer"
               target="_blank"
               style={{color: '#fff', padding: '6px'}}>
-              link
+              <Icons icon='link' size='normal' />
             </a>
             ) : null
           }
         </p>
         <p style={{cursor: 'pointer', paddingLeft: '12px'}} onClick={onArchive}>
-          archive
+          <Icons icon='archive' size='small' />
         </p>
         <div style={{display: 'flex', flexDirection: 'column', marginLeft: '20px', fontSize: '10px'}}>
           <p>Created: <span style={{color: 'white', fontSize: '8px'}}>{created_date.slice(0, 10)}</span></p>

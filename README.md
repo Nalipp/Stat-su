@@ -230,11 +230,28 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
 
+
   create a footer  
 
   change language to topic in entire project  
 
   ui
+  - review bem naming convention / styled components?
+  - refactor all css
+  - change fontsizes, padding and margin to rem (calculage rem using px / 16 where 16 is the default px size of most browsers)
+  - use ???   test-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
+  - :hover
+  - mobile first
+  - npm install --save-dev postcss-mixins
+  - require('postcss-mixins');
+  - check responsive screen (add tablet queries?)
+  - actually check the site on different device sizes
+  - remove rounded corners from input fields
+  - fix formating on TimeDisplay so the time width is always the same (less jolty)
+  - reset to 00:00 more gradually (blinks?, could also blink the total time)
+  - remove some space above main heading
+  - move completed and updated to right of TimeSlipItem component
+
   - simplyfy the form validation 
   - Put * behind Description and make red
   - change Technology to Topic
@@ -243,15 +260,6 @@ back inside react-ui run npm start and style the front end
   - remove auto caplitailization on mobile devices
 
   - review css animations /Users/natelipp/code/web_development/advanced_web_developer_bootcamp/css/css_animations
-  - review bem naming convention
-  - refactor all css
-  - check responsive screen (add tablet queries?)
-  - actually check the site on different device sizes
-  - remove rounded corners from input fields
-  - fix formating on TimeDisplay so the time width is always the same (less jolty)
-  - reset to 00:00 more gradually (blinks?, could also blink the total time)
-  - remove some space above main heading
-  - move completed and updated to right of TimeSlipItem component
 
   - change to statsu.io
   - change heroku url

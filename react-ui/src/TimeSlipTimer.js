@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import TimerDisplay from './TimeSlipTimerDisplay';
+import Icons from './Icons';
 import './TimeSlipTimer.css';
-import startImage from './images/startImage.png';
-import pauseImage from './images/pauseImage.png';
 
 class TimeSlipTimer extends Component {
   constructor(props) {
@@ -126,15 +125,10 @@ class TimeSlipTimer extends Component {
 
     const timmerButtonStyle = {
       textAlign: 'center',
-      marginTop: '30px',
+      marginTop: '50px',
       fontSize: '50px',
       cursor: 'pointer',
       userSelect: 'none',
-    }
-
-    const startStopImgStyle = {
-      opacity: '0.6',
-      height: '140px',
     }
 
     return (
@@ -151,9 +145,9 @@ class TimeSlipTimer extends Component {
           onClick={this.setStartOrStopTime}>
           {( 
             this.state.timerRunning ?
-            <img style={startStopImgStyle} src={pauseImage} alt="pause"/>
-             : 
-            <img style={startStopImgStyle} src={startImage} alt="start" />
+            <Icons icon='pause' size="jumbo" /> 
+          : 
+            <Icons icon='play' size="jumbo" />
           )}
         </h2>
       </div>
