@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import TimeSlipForm from './TimeSlipForm';
-import TimeSlipItem from './TimeSlipItem';
-import * as apiCalls from './api';
+import Form from './FormCnt';
+import ItemCnt from './ItemCnt';
+import ListCpt from './ListCpt';
+import * as apiCalls from './../api';
 
-class TimeSlipList extends Component{
+class ListCnt extends Component{
   constructor(props){
     super(props)
     this.state = {
@@ -40,20 +41,9 @@ class TimeSlipList extends Component{
   }
 
   render () {
-    const wrapper = {
-      display: 'flex',
-      alignItems: 'center',
-    }
-
-    const h1Style = {
-      fontSize: '60px',
-      color: '#344559',
-      letterSpacing: '6px',
-    }
-
-    const timeSlipItem = this.state.timeSlips.map(slip => (
+    const itemCnt = this.state.timeSlips.map(slip => (
       (slip.completed === false ?
-        <TimeSlipItem 
+        <ItemCnt 
           key={slip._id}
           {...slip} 
           onArchive={this.archiveTimeSlip.bind(this, slip)}
@@ -63,18 +53,12 @@ class TimeSlipList extends Component{
     ));
     return (
       <div>
-        <div style={wrapper}>
-          <h1 style={h1Style}>T
-            <span style={{color: '#fff'}}>Study</span>
-          </h1>
-        </div>
-        <TimeSlipForm addTimeSlip={this.addTimeSlip} />
-        <ul>
-          {timeSlipItem}
-        </ul>
+        <ListCpt />
+        <Form addTimeSlip={this.addTimeSlip} />
+        <ul>{itemCnt}</ul>
       </div>
     )
   }
 }
 
-export default TimeSlipList;
+export default ListCnt;

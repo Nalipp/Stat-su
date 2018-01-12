@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import TimeSlipTimer from './TimeSlipTimer';
+import TimerScreen from './TimerScreenCnt';
 import PropTypes from 'prop-types';
-import Icons from './Icons';
-import * as apiCalls from './api';
+import Icons from './../Icons';
+import * as apiCalls from './../api';
 
 class TimeSlipItem extends Component {
   constructor(props) {
@@ -120,7 +120,7 @@ class TimeSlipItem extends Component {
       </div>
 
         {this.state.timerScreenShowing ? 
-          <TimeSlipTimer
+          <TimerScreen
             key={_id}
             id={_id}
             language={language} 

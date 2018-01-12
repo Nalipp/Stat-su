@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import TimerDisplay from './TimeSlipTimerDisplay';
-import Icons from './Icons';
+import TimerDisplay from './TimerDisplayCpt';
+import Icons from './../Icons';
 import './TimeSlipTimer.css';
 
-class TimeSlipTimer extends Component {
+class Timer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -155,7 +155,7 @@ class TimeSlipTimer extends Component {
   }
 }
 
-TimeSlipTimer.propTypes = {
+Timer.propTypes = {
   language: PropTypes.string,
   totalTimeConverted: PropTypes.string,
   id: PropTypes.string, 
@@ -163,4 +163,4 @@ TimeSlipTimer.propTypes = {
   postTime: PropTypes.func,
 }
 
-export default TimeSlipTimer;
+export default Timer;

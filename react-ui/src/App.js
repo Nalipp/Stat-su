@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
-import './App.css';
-import TimeSlipList from './TimeSlipList';
+import React from 'react';
+import TimeSlips from './TimeSlip/ListCnt';
+import styled from 'styled-components';
 
-class App extends Component {
-  render() {
-    const divStyle = {
-      'width': '60%',
-      'maxWidth': '600px',
-      'margin': 'auto'
-    }
-    return (
-      <div style={divStyle}>
-        <TimeSlipList />
-      </div>
-    );
+const Wrapper = styled.section`
+  width: 60%;
+  max-width: 600px;
+  margin: auto;
+
+  @media (max-width: 500px) {
+    min-width: 85%;
   }
-}
+`
+const App = () =>
+  <Wrapper>
+    <TimeSlips />
+  </Wrapper>
 
 export default App;

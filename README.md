@@ -217,14 +217,16 @@ back inside react-ui run npm start and style the front end
 
   xlisten for escape keypress to close timmer popup
 
-  /-- current  
-
-
   add icons
   - link
   - trash  
   - play
   - stop
+
+  /-- current  
+
+
+  - refactor all css into styled components
 
 
   /-- current  
@@ -237,7 +239,6 @@ back inside react-ui run npm start and style the front end
 
   ui
   - review bem naming convention / styled components?
-  - refactor all css
   - change fontsizes, padding and margin to rem (calculage rem using px / 16 where 16 is the default px size of most browsers)
   - use ???   test-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
   - :hover

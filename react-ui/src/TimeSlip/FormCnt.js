@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class TimeSlipForm extends Component{
+class Form extends Component{
   constructor(props){
     super(props)
     this.state = { 
@@ -123,8 +123,8 @@ class TimeSlipForm extends Component{
   }
 }
 
-TimeSlipForm.propTypes = {
+Form.propTypes = {
   addTimeSlip: PropTypes.func
 }
 
-export default TimeSlipForm;
+export default Form;
