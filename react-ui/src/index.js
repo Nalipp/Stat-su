@@ -14,15 +14,16 @@ const theme = {
 }
 
 injectGlobal`
+* {margin: 0px; padding: 0px;}
+*::selection {background: #ffb7b7;}
+
 body {
   font-family: 'Roboto', sans-serif;
-  background: #74C4F9;
-  color: #344559;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  background: ${theme.blue};
+  color: ${theme.darkBlue};
+  height: 100%; width: 100%;
   font-family: sans-serif;
+  letter-spacing: 0.8px;
 }
 
 h1, h2, h3, h4, h5, h6 {

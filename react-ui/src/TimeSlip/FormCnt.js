@@ -44,8 +44,9 @@ class Form extends Component{
       break;
     case 'description':
       var descriptionValid = value.length < 1000 && value.length > 4;
-      this.setState({descriptionValid, triggerErrorBorder: !descriptionValid}, 
-                    () => this.validateForm());
+      this.setState({
+        descriptionValid, triggerErrorBorder: !descriptionValid}, 
+        () => this.validateForm());
       break;
     default:
       break;
@@ -53,9 +54,10 @@ class Form extends Component{
   }
 
   validateForm() {
-    this.setState({formValid: this.state.languageValid && 
-                              this.state.urlValid && 
-                              this.state.descriptionValid});
+    this.setState({formValid: 
+      this.state.languageValid && 
+      this.state.urlValid && 
+      this.state.descriptionValid});
   }
 
   handleSubmit(){
@@ -64,11 +66,13 @@ class Form extends Component{
       this.state.url,
       this.state.description
     )
-    this.setState({language: '', 
-                   url: '', 
-                   description: '', 
-                   descriptionValid: false, 
-                   formValid: false});
+    this.setState({
+      language: '', 
+      url: '', 
+      description: '', 
+      descriptionValid: false, 
+      formValid: false
+    });
     this.language.focus();
   }
 
