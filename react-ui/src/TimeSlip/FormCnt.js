@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import InputCpt from './inputCpt';
+import TextAreaCpt from './TextAreaCpt';
 
 class Form extends Component{
   constructor(props){
@@ -21,10 +23,6 @@ class Form extends Component{
     this.validateForm = this.validateForm.bind(this);
   }
 
-  componentDidMount(){
-    this.language.focus();
-  }
-
   handleInputChange(e) {
     const value = e.target.value;
     const name = e.target.name;
@@ -33,6 +31,8 @@ class Form extends Component{
   }
 
   validateField(inputName, value) {
+    console.log('inputName', inputName); 
+    console.log('value', value); 
     switch(inputName) {
     case 'language':
       var languageValid = value.length < 30;
@@ -73,53 +73,41 @@ class Form extends Component{
       descriptionValid: false, 
       formValid: false
     });
-    this.language.focus();
   }
 
   checkSubmit(e) {
+    console.log('this.state.formValid', this.state.formValid);
     if(e.key === 'Enter' && e.shiftKey === false) {
-      if (this.state.formValid) {
-        this.handleSubmit(e);
-      } else {
-        this.setState({triggerErrorBorder: true});
-      }
+      if (this.state.formValid) this.handleSubmit(e);
     }
   }
 
   render(){
-    const inputErrorStyle = {borderColor: '#EE715D'}
-    const textAreaErrorStyle = {borderLeftColor: '#EE715D'}
     return (
       <form style={{marginBottom: '50px'}}>
-        <input 
+        <InputCpt 
           name="language"
-          ref={(input) => { this.language = input; }}
-          autoComplete="off"
+          placeholder="Topic..."
+          valid={this.state.languageValid}
+          value={this.state.language}
           onChange={this.handleInputChange}
           onKeyPress={this.checkSubmit}
-          type="text" 
-          placeholder="Technology..."
-          style={this.state.languageValid ? null : inputErrorStyle}
-          value={this.state.language} />
-        <input 
+        />
+        <InputCpt 
           name="url"
-          ref={(input) => { this.url = input; }}
-          autoComplete="off"
+          placeholder="Link..."
+          valid={this.state.urlValid}
+          value={this.state.url}
           onChange={this.handleInputChange}
           onKeyPress={this.checkSubmit}
-          type="text" 
-          style={this.state.urlValid ? null : inputErrorStyle}
-          placeholder="Url..."
-          value={this.state.url} />
-        <textarea
+        />
+        <TextAreaCpt
           name="description"
-          autoComplete="off"
           onChange={this.handleInputChange}
           onKeyPress={this.checkSubmit}
           value={this.state.description} 
-          style={this.state.triggerErrorBorder ? textAreaErrorStyle : null}
           placeholder="Description...">
-        </textarea>
+        </TextAreaCpt>
         <button type="button" style={{display: 'none'}}>
         Add New Study Resource</button>
       </form>
