@@ -14,7 +14,7 @@ class Form extends Component{
       urlValid: true,
       descriptionValid: false,
       formValid: false,
-      triggerErrorBorder: false,
+      isErrorBorder: false,
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -44,8 +44,7 @@ class Form extends Component{
       break;
     case 'description':
       var descriptionValid = value.length < 1000 && value.length > 4;
-      this.setState({
-        descriptionValid, triggerErrorBorder: !descriptionValid}, 
+      this.setState({descriptionValid, isErrorBorder: !descriptionValid}, 
         () => this.validateForm());
       break;
     default:
@@ -78,7 +77,9 @@ class Form extends Component{
   checkSubmit(e) {
     console.log('this.state.formValid', this.state.formValid);
     if(e.key === 'Enter' && e.shiftKey === false) {
-      if (this.state.formValid) this.handleSubmit(e);
+      if (this.state.formValid) return this.handleSubmit(e);
+      console.log(this.state.isErrorBorder);
+      this.setState({isErrorBorder: true}, () => console.log(this.state.isErrorBorder));
     }
   }
 
@@ -88,26 +89,27 @@ class Form extends Component{
         <InputCpt 
           name="language"
           placeholder="Topic..."
-          valid={this.state.languageValid}
           value={this.state.language}
+          valid={this.state.languageValid}
           onChange={this.handleInputChange}
           onKeyPress={this.checkSubmit}
         />
         <InputCpt 
           name="url"
           placeholder="Link..."
-          valid={this.state.urlValid}
           value={this.state.url}
+          valid={this.state.urlValid}
           onChange={this.handleInputChange}
           onKeyPress={this.checkSubmit}
         />
         <TextAreaCpt
           name="description"
+          placeholder="Description..."
+          value={this.state.description} 
+          valid={!this.state.isErrorBorder}
           onChange={this.handleInputChange}
           onKeyPress={this.checkSubmit}
-          value={this.state.description} 
-          placeholder="Description...">
-        </TextAreaCpt>
+        ></TextAreaCpt>
         <button type="button" style={{display: 'none'}}>
         Add New Study Resource</button>
       </form>

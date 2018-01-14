@@ -25,33 +25,24 @@ const TextArea = styled.textarea`
   }
 `;
 
-const ErrorStyle = TextArea.extend`
-  border-color: ${props => props.theme.redOrange};
-`;
-
-const TextareaCpt = ({name, placeholder, valid, value, onChange, onKeyPress }) => {
-  { if (valid)
-    return <TextArea
-      autoComplete="off"
-      name={name}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      onKeyPress={onKeyPress}
-    ></TextArea>
-    else return <ErrorStyle 
-      autoComplete="off"
-      name={name}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      onKeyPress={onKeyPress}
-    ></ErrorStyle>
-  }
+const errorStyle = {
+  borderColor: 'tomato',
 }
 
+const TextareaCpt = (props) =>
+  <TextArea
+    autoComplete="off"
+    {...props}
+    style={props.valid ? null : errorStyle}
+  ></TextArea>
+
 TextareaCpt.propTypes = {
+  valid: PropTypes.bool,
+  name: PropTypes.string,
   placeholder: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  onKeyPress: PropTypes.func,
 };
 
 export default TextareaCpt;

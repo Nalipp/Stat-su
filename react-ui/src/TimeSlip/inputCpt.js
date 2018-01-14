@@ -13,6 +13,7 @@ const Input = styled.input`
   width: 100%;
   border-left: 2px dashed;
   border-bottom:  2px solid; 
+  border-color: ${props => props.theme.darkBlue};
 
   &::placeholder {
     font-style: italic;
@@ -28,19 +29,20 @@ const errorStyle = {
   borderColor: 'tomato',
 }
 
-const InputCpt = ({name, handleInputChange, placeholder, valid, value, onChange, onKeyPress }) =>
+const InputCpt = (props) =>
   <Input 
     autoComplete="off"
-    name={name}
-    placeholder={placeholder}
-    value={value}
-    onChange={onChange}
-    onKeyPress={onKeyPress}
-    style={valid ? null : errorStyle}
+    {...props}
+    style={props.valid ? null : errorStyle}
   />
 
 InputCpt.propTypes = {
+  valid: PropTypes.bool,
+  name: PropTypes.string,
   placeholder: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  onKeyPress: PropTypes.func,
 };
 
 export default InputCpt;
