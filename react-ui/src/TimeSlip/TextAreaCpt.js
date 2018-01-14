@@ -25,16 +25,19 @@ const TextArea = styled.textarea`
   }
 `;
 
-const errorStyle = {
-  borderColor: 'tomato',
-}
+const ErrorTextArea = TextArea.extend`
+    border-color: ${props => props.theme.tomato};
+`
 
-const TextareaCpt = (props) =>
+const TextareaCpt = (props) => (
+  props.valid ?
   <TextArea
     autoComplete="off"
-    {...props}
-    style={props.valid ? null : errorStyle}
-  ></TextArea>
+    {...props}></TextArea>
+  :
+  <ErrorTextArea
+    autoComplete="off"
+    {...props}></ErrorTextArea>)
 
 TextareaCpt.propTypes = {
   valid: PropTypes.bool,

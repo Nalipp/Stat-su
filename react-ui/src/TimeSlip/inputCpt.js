@@ -25,16 +25,19 @@ const Input = styled.input`
   }
 `;
 
-const errorStyle = {
-  borderColor: 'tomato',
-}
+const ErrorInput = Input.extend`
+  border-color: ${props => props.theme.tomato};
+`;
 
-const InputCpt = (props) =>
+const InputCpt = (props) =>(
+  props.valid ?
   <Input 
     autoComplete="off"
-    {...props}
-    style={props.valid ? null : errorStyle}
-  />
+    {...props}/>
+  :
+  <ErrorInput 
+    autoComplete="off"
+    {...props}/>)
 
 InputCpt.propTypes = {
   valid: PropTypes.bool,
