@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import TimerScreen from './TimerScreenCnt';
 import PropTypes from 'prop-types';
-import Icons from './../Icons';
+import TimeSlipLi from './ItemCpt';
 import * as apiCalls from './../api';
 
 class TimeSlipItem extends Component {
@@ -52,86 +51,21 @@ class TimeSlipItem extends Component {
   render() {
     const { language, description, url, _id, onArchive, created_date, last_update} = this.props;
 
-    const listStyle = {
-      listStyle: 'none',
-      margin: '10px 0',
-      padding: '8px',
-      border: '1px dashed white',
-    }
-    const h2Style = {
-      paddingRight: '10px',
-      flex: '9',
-    }
-    const startButtonStyle = {
-      fontSize: '12px',
-      borderRadius: '8px',
-      padding: '4px 6px',
-      marginRight: '14px',
-      background: '#72DA66',
-      color: 'white',
-      cursor: 'pointer',
-      flex: '0.5',
-    }
-    const pStyle = {
-      color: 'white',
-      fontSize: '11px',
-      flex: '1.5',
-    }
-    const descriptionStyle = {
-      fontSize: '14px',
-      padding: '4px',
-      lineHeight: '20px',
-      letterSpacing: '2px',
-    }
-    const bottomNavStyle = {
-      display: 'flex',
-      alignItems: 'center',
-      marginTop: '4px',
-    }
-
   return (
-    <li style={listStyle}>
-      <div style={{display: 'flex', alignItems: 'center'}}>
-        <h2 style={h2Style}>{language ? language : '-'}</h2>
-        <p style={startButtonStyle} onClick={this.showTimerScreen}>start</p>
-        <p style={pStyle}>{this.state.totalTimeConverted}</p>
-      </div>
-      <p style={descriptionStyle}>{description}</p>
-      <div style={bottomNavStyle}>
-        <p>
-          {url ? (
-            <a 
-              href={url} 
-              rel="noopener noreferrer"
-              target="_blank"
-              style={{color: '#fff', padding: '6px'}}>
-              <Icons icon='link' size='normal' />
-            </a>
-            ) : null
-          }
-        </p>
-        <p style={{cursor: 'pointer', paddingLeft: '12px'}} onClick={onArchive}>
-          <Icons icon='archive' size='small' />
-        </p>
-        <div style={{display: 'flex', flexDirection: 'column', marginLeft: '20px', fontSize: '10px'}}>
-          <p>Created: <span style={{color: 'white', fontSize: '8px'}}>{created_date.slice(0, 10)}</span></p>
-          <p>Updated: <span style={{color: 'white', fontSize: '8px'}}>{last_update.slice(0, 10)}</span></p>
-        </div>
-      </div>
-
-        {this.state.timerScreenShowing ? 
-          <TimerScreen
-            key={_id}
-            id={_id}
-            language={language} 
-            totalTimeConverted={this.state.totalTimeConverted}
-            hideTimerScreen={this.hideTimerScreen}
-            showTimerScreen={this.showTimerScreen}
-            postTime={this.postTime}
-          />
-          : null
-        }
-    </li>
+    <TimeSlipLi 
+      id={_id}
+      language={language}
+      description={description}
+      url={url}
+      onArchive={onArchive}
+      created_date={created_date}
+      last_update={last_update}
+      totalTimeConverted={this.state.totalTimeConverted}
+      hideTimerScreen={this.hideTimerScreen}
+      showTimerScreen={this.showTimerScreen}
+      showTimerScreenShowing={this.showTimerScreenShowing}
+      postTime={this.postTime}
+    />
     )
   }
 }
