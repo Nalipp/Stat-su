@@ -79,13 +79,13 @@ class Form extends Component{
     if(e.key === 'Enter' && e.shiftKey === false) {
       if (this.state.formValid) return this.handleSubmit(e);
       console.log(this.state.isErrorBorder);
-      this.setState({isErrorBorder: true}, () => console.log(this.state.isErrorBorder));
+      this.setState({isErrorBorder: true});
     }
   }
 
   render(){
     return (
-      <form style={{marginBottom: '50px'}}>
+      <form>
         <InputCpt 
           name="language"
           placeholder="Topic..."

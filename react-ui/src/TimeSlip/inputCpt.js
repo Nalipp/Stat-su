@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+const baseColor = props => props.theme.darkBlue;
+const errorColor = props => props.theme.tomato;
+
 const Input = styled.input`
   display: block;
   font-size: 16px;
@@ -10,10 +13,10 @@ const Input = styled.input`
   margin: 34px 0px;
   border: none;
   padding: 4px 8px;
-  width: 100%;
+  width: 95%;
   border-left: 2px dashed;
   border-bottom:  2px solid; 
-  border-color: ${props => props.theme.darkBlue};
+  border-color: ${props => props.valid ? baseColor : errorColor};
 
   &::placeholder {
     font-style: italic;
@@ -25,19 +28,10 @@ const Input = styled.input`
   }
 `;
 
-const ErrorInput = Input.extend`
-  border-color: ${props => props.theme.tomato};
-`;
-
-const InputCpt = (props) =>(
-  props.valid ?
+const InputCpt = (props) =>
   <Input 
     autoComplete="off"
     {...props}/>
-  :
-  <ErrorInput 
-    autoComplete="off"
-    {...props}/>)
 
 InputCpt.propTypes = {
   valid: PropTypes.bool,
