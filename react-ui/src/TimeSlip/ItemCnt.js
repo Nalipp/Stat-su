@@ -63,6 +63,7 @@ class TimeSlipItem extends Component {
       totalTimeConverted={this.state.totalTimeConverted}
       hideTimerScreen={this.hideTimerScreen}
       showTimerScreen={this.showTimerScreen}
+      timerScreenShowing={this.state.timerScreenShowing}
       showTimerScreenShowing={this.showTimerScreenShowing}
       postTime={this.postTime}
     />

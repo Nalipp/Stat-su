@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import TimerDisplay from './TimerDisplayCpt';
+import TimerScreenCpt from './TimerScreenCpt';
 import Icons from './../Icons';
 import './TimeSlipTimer.css';
 
@@ -94,63 +94,17 @@ class Timer extends Component {
   render() {
     const { language, totalTimeConverted } = this.props
 
-    const stoppedTimerStyle = {
-      background: '#EE715D',
-      position: 'fixed',
-      width: '100%',
-      height: '100%',
-      top: '0',
-      bottom: '0',
-      right: '0',
-      left: '0',
-      margin: 'auto',
-    }
-
-    const startedTimerStyle = {
-      background: '#72DA66',
-      position: 'fixed',
-      width: '100%',
-      height: '100%',
-      top: '0',
-      bottom: '0',
-      right: '0',
-      left: '0',
-      margin: 'auto',
-    }
-
-    const pStyle = {
-      textAlign: 'center',
-      fontSize: '22px',
-    }
-
-    const timmerButtonStyle = {
-      textAlign: 'center',
-      marginTop: '50px',
-      fontSize: '50px',
-      cursor: 'pointer',
-      userSelect: 'none',
-    }
-
     return (
-      <div style={this.state.timerRunning ? startedTimerStyle : stoppedTimerStyle } onKeyPress={this.handleKeyPress}>
-        <h1>{language}</h1>
-        <p style={pStyle}>Total Time {totalTimeConverted}</p>
-        <span 
-          className="closeStyle" 
-          onClick={this.hideScreenAndPostTime}>x
-        </span>
-        <TimerDisplay timeConverted={this.state.timeConverted} />
-        <h2 
-          style={timmerButtonStyle}
-          onClick={this.setStartOrStopTime}>
-          {( 
-            this.state.timerRunning ?
-            <Icons icon='pause' size="jumbo" /> 
-          : 
-            <Icons icon='play' size="jumbo" />
-          )}
-        </h2>
-      </div>
+      <TimerScreenCpt 
+        timerRunning={this.state.timerRunning}
+        handleKeyPress={this.handleKeyPress}
+        language={language}
+        totalTimeConverted={totalTimeConverted}
+        timeConverted={this.state.timeConverted}
+        hideScreenAndPostTime={this.hideScreenAndPostTime}
+        setStartOrStopTime={this.setStartOrStopTime}
+        timmerRunning={this.timmerRunning}
+      />
     )
   }
 }

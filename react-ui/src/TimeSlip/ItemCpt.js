@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Icons from './../Icons';
+import PropTypes from 'prop-types';
 import TimerScreen from './TimerScreenCnt';
 
 const Li = styled.li`
@@ -112,6 +113,20 @@ const LiCpt = ({id, language, description, url, onArchive, created_date, last_up
       : null
     }
   </Li>
+
+LiCpt.propTypes = {
+  id: PropTypes.string,
+  language: PropTypes.string,
+  description: PropTypes.string,
+  url: PropTypes.string,
+  created_date: PropTypes.string,
+  last_update: PropTypes.string,
+  totalTimeConverted: PropTypes.string,
+  hideTimerScreen: PropTypes.func,
+  showTimerScreen: PropTypes.func,
+  showTimerScreenShowing: PropTypes.bool,
+  postTime: PropTypes.func,
+}
 
 export default LiCpt;
 

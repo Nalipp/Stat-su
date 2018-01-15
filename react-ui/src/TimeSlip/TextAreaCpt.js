@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const baseColor = props => props.theme.darkBlue;
-const errorColor = props => props.theme.tomato;
+const errorColor = props => props.theme.danger;
 
 const TextArea = styled.textarea`
   display: block;

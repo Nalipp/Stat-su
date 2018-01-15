@@ -7,10 +7,9 @@ import { ThemeProvider, injectGlobal } from 'styled-components';
 const theme = {
   blue: '#74C4F9',
   darkBlue: '#344559',
-  red: '#EE715D',
-  tomato: 'tomato',
-  green: '#1CABA7',
-  darkGreen: '#72DA66',
+  danger: '#EE715D',
+  stop: 'tomato',
+  start: '#72DA66',
 }
 
 injectGlobal`

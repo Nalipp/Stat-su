@@ -235,9 +235,13 @@ back inside react-ui run npm start and style the front end
 
   create a footer  
 
+
   change language to topic in entire project
 
-  update readme to include explination of styled components (other explinations?)
+  update readme
+  - include explination of styled components 
+  - how to use icons
+  - (other explinations?)
 
   ui
   - review bem naming convention / styled components?
