@@ -223,15 +223,19 @@ back inside react-ui run npm start and style the front end
   - play
   - stop
 
-  /-- current  
-
-
-  - refactor all css into styled components
+  refactor all css into styled components
 
 
   /-- current  
 
 
+  add hover affects
+
+
+  /-- current  
+
+
+  media queries
 
   create a footer  
 
