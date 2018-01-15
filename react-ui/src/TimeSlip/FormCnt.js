@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import InputCpt from './inputCpt';
-import TextAreaCpt from './TextAreaCpt';
+import FormCpt from './FormCpt';
 
 class Form extends Component{
   constructor(props){
@@ -26,6 +25,9 @@ class Form extends Component{
   handleInputChange(e) {
     const value = e.target.value;
     const name = e.target.name;
+
+    console.log('value', value);
+    console.log('name', name);
 
     this.setState({[name]: value}, () => this.validateField(name, value));
   }
@@ -85,34 +87,17 @@ class Form extends Component{
 
   render(){
     return (
-      <form>
-        <InputCpt 
-          name="language"
-          placeholder="Topic..."
-          value={this.state.language}
-          valid={this.state.languageValid}
-          onChange={this.handleInputChange}
-          onKeyPress={this.checkSubmit}
-        />
-        <InputCpt 
-          name="url"
-          placeholder="Link..."
-          value={this.state.url}
-          valid={this.state.urlValid}
-          onChange={this.handleInputChange}
-          onKeyPress={this.checkSubmit}
-        />
-        <TextAreaCpt
-          name="description"
-          placeholder="Description..."
-          value={this.state.description} 
-          valid={!this.state.isErrorBorder}
-          onChange={this.handleInputChange}
-          onKeyPress={this.checkSubmit}
-        ></TextAreaCpt>
-        <button type="button" style={{display: 'none'}}>
-        Add New Study Resource</button>
-      </form>
+      <FormCpt
+        language={this.state.language}
+        languageValid={this.state.languageValid}
+        url={this.state.url}
+        urlValid={this.state.urlValid}
+        description={this.state.description} 
+        descriptionValid={this.state.descriptionValid}
+        isErrorBorder={!this.state.isErrorBorder}
+        handleInputChange={this.handleInputChange}
+        checkSubmit={this.checkSubmit}
+      />
     )
   }
 }

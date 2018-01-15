@@ -38,8 +38,8 @@ InputCpt.propTypes = {
   name: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
-  onChange: PropTypes.func,
-  onKeyPress: PropTypes.func,
+  handleInputChange: PropTypes.func,
+  checkSubmit: PropTypes.func,
 };
 
 export default InputCpt;

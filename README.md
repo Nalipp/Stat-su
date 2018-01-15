@@ -234,6 +234,7 @@ back inside react-ui run npm start and style the front end
 
   /-- current  
 
+  refactor to use {...props}
 
   media queries
 
