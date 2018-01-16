@@ -10,8 +10,12 @@ const fadeIn = keyframes`
 `;
 
 const Form = styled.form`
-  margin-bottom: 60px;
+  margin-bottom: 3.75rem;
   animation: ${fadeIn} 0.6s linear;
+`;
+
+const Btn = styled.button`
+  display: none;
 `;
 
 const FormCpt = ({
@@ -54,8 +58,7 @@ const FormCpt = ({
     onKeyPress={checkSubmit}
   ></TextAreaCpt>
 
-  <button type="button" style={{display: 'none'}}>
-  Add New Study Resource</button>
+  <Btn type="button">Add New Study Resource</Btn>
 </Form>
 
 FormCpt.propTypes = {
