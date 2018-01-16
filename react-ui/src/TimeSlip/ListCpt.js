@@ -1,10 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
+
+const fadeIn = keyframes`
+  from {opacity: 0.1}
+  to {opacity: 1}
+`;
 
 const Wrapper = styled.section`
   margin: 60px 0;
   display: flex;
   alignItems: center;
+  animation: ${fadeIn} 0.3s linear;
 `;
 
 const H1 = styled.h1`

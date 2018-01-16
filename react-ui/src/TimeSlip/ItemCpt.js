@@ -1,14 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import Icons from './../Icons';
 import PropTypes from 'prop-types';
 import TimerScreen from './TimerScreenCnt';
+
+const fadeIn = keyframes`
+  from {opacity: 0.1}
+  to {opacity: 1}
+`;
 
 const Li = styled.li`
   list-style: none;
   margin: 10px 0;
   padding: 8px;
   border: 1px dashed white;
+  animation: ${fadeIn} 0.8s linear;
 `;
 
 const H2 = styled.h2`

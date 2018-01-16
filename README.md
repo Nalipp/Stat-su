@@ -234,6 +234,7 @@ back inside react-ui run npm start and style the front end
 
   /-- current  
 
+  file structure
 
   fix validations
 

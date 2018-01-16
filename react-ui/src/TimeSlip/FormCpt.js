@@ -1,11 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 import InputCpt from './inputCpt';
 import TextAreaCpt from './TextAreaCpt';
 
+const fadeIn = keyframes`
+  from {opacity: 0.1}
+  to {opacity: 1}
+`;
+
 const Form = styled.form`
   margin-bottom: 60px;
+  animation: ${fadeIn} 0.6s linear;
 `;
 
 const FormCpt = ({
