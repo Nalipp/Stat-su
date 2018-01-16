@@ -1,11 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 import Icons from './../Icons';
 import TimerDisplay from './TimerDisplayCpt';
 
+const startColor = props => props.theme.start;
+
+const fadeIn = keyframes`
+  from {opacity: 0.1}
+  to {opacity: 1}
+`;
+
 const TimerStyle = styled.div`
-  background: ${props => props.theme.start};
+  background: ${startColor};
   position: fixed;
   width: 100%;
   height: 100%;
@@ -14,7 +21,7 @@ const TimerStyle = styled.div`
   right: 0;
   left: 0;
   overflow-x: hidden;
-  transition-delay: 0.2s;
+  animation: ${fadeIn} 0.3s linear;
 `;
 
 const H1 = styled.h1`
