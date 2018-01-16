@@ -13,6 +13,8 @@ const TimerStyle = styled.div`
   bottom: 0;
   right: 0;
   left: 0;
+  overflow-x: hidden;
+  transition-delay: 0.2s;
 `;
 
 const H1 = styled.h1`
@@ -36,7 +38,7 @@ const CloseScreen = styled.span`
 
 const TimerButton = styled.h2`
   text-align: center;
-  margin-top: 40px;
+  padding: 40px 0 100px 0;
   cursor: pointer;
 `;
 

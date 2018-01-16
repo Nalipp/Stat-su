@@ -6,6 +6,7 @@ const Display = styled.h1`
   text-align: center;
   font-size: 70px;
   margin-top: 30px;
+  overflow: hidden;
 `;
 
 const TimerDisplay = (props) =>
