@@ -225,12 +225,12 @@ back inside react-ui run npm start and style the front end
 
   refactor all css into styled components
 
+  media queries using template literal mixins
+  -600px mobile media queries
 
   /-- current  
 
 
-  media queries using template literal mixins
-  -600px mobile media queries
   -900px tablet media queries
   -1200px desktop media queries
   -1800px desktop jumbo media queries

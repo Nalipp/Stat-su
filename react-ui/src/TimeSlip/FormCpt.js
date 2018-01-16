@@ -10,7 +10,7 @@ const fadeIn = keyframes`
 `;
 
 const Form = styled.form`
-  margin-bottom: 3.75rem;
+  margin-bottom: 3rem;
   animation: ${fadeIn} 0.6s linear;
 `;
 

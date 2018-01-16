@@ -7,16 +7,16 @@ const errorColor = props => props.theme.danger;
 
 const Input = styled.input`
   display: block;
-  font-size: 16px;
+  font-size: .9rem;
   border-radius: 0;
   background: ${props => props.theme.background};
   color: ${props => props.theme.dark};
-  margin: 34px 0px;
+  margin: 2.2rem 0;
   border: none;
-  padding: 4px 8px;
+  padding: .25rem .5rem;
   width: 92%;
-  border-left: 2px dashed;
-  border-bottom:  2px solid; 
+  border-left: .09rem dashed;
+  border-bottom:  .08rem solid; 
   border-color: ${props => props.valid ? baseColor : errorColor};
 
   &::placeholder {
