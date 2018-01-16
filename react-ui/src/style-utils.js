@@ -7,12 +7,12 @@ export const media = {
     }
   `,
   tablet: (...args) => css`
-    @media (min-width:600px) and (max-width: 1199px)  {
+    @media (min-width: 600px) {
       ${ css(...args) }
     }
   `,
   desktop: (...args) => css`
-    @media (min-width:1200px) and (max-width: 1799px)  {
+    @media (min-width: 1200px)  {
       ${ css(...args) }
     }
   `,
@@ -22,5 +22,3 @@ export const media = {
     }
   `
 }
-
-

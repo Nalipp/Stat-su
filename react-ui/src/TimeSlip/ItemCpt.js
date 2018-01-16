@@ -3,6 +3,7 @@ import styled, {keyframes} from 'styled-components';
 import Icons from './../Icons';
 import PropTypes from 'prop-types';
 import TimerScreen from './TimerScreenCnt';
+import { media } from '../style-utils';
 
 const fadeIn = keyframes`
   from {opacity: 0.1}
@@ -15,6 +16,11 @@ const Li = styled.li`
   padding: .5rem;
   border: .0625rem dashed ${props => props.theme.light};
   animation: ${fadeIn} 0.8s linear;
+  ${media.tablet`
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border: .09rem dashed ${props => props.theme.light};
+  `}
 `;
 
 const Div = styled.div`
@@ -23,9 +29,12 @@ const Div = styled.div`
 `;
 
 const H2 = styled.h2`
-  font-size: 1.1rem;
+  font-size: 1rem;
   padding-right: .625rem;
   flex: 9;
+  ${media.tablet`
+    font-size: 1.5rem;
+  `}
 `;
 
 const Description = styled.p`
@@ -33,6 +42,12 @@ const Description = styled.p`
   padding: .25rem;
   line-height: 1rem;
   letter-spacing: .125rem;
+  ${ media.tablet`
+    width: 75%;
+    font-size: 1rem;
+    padding: .5rem;
+    line-height: 1.6rem;
+  `}
 `;
 
 const StartBtn = styled.p`
@@ -41,11 +56,8 @@ const StartBtn = styled.p`
   color: ${props => props.theme.light};
   border-radius: .5rem;
   padding: 0.3rem .4rem;
-  border-top: .25rem solid ${props => props.theme.background};
-  border-left: .625rem solid ${props => props.theme.background};
-  border-bottom: .25rem solid ${props => props.theme.background};
-  border-right: .625rem solid ${props => props.theme.background};
-  border-radius: 3.75rem;
+  margin-right: .5rem;
+  line-height: .75rem;
   background: ${props => props.theme.start};
   cursor: pointer;
   flex: 0.5;
@@ -54,6 +66,11 @@ const StartBtn = styled.p`
     transform: translateY(.0625rem);
     box-shadow: 0 .125rem .19rem rgba(0, 0, 0, .15);
   }
+  ${ media.tablet`
+    font-size: 1rem;
+    border-radius: .5rem;
+    line-height: 1.4rem;
+  `}
 `;
 
 const TotalTime = styled.p`
@@ -61,6 +78,10 @@ const TotalTime = styled.p`
   color: ${props => props.theme.light};
   letter-spacing: .1rem;
   flex: 1.5;
+  text-align: right;
+  ${`
+    font-size: 1rem;
+  `}
 `;
 
 const BottomNav = styled.div`
@@ -77,6 +98,9 @@ const Url = styled.span`
 const Archive = styled.span`
   cursor: pointer;
   flex-grow: 1;
+  ${media.tablet`
+    margin: .25rem 0 .25rem 1.2rem;
+  `}
 `;
 
 const TimeWrapper = styled.div`
@@ -90,6 +114,11 @@ const TimeStamp = styled.span`
   font-size: .6rem;
   letter-spacing: .1rem;
   color: ${props => props.theme.light};
+  ${media.tablet`
+    margin: .25rem;
+    font-size: .8rem;
+    letter-spacing: .14rem;
+  `}
 `;
 
 const Time = styled.span`
@@ -97,6 +126,11 @@ const Time = styled.span`
   letter-spacing: .05rem;
   color: ${props => props.theme.dark};
   padding-left: .375rem;
+  ${media.tablet`
+    margin: .25rem;
+    font-size: .8rem;
+    letter-spacing: .14rem;
+  `}
 `;
 
 const A = styled.a`
@@ -113,7 +147,7 @@ const LiCpt = ({id, language, description, url, onArchive, created_date, last_up
     <Description>{description}</Description>
     <BottomNav>
       <Archive onClick={onArchive}>
-        <Icons icon='archive' size='small' />
+        <Icons icon='archive' size='normal' />
       </Archive>
       <Url>
         {url ? (
@@ -121,7 +155,7 @@ const LiCpt = ({id, language, description, url, onArchive, created_date, last_up
             href={url} 
             rel="noopener noreferrer"
             target="_blank">
-            <Icons icon='link' size='normal' />
+            <Icons icon='link' size='large' />
           </A>
           ) : null
         }

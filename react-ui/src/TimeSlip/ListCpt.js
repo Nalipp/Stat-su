@@ -35,7 +35,7 @@ const ListCpt = () =>
     <H1>
       <Span>T</Span>Study
     </H1>
-    <P>Track you study time</P>
+    <P>Track you productivity</P>
   </Wrapper>
 
 export default ListCpt;

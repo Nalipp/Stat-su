@@ -251,6 +251,10 @@ back inside react-ui run npm start and style the front end
 
   fix transistions
 
+  remove btn border hack
+
+  move transition from entire list to indiviual component (better for adding an item)
+
   change language to topic in entire project
 
   update readme
