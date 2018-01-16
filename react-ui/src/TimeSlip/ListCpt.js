@@ -12,6 +12,9 @@ const Wrapper = styled.section`
   align-items: center;
   text-align: center;
   animation: ${fadeIn} 0.3s linear;
+  ${media.tablet`
+    margin: 6rem 0;
+  `}
 `;
 
 const H1 = styled.h1`

@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 import InputCpt from './inputCpt';
 import TextAreaCpt from './TextAreaCpt';
+import { media } from '../style-utils';
 
 const fadeIn = keyframes`
   from {opacity: 0.1}
@@ -12,6 +13,9 @@ const fadeIn = keyframes`
 const Form = styled.form`
   margin-bottom: 3rem;
   animation: ${fadeIn} 0.6s linear;
+  ${`
+    margin-bottom: 5rem;
+  `};
 `;
 
 const Btn = styled.button`

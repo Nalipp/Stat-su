@@ -244,6 +244,8 @@ back inside react-ui run npm start and style the front end
   upgrade dyno
 
   fix validations
+  - remove all minimums
+  - replace with max countdown?
 
   add hover affects
 
