@@ -7,6 +7,11 @@ import TimerDisplay from './TimerDisplayCpt';
 const startColor = props => props.theme.start;
 const stopColor = props => props.theme.stop;
 
+const fadeIn = keyframes`
+  from {opacity: .99}
+  to {opacity: 1}
+`;
+
 const startToStop = keyframes`
   from {background: tomato}
   to {background: #72DA66}
@@ -22,7 +27,7 @@ const StartStyle = styled.div`
   right: 0;
   left: 0;
   overflow-x: hidden;
-  animation: ${startToStop} 0.4s linear;
+  animation: ${startToStop} 0.3s linear;
 `;
 
 const StopStyle = styled.div`
@@ -35,6 +40,7 @@ const StopStyle = styled.div`
   right: 0;
   left: 0;
   overflow-x: hidden;
+  animation: ${startToStop} 1s linear;
 `;
 
 const H1 = styled.h1`

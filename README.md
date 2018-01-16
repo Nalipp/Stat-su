@@ -225,22 +225,23 @@ back inside react-ui run npm start and style the front end
 
   refactor all css into styled components
 
+  mobile media queries
 
   /-- current  
 
 
-  media queries
+  tablet media queries
 
 
   /-- current  
+
 
   file structure
+  add hover affects
 
   fix validations
 
   create a footer  
-
-  add hover affects
 
   change language to topic in entire project
 
