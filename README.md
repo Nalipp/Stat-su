@@ -225,21 +225,22 @@ back inside react-ui run npm start and style the front end
 
   refactor all css into styled components
 
+  file structure
+
   media queries using template literal mixins
   -600px mobile media queries
+  -900px tablet media queries
 
   /-- current  
 
 
-  -900px tablet media queries
+
+
+  /-- current  
+
+
   -1200px desktop media queries
   -1800px desktop jumbo media queries
-
-
-  /-- current  
-
-
-  file structure
 
   upgrade dyno
 
@@ -253,14 +254,12 @@ back inside react-ui run npm start and style the front end
 
   fix transistions
 
-  remove btn border hack
-
   move transition from entire list to indiviual component (better for adding an item)
 
   change language to topic in entire project
 
   update readme
-  - include explination of styled components 
+  - include explination of styled components (theme explination)
   - how to use icons
   - (other explinations?)
 
@@ -300,6 +299,7 @@ back inside react-ui run npm start and style the front end
 
   hamburger drop down to user page
   - user summary screen with unarchive option for each deleted timeSlip (white background)
+  - choose different color themes?
   - page should show all archived and unarchived timeSlips with concatenated discriptions with option to delete permentantly and add time
   - link main title, total, createAt, lastUpdated to summary page
   - seed more archived data

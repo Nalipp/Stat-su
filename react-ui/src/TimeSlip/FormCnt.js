@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import FormCpt from './FormCpt';
+import FormCpt from './../Form/FormCpt';
 
 class Form extends Component{
   constructor(props){
