@@ -3,36 +3,14 @@ const APIURL = '/api/timeSlips/';
 export async function getTimeSlips() {
   return fetch(APIURL)
   .then(res => {
-    if(!res.ok) {
-      if(res.status >= 400 && res.status <= 500) {
-        return res.json().then(data => {
-          let err = {errorMessage: data.message};
-          throw err;
-        })
-      } else {
-        let err = {errorMessage: 'Server is not responding'};
-        throw err;
-      }
-    }
-    return res.json()
+    return reqResult(res);
   })
 }
 
 export async function getTimeSlip(id) {
   return fetch(APIURL + id)
   .then(res => {
-    if(!res.ok) {
-      if(res.status >= 400 && res.status <= 500) {
-        return res.json().then(data => {
-          let err = {errorMessage: data.message};
-          throw err;
-        })
-      } else {
-        let err = {errorMessage: 'Server is not responding'};
-        throw err;
-      }
-    }
-    return res.json()
+    return reqResult(res);
   })
 }
 
@@ -46,18 +24,7 @@ export async function createTimeSlip(language, url, description) {
     body: JSON.stringify({language, url, description})
   })
   .then(res => {
-    if(!res.ok) {
-      if(res.status >= 400 && res.status <= 500) {
-        return res.json().then(data => {
-          let err = {errorMessage: data.message};
-          throw err;
-        })
-      } else {
-        let err = {errorMessage: 'Server is not responding'};
-        throw err;
-      }
-    }
-    return res.json()
+    return reqResult(res);
   })
 }
 
@@ -70,18 +37,7 @@ export async function archiveTimeSlip(timeSlip) {
     body: JSON.stringify({completed: !timeSlip.completed})
   })
   .then(res => {
-    if(!res.ok) {
-      if(res.status >= 400 && res.status <= 500) {
-        return res.json().then(data => {
-          let err = {errorMessage: data.message};
-          throw err;
-        })
-      } else {
-        let err = {errorMessage: 'Server is not responding'};
-        throw err;
-      }
-    }
-    return res.json();
+    return reqResult(res);
   })
 }
 
@@ -94,18 +50,7 @@ export async function postTime(id, body) {
     body: JSON.stringify({total_time: body.totalTime, last_update: Date.now()})
   })
   .then(res => {
-    if(!res.ok) {
-      if(res.status >= 400 && res.status <= 500) {
-        return res.json().then(data => {
-          let err = {errorMessage: data.message};
-          throw err;
-        })
-      } else {
-        let err = {errorMessage: 'Server is not responding'};
-        throw err;
-      }
-    }
-    return res.json();
+    return reqResult(res);
   })
 }
 
@@ -114,17 +59,7 @@ export async function deleteTimeSlip(id) {
     method: 'delete',
   })
   .then(res => {
-    if(!res.ok) {
-      if(res.status >= 400 && res.status <= 500) {
-        return res.json().then(data => {
-          let err = {errorMessage: data.message};
-          throw err;
-        })
-      } else {
-        let err = {errorMessage: 'Server is not responding'};
-        throw err;
-      }
-    }
+    reqResult(res);
   })
 }
 
@@ -136,3 +71,19 @@ function requireHttp(url) {
   }
   return undefined;
 }
+
+function reqResult(res) {
+  if(!res.ok) {
+    if(res.status >= 400 && res.status <= 500) {
+      return res.json().then(data => {
+        let err = {errorMessage: data.message};
+        throw err;
+      })
+    } else {
+      let err = {errorMessage: 'Server is not responding'};
+      throw err;
+    }
+  }
+  return res.json()
+}
+
