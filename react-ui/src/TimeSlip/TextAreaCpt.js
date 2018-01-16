@@ -8,6 +8,7 @@ const errorColor = props => props.theme.danger;
 const TextArea = styled.textarea`
   display: block;
   font-size: 16px;
+  border-radius: 0;
   background: ${props => props.theme.blue};
   color: ${props => props.theme.darkBlue};
   margin: 34px 0px;

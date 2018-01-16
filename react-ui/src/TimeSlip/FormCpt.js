@@ -8,7 +8,18 @@ const Form = styled.form`
   margin-bottom: 60px;
 `;
 
-const FormCpt = ({language, languageValid, url, urlValid, description, descriptionValid, isErrorBorder, handleInputChange, checkSubmit}) =>
+const FormCpt = ({
+    language, 
+    languageValid,
+    url,
+    urlValid,
+    description,
+    descriptionValid,
+    isErrorBorder,
+    handleInputChange,
+    checkSubmit
+  }) =>
+
 <Form>
   <InputCpt 
     name="language"

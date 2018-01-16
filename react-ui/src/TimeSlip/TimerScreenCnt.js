@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import TimerScreenCpt from './TimerScreenCpt';
-import Icons from './../Icons';
-import './TimeSlipTimer.css';
 
 class Timer extends Component {
   constructor(props) {

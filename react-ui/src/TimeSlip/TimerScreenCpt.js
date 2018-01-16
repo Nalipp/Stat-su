@@ -13,32 +13,30 @@ const TimerStyle = styled.div`
   bottom: 0;
   right: 0;
   left: 0;
-  margin: auto;
 `;
 
 const H1 = styled.h1`
   text-align: center;
-  font-size: 90px;
-  margin-top: 70px;
+  font-size: 40px;
+  margin: 50px 0 25px 0;
 `;
 
 const P = styled.p`
   text-align: center;
-  font-size: 22px;
+  font-size: 18px;
 `
 const CloseScreen = styled.span`
   position: absolute;
   top: 0;
   right: 0;
-  padding: 0px 35px 40px 35px;
-  font-size: 80px;
+  padding: 0px 10px 20px 25px;
   color: white;
   cursor: pointer;
 `;
 
 const TimerButton = styled.h2`
   text-align: center;
-  margin-top: 50px;
+  margin-top: 40px;
   cursor: pointer;
 `;
 
@@ -66,7 +64,6 @@ TimerScreenCpt.propTypes = {
   totalTimeConverted: PropTypes.string,
   hideScreenAndPostTime: PropTypes.func,
   setStartOrStopTime: PropTypes.func,
-  timmerRunning: PropTypes.bool,
 }
 
 export default TimerScreenCpt;

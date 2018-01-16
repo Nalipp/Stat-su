@@ -34,6 +34,11 @@ const StartBtn = styled.p`
   color: white;
   cursor: pointer;
   flex: 0.5;
+
+  &:hover {
+    transform: translateY(1px);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .15);
+  }
 `;
 
 const Description = styled.p`

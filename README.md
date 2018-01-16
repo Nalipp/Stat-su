@@ -229,17 +229,17 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
 
-  add hover affects
+  media queries
 
 
   /-- current  
 
-  refactor to use {...props}
 
-  media queries
+  fix validations
 
   create a footer  
 
+  add hover affects
 
   change language to topic in entire project
 
