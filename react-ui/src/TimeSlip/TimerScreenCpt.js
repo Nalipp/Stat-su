@@ -40,7 +40,7 @@ const StopStyle = styled.div`
   right: 0;
   left: 0;
   overflow-x: hidden;
-  animation: ${startToStop} 1s linear;
+  animation: ${fadeIn} 1s linear;
 `;
 
 const H1 = styled.h1`
