@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
+import {media} from '../style-utils';
 
 const fadeIn = keyframes`
   from {opacity: 0.1}
@@ -17,6 +18,9 @@ const H1 = styled.h1`
   font-size: 3.75rem;
   color: ${props => props.theme.light};
   letter-spacing: 0.375rem;
+  ${media.tablet`
+    font-size: 5rem;
+  `}
 `;
 
 const P = styled.p`
@@ -24,6 +28,12 @@ const P = styled.p`
   margin-left: -1.25rem;
   font-size: .65rem;
   letter-spacing: .3rem;
+  ${media.tablet`
+    padding-top: .6rem;
+    margin-left: -1.25rem;
+    font-size: .75rem;
+    letter-spacing: .4rem;
+  `}
 `;
 
 const Span = styled.span`
