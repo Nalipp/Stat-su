@@ -225,23 +225,31 @@ back inside react-ui run npm start and style the front end
 
   refactor all css into styled components
 
-  mobile media queries
 
   /-- current  
 
 
-  tablet media queries
+  media queries using template literal mixins
+  -600px mobile media queries
+  -900px tablet media queries
+  -1200px desktop media queries
+  -1800px desktop jumbo media queries
 
 
   /-- current  
 
 
   file structure
-  add hover affects
+
+  upgrade dyno
 
   fix validations
 
+  add hover affects
+
   create a footer  
+
+  fix transistions
 
   change language to topic in entire project
 
@@ -331,3 +339,11 @@ back inside react-ui run npm start and style the front end
   external links for user summary
   billable summary page 
 
+
+
+****************************************************************************************************
+resume links
+
+styled-components
+sgv icons
+media mixins style-utils

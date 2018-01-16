@@ -2,15 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const baseColor = props => props.theme.darkBlue;
+const baseColor = props => props.theme.dark;
 const errorColor = props => props.theme.danger;
 
 const TextArea = styled.textarea`
   display: block;
   font-size: 16px;
   border-radius: 0;
-  background: ${props => props.theme.blue};
-  color: ${props => props.theme.darkBlue};
+  background: ${props => props.theme.background};
+  color: ${props => props.theme.dark};
   margin: 34px 0px;
   border: none;
   padding: 4px 8px;
@@ -21,7 +21,7 @@ const TextArea = styled.textarea`
 
   &::placeholder {
     font-style: italic;
-    color: ${props => props.theme.darkBlue};
+    color: ${props => props.theme.dark};
   }
 
   &:focus {

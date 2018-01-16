@@ -5,11 +5,12 @@ import registerServiceWorker from './registerServiceWorker';
 import { ThemeProvider, injectGlobal } from 'styled-components';
 
 const theme = {
-  blue: '#74C4F9',
-  darkBlue: '#344559',
+  background: '#74C4F9',
+  dark: '#344559',
   danger: '#EE715D',
   stop: 'tomato',
   start: '#72DA66',
+  light: 'white',
 }
 
 injectGlobal`
@@ -18,11 +19,10 @@ injectGlobal`
 
 body {
   font-family: 'Roboto', sans-serif;
-  background: ${theme.blue};
-  color: ${theme.darkBlue};
+  background: ${theme.background};
+  color: ${theme.dark};
   height: 100%; width: 100%;
   font-family: sans-serif;
-  letter-spacing: 0.8px;
 }
 
 h1, h2, h3, h4, h5, h6 {

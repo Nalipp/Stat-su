@@ -1,19 +1,24 @@
 import React from 'react';
-import TimeSlips from './TimeSlip/ListCnt';
+import ListCnt from './TimeSlip/ListCnt';
 import styled from 'styled-components';
+import { media } from './style-utils';
 
 const Wrapper = styled.section`
-  width: 60%;
-  max-width: 600px;
-  margin: auto;
+  width: 90%;
+  margin: 0 auto 5.625rem auto;
 
-  @media (max-width: 500px) {
-    min-width: 85%;
-  }
+  ${ media.mobile`
+  ` }
+  ${ media.tablet`
+  ` }
+  ${ media.desktop`
+  ` }
+  ${ media.jumboDesktop`
+  ` }
 `
 const App = () =>
   <Wrapper>
-    <TimeSlips />
+    <ListCnt />
   </Wrapper>
 
 export default App;

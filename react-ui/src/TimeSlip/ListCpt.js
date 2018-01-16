@@ -7,23 +7,27 @@ const fadeIn = keyframes`
 `;
 
 const Wrapper = styled.section`
-  margin: 60px 0;
-  alignItems: center;
+  margin: 3.75rem 0;
+  align-items: center;
+  text-align: center;
   animation: ${fadeIn} 0.3s linear;
 `;
 
 const H1 = styled.h1`
-  font-size: 60px;
-  color: 'white';
-  letter-spacing: 6px;
+  font-size: 3.75rem;
+  color: ${props => props.theme.light};
+  letter-spacing: 0.375rem;
 `;
 
 const P = styled.p`
-  padding: 8px 0 0 40px;
+  padding-top: .5rem;
+  margin-left: -1.25rem;
+  font-size: .65rem;
+  letter-spacing: .3rem;
 `;
 
 const Span = styled.span`
-  color: ${props => props.theme.darkBlue};
+  color: ${props => props.theme.dark};
 `
 
 const ListCpt = () =>

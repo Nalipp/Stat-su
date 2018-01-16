@@ -58,7 +58,7 @@ const CloseScreen = styled.span`
   top: 0;
   right: 0;
   padding: 0px 10px 20px 25px;
-  color: white;
+  color: ${props => props.theme.light};
   cursor: pointer;
 `;
 
