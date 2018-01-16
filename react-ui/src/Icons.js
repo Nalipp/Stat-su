@@ -25,7 +25,10 @@ const customSize = {
   normal: '22',
   large: '28',
   xlarge: '45',
+  xxlarge: '60',
   jumbo: '130',
+  xjumbo: '160',
+  xxjumbo: '210',
 }
 
 const Icons = props => (
