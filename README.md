@@ -227,26 +227,29 @@ back inside react-ui run npm start and style the front end
 
   file structure
 
+  refactor api calls
+
   media queries using template literal mixins
   -600px mobile media queries
   -900px tablet media queries
-
-  /-- current  
-
-
-
-
-  /-- current  
-
-
   -1200px desktop media queries
   -1800px desktop jumbo media queries
 
-  upgrade dyno
+
+  /-- current  
+
 
   fix validations
   - remove all minimums
   - replace with max countdown?
+
+
+  /-- current  
+
+
+  upgrade dyno
+
+  refactor form to use props.children
 
   add hover affects on icons
 
@@ -268,9 +271,6 @@ back inside react-ui run npm start and style the front end
   - change to statsu.io
   - change heroku url
   - update github
-
-  - refactor
-  refactor api calls
   
   drag and drop using React DnD  
 

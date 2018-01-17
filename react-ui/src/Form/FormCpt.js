@@ -3,8 +3,6 @@ import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 import InputCpt from './inputCpt';
 import TextAreaCpt from './TextAreaCpt';
-import TimerScreen from '../TimeSlip/TimerScreenCnt';
-import { media } from '../style-utils';
 
 const fadeIn = keyframes`
   from {opacity: 0.1}
