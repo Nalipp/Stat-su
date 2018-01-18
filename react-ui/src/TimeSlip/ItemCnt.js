@@ -79,7 +79,7 @@ TimeSlipItem.propTypes = {
   url: PropTypes.string,
   description: PropTypes.string,
   totalTime: PropTypes.number,
-  onArchive: PropTypes.func
+  onArchive: PropTypes.func,
 }
 
 export default TimeSlipItem;

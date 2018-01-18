@@ -89,7 +89,7 @@ const TimerButton = styled.h2`
   cursor: pointer;
 `;
 
-const TimerScreenCpt = ({timerRunning, handleKeyPress, language, totalTimeConverted, hideScreenAndPostTime, setStartOrStopTime, timeConverted}) =>
+const TimerScreenCpt = ({timerRunning, language, totalTimeConverted, hideScreenAndPostTime, setStartOrStopTime, timeConverted}) =>
   (timerRunning ?
   <StartStyle>
     <H1>{language}</H1>
@@ -126,11 +126,12 @@ const TimerScreenCpt = ({timerRunning, handleKeyPress, language, totalTimeConver
 
 TimerScreenCpt.propTypes = {
   timmerRunning: PropTypes.bool,
-  handleKeyPress: PropTypes.func,
   language: PropTypes.string,
   totalTimeConverted: PropTypes.string,
   hideScreenAndPostTime: PropTypes.func,
   setStartOrStopTime: PropTypes.func,
+  timerRunning: PropTypes.bool,
+  timeConverted: PropTypes.string,
 }
 
 export default TimerScreenCpt;

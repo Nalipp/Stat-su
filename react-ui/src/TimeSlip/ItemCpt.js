@@ -193,8 +193,9 @@ LiCpt.propTypes = {
   totalTimeConverted: PropTypes.string,
   hideTimerScreen: PropTypes.func,
   showTimerScreen: PropTypes.func,
-  showTimerScreenShowing: PropTypes.bool,
+  timerScreenShowing: PropTypes.bool,
   postTime: PropTypes.func,
+  onArchive: PropTypes.func,
 }
 
 export default LiCpt;

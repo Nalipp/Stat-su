@@ -5,6 +5,7 @@ import {media} from '../style-utils';
 
 const baseColor = props => props.theme.dark;
 const errorColor = props => props.theme.danger;
+const borderColor = props => props.valid ? baseColor : errorColor;
 
 const Input = styled.input`
   display: block;
@@ -17,17 +18,19 @@ const Input = styled.input`
   padding: .25rem .5rem;
   width: 92%;
   border: none;
+  border-top: none;
+  border-right: none;
   border-left: .09rem dashed;
   border-bottom: .08rem solid; 
-  border-color: ${props => props.valid ? baseColor : errorColor};
+  border-color: ${borderColor};
   ${media.tablet`
     font-size: 1.2rem;
     letter-spacing: .14rem;
     padding: .35rem .6rem;
     width: 94%;
     margin: 2.8rem 0;
-    border-left: .1rem dashed;
-    border-bottom: .1rem solid; 
+    border-left: .1rem dashed ${borderColor};
+    border-bottom: .1rem solid ${borderColor}; 
   `}
 
   &::placeholder {
@@ -43,13 +46,16 @@ const Input = styled.input`
 const InputCpt = (props) =>
   <Input 
     autoComplete="off"
-    {...props}/>
+    {...props}
+    onChange={props.handleInputChange}
+    onKeyPress={props.checkSubmit}
+    />
 
 InputCpt.propTypes = {
-  valid: PropTypes.bool,
   name: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
+  valid: PropTypes.bool,
   handleInputChange: PropTypes.func,
   checkSubmit: PropTypes.func,
 };

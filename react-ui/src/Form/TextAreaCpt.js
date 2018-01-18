@@ -5,6 +5,7 @@ import {media} from '../style-utils';
 
 const baseColor = props => props.theme.dark;
 const errorColor = props => props.theme.danger;
+const borderColor = props => props.valid ? baseColor : errorColor;
 
 const TextArea = styled.textarea`
   display: block;
@@ -16,10 +17,11 @@ const TextArea = styled.textarea`
   margin: 2.2rem 0;
   padding: .25rem .5rem;
   width: 92%;
-  border: none;
+  border-top: none;
+  border-right: none;
   border-left: .09rem dashed;
   border-bottom: .08rem solid; 
-  border-color: ${props => props.valid ? baseColor : errorColor};
+  border-color: ${borderColor};
   ${media.tablet`
     font-size: 1.2rem;
     letter-spacing: .14rem;
@@ -27,8 +29,9 @@ const TextArea = styled.textarea`
     width: 94%;
     height: 4.5rem;
     margin: 2.8rem 0;
-    border-left: .1rem dashed;
-    border-bottom: .1rem solid; 
+    border-left: .1rem dashed ${borderColor};
+    border-bottom: .1rem solid ${borderColor}; 
+
   `}
 
   &::placeholder {
@@ -44,15 +47,18 @@ const TextArea = styled.textarea`
 const TextareaCpt = (props) => 
   <TextArea
     autoComplete="off"
-    {...props}></TextArea>
+    {...props}
+    onChange={props.handleInputChange}
+    onKeyPress={props.checkSubmit}
+    ></TextArea>
 
 TextareaCpt.propTypes = {
-  valid: PropTypes.bool,
   name: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
-  onChange: PropTypes.func,
-  onKeyPress: PropTypes.func,
+  valid: PropTypes.bool,
+  handleInputChange: PropTypes.func,
+  checkSubmit: PropTypes.func,
 };
 
 export default TextareaCpt;

@@ -246,6 +246,7 @@ back inside react-ui run npm start and style the front end
 
   /-- current  
 
+  clean up timer screen render
 
   upgrade dyno
 
