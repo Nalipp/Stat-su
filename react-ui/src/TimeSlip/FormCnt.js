@@ -15,6 +15,8 @@ class Form extends Component{
       urlValid: true,
       descriptionValid: true,
       formValid: false,
+      languageCharMax: 30,
+      descriptionCharMax: 200
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,7 +35,7 @@ class Form extends Component{
   validateField(inputName, value) {
     switch(inputName) {
     case 'language':
-      var languageValid = value.length < 30;
+      var languageValid = value.length < 31;
       this.setState({languageValid}, () => this.validateForm());
       break;
     case 'url':
@@ -41,7 +43,7 @@ class Form extends Component{
       this.setState({urlValid}, () => this.validateForm());
       break;
     case 'description':
-      var descriptionValid = value.length < 200;
+      var descriptionValid = value.length < 201;
       this.setState({descriptionValid}, () => this.validateForm());
       break;
     default:
@@ -83,13 +85,15 @@ class Form extends Component{
     return (
       <FormCpt>
         <InputCpt 
-          autoFocus
+          autofocus
           name="language"
           placeholder="Topic..."
           value={this.state.language}
           valid={this.state.languageValid}
           handleInputChange={this.handleInputChange}
           checkSubmit={this.checkSubmit}
+          charCount={this.state.language.length}
+          charMax={this.state.languageCharMax}
         />
 
         <TextAreaCpt
@@ -100,6 +104,8 @@ class Form extends Component{
           valid={this.state.descriptionValid}
           handleInputChange={this.handleInputChange}
           checkSubmit={this.checkSubmit}
+          charCount={this.state.description.length}
+          charMax={this.state.descriptionCharMax}
         />
 
         <InputCpt

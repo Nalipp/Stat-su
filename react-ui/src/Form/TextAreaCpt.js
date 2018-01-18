@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {media} from '../style-utils';
+import CharCounter from './CharCounter';
 
-const baseColor = props => props.theme.dark;
+const darkColor = props => props.theme.dark;
 const errorColor = props => props.theme.danger;
-const borderColor = props => props.valid ? baseColor : errorColor;
+const borderColor = props => props.valid ? darkColor : errorColor;
 
 const TextArea = styled.textarea`
   display: block;
@@ -13,8 +14,7 @@ const TextArea = styled.textarea`
   letter-spacing: .1rem;
   border-radius: 0;
   background: ${props => props.theme.background};
-  color: ${props => props.theme.dark};
-  margin: 2.2rem 0;
+  color: ${darkColor};
   padding: .25rem .5rem;
   width: 92%;
   border-top: none;
@@ -28,7 +28,6 @@ const TextArea = styled.textarea`
     padding: .35rem .6rem;
     width: 94%;
     height: 4.5rem;
-    margin: 2.8rem 0;
     border-left: .1rem dashed ${borderColor};
     border-bottom: .1rem solid ${borderColor}; 
 
@@ -36,7 +35,7 @@ const TextArea = styled.textarea`
 
   &::placeholder {
     font-style: italic;
-    color: ${props => props.theme.dark};
+    color: ${darkColor};
   }
 
   &:focus {
@@ -45,12 +44,19 @@ const TextArea = styled.textarea`
 `;
 
 const TextareaCpt = (props) => 
-  <TextArea
-    autoComplete="off"
-    {...props}
-    onChange={props.handleInputChange}
-    onKeyPress={props.checkSubmit}
-    ></TextArea>
+  <div>
+    <CharCounter 
+      charCount={props.charCount} 
+      charMax={props.charMax} 
+      valid={props.valid}
+    />
+    <TextArea
+      autoComplete="off"
+      {...props}
+      onChange={props.handleInputChange}
+      onKeyPress={props.checkSubmit}
+      ></TextArea>
+  </div>
 
 TextareaCpt.propTypes = {
   name: PropTypes.string,
@@ -59,6 +65,8 @@ TextareaCpt.propTypes = {
   valid: PropTypes.bool,
   handleInputChange: PropTypes.func,
   checkSubmit: PropTypes.func,
+  charCount: PropTypes.number,
+  charMax: PropTypes.number,
 };
 
 export default TextareaCpt;

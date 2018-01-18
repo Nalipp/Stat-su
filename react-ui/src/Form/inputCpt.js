@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {media} from '../style-utils';
+import CharCounter from './CharCounter';
 
-const baseColor = props => props.theme.dark;
+const darkColor = props => props.theme.dark;
 const errorColor = props => props.theme.danger;
-const borderColor = props => props.valid ? baseColor : errorColor;
+const borderColor = props => props.valid ? darkColor : errorColor;
 
 const Input = styled.input`
   display: block;
@@ -13,8 +14,7 @@ const Input = styled.input`
   letter-spacing: .1rem;
   border-radius: 0;
   background: ${props => props.theme.background};
-  color: ${props => props.theme.dark};
-  margin: 2.2rem 0;
+  color: ${darkColor};
   padding: .25rem .5rem;
   width: 92%;
   border: none;
@@ -28,14 +28,13 @@ const Input = styled.input`
     letter-spacing: .14rem;
     padding: .35rem .6rem;
     width: 94%;
-    margin: 2.8rem 0;
     border-left: .1rem dashed ${borderColor};
     border-bottom: .1rem solid ${borderColor}; 
   `}
 
   &::placeholder {
     font-style: italic;
-    color: ${props => props.theme.dark};
+    color: ${darkColor};
   }
 
   &:focus {
@@ -43,13 +42,20 @@ const Input = styled.input`
   }
 `;
 
-const InputCpt = (props) =>
-  <Input 
-    autoComplete="off"
-    {...props}
-    onChange={props.handleInputChange}
-    onKeyPress={props.checkSubmit}
+const InputCpt = props =>
+  <div style={{display: 'flex', flexDirection: 'column' }}>
+    <CharCounter 
+      charCount={props.charCount} 
+      valid={props.valid} 
+      charMax={props.charMax} 
     />
+    <Input 
+      autoComplete="off"
+      {...props}
+      onChange={props.handleInputChange}
+      onKeyPress={props.checkSubmit}
+      />
+  </div>
 
 InputCpt.propTypes = {
   name: PropTypes.string,
@@ -58,6 +64,8 @@ InputCpt.propTypes = {
   valid: PropTypes.bool,
   handleInputChange: PropTypes.func,
   checkSubmit: PropTypes.func,
+  charCount: PropTypes.number,
+  charMax: PropTypes.number,
 };
 
 export default InputCpt;
