@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ItemCpt from './ItemCpt';
+import formatTime from '../time-utils';
 import * as apiCalls from './../api';
 
 class TimeSlipItem extends Component {
@@ -32,11 +33,7 @@ class TimeSlipItem extends Component {
   }
 
   convertTime() {
-    let date = new Date(null);
-    date.setMilliseconds(this.state.totalTime);
-    let baseConverstion = date.toISOString()
-    let totalTimeConverted = baseConverstion.substr(11, 8);
-
+    const totalTimeConverted = formatTime(this.state.totalTime)
     this.setState({totalTimeConverted});
   }
 

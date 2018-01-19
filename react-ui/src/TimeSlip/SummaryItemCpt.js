@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icons from '../Icons';
+import formatTime from '../time-utils';
 
 const light = props => props.theme.light;
 const dark = props => props.theme.dark;
@@ -39,7 +40,7 @@ const ItemSummary = props =>
         color={props.completed ? 'faded' : 'dark'} 
         size="small" icon="trash" />
     </Skinny>
-    <Normal>{props.total_time}</Normal>
+    <Normal>{formatTime(props.total_time)}</Normal>
     <Normal>{props.completed ? 'yes' : 'no'}</Normal>
     <Skinny> {props.url &&
       <a href={props.url} target="_blank">

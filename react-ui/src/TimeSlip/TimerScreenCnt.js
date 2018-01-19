@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import TimerScreenCpt from './TimerScreenCpt';
+import formatTime from '../time-utils';
 
 class Timer extends Component {
   constructor(props) {
@@ -60,9 +61,9 @@ class Timer extends Component {
     }
   }
 
-  convertTime(seconds) {
+  convertTime(milliseconds) {
     let date = new Date(null);
-    date.setSeconds(seconds);
+    date.setSeconds(milliseconds);
     let baseConverstion = date.toISOString()
     let timeConverted;
 
