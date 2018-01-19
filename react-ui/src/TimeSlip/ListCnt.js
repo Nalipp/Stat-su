@@ -89,9 +89,17 @@ class ListCnt extends Component{
       <div>
       { this.state.showSummary ? 
         <SummaryCpt>
-          <SummaryHeadingCpt toggleSummary={this.toggleSummary}/>
-          <SummaryItemCnt archive="true">{unarchivedItemSummary}</SummaryItemCnt>
-          <SummaryItemCnt archive="false">{archivedItemSummary}</SummaryItemCnt>
+          <SummaryHeadingCpt toggleSummary={this.toggleSummary} />
+          <SummaryItemCnt 
+            timeSlips={this.state.timeSlips} 
+            archive="true">
+            {unarchivedItemSummary}
+          </SummaryItemCnt>
+          <SummaryItemCnt 
+            timeSlips={this.state.timeSlips} 
+            archive="false">
+            {archivedItemSummary}
+          </SummaryItemCnt>
         </SummaryCpt>
         : 
         <ListCpt>

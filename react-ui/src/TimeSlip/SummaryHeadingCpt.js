@@ -10,7 +10,7 @@ const CloseMenu = styled.span`
   padding: 1rem 1.25rem 2.25rem 2.25rem;
 `;
 
-const SummaryHeading = props =>
+const SummaryHeading = props => 
   <div>
     <CloseMenu onClick={props.toggleSummary}>
       <Icons color='dark' icon='close' size='mlarge' />

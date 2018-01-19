@@ -266,6 +266,9 @@ back inside react-ui run npm start and style the front end
   - figure out timer blink bug
   - https://medium.com/@joethedave/achieving-ui-animations-with-react-the-right-way-562fa8a91935
 
+  ui
+  - more space above main title (now that there is a hamburger) make the hamburger smaller?
+
   change CharCounter.js to CharCounterCpt.js
 
   upgrade dyno

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import { media } from '../style-utils';
+import formatTime from '../time-utils';
 
 const fadeIn = keyframes`
   from {opacity: 0.1}
@@ -9,6 +10,7 @@ const fadeIn = keyframes`
 `;
 
 const Heading = styled.div`
+  display: inline-block;
   margin: .50rem 0 .50rem 1.5rem;
   font-size: .8rem;
   color: ${props => props.theme.dark};
@@ -22,12 +24,30 @@ const Items = styled.ul`
   animation: ${fadeIn} .5s ease;
 `;
 
-const ItemSummary = props =>
-  <Items>
+const Time = styled.span`
+  font-size: .5rem;
+  padding-left: 1.2rem;
+`;
+
+const ItemSummary = props => {
+  let totalActiveTime = 0;
+  let totalArchivedTime = 0;
+  props.timeSlips.forEach(v => {
+    if (v.completed) totalActiveTime += v.total_time;
+    else totalArchivedTime += v.total_time;
+  });
+  return <Items>
     <Heading>
-      {props.archive === 'true' ? 'Active' : 'Archived'}
+      { props.archive === 'true' ? 'Active' : 'Archived' }
     </Heading>
+    <Time>
+      { props.archive === 'true' ? 
+        'total : ' + formatTime(totalActiveTime) :
+        'total : ' + formatTime(totalArchivedTime)
+      }
+    </Time>
     {props.children}
   </Items>
+}
 
 export default ItemSummary;
