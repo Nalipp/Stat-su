@@ -1,65 +1,34 @@
 import React from 'react';
-import styled, {keyframes} from 'styled-components';
 import {media} from '../style-utils';
+import PropTypes from 'prop-types';
 import Icons from './../Icons';
-
-const fadeIn = keyframes`
-  from {opacity: 0.1}
-  to {opacity: 1}
-`;
+import styled from 'styled-components';
 
 const Wrapper = styled.section`
-  margin: 3.75rem 0;
-  align-items: center;
-  text-align: center;
-  animation: ${fadeIn} 0.3s linear;
+  width: 90%;
+  margin: 0 auto 5.625rem auto;
+
   ${media.tablet`
-    margin: 6rem 0;
+    width: 60%;
+  `}
+  ${media.desktop`
+    width: 50%;
+  `}
+  ${media.jumboDesktop`
+    width: 40%;
   `}
 `;
-
-const H1 = styled.h1`
-  font-size: 3.75rem;
-  color: ${props => props.theme.light};
-  letter-spacing: 0.375rem;
-  ${media.tablet`
-    font-size: 5rem;
-  `}
-`;
-
-const P = styled.p`
-  padding-top: .5rem;
-  margin-left: -1.25rem;
-  font-size: .65rem;
-  letter-spacing: .3rem;
-  ${media.tablet`
-    padding-top: .6rem;
-    margin-left: -1.25rem;
-    font-size: .75rem;
-    letter-spacing: .4rem;
-  `}
-`;
-
-const Menu = styled.span`
-  position: absolute;
-  top: 0;
-  right 0;
-  padding: 1.25rem 1.25rem 2.25rem 2.25rem;
-`;
-
-const Span = styled.span`
-  color: ${props => props.theme.dark};
-`
 
 const ListCpt = (props) =>
   <Wrapper>
-    <Menu onClick={props.toggleSummary}>
-      <Icons icon='hamburger' size='large' />
-    </Menu>
-    <H1>
-      <Span>T</Span>Study
-    </H1>
-    <P>Track you productivity</P>
+    {props.children}
   </Wrapper>
+
+ListCpt.propTypes = {
+  children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
+  ]).isRequired
+}
 
 export default ListCpt;

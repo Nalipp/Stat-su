@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Form from './FormCnt';
-import ItemCnt from './ItemCnt';
+import UnarchivedItemCnt from './ItemCnt';
 import ListCpt from './ListCpt';
+import ListHeading from './ListHeading';
 import SummaryCpt from './SummaryCpt';
-import ItemSummary from './ItemSummary';
-import ItemSummaryCpt from './ItemSummaryCpt';
+import SummaryHeadingCpt from './SummaryHeadingCpt';
+import SummaryItemCnt from './SummaryItemCnt';
+import SummaryItemCpt from './SummaryItemCpt';
 
 import * as apiCalls from './../api';
 
@@ -51,9 +53,9 @@ class ListCnt extends Component{
   }
 
   render () {
-    const itemCnt = this.state.timeSlips.map(slip => (
+    const unarchivedItemList = this.state.timeSlips.map(slip => (
       (slip.completed === false &&
-        <ItemCnt 
+        <UnarchivedItemCnt 
           key={slip._id}
           {...slip} 
           onArchive={this.archiveTimeSlip.bind(this, slip)}
@@ -61,9 +63,9 @@ class ListCnt extends Component{
       )
     ));
 
-    const completedItemSummary = this.state.timeSlips.map(slip => (
+    const archivedItemSummary = this.state.timeSlips.map(slip => (
       (slip.completed === false &&
-      <ItemSummaryCpt 
+      <SummaryItemCpt 
         key={slip._id}
         {...slip} 
         onArchive={this.archiveTimeSlip.bind(this, slip)}
@@ -72,9 +74,9 @@ class ListCnt extends Component{
       )
     ));
 
-    const unCompletedItemSummary = this.state.timeSlips.map(slip => (
+    const unarchivedItemSummary = this.state.timeSlips.map(slip => (
       (slip.completed === true &&
-      <ItemSummaryCpt 
+      <SummaryItemCpt
         key={slip._id}
         {...slip} 
         onArchive={this.archiveTimeSlip.bind(this, slip)}
@@ -86,17 +88,17 @@ class ListCnt extends Component{
     return (
       <div>
       { this.state.showSummary ? 
-        <div>
-          <SummaryCpt toggleSummary={this.toggleSummary}/>
-          <ItemSummary>{completedItemSummary}</ItemSummary>
-          <ItemSummary>{unCompletedItemSummary}</ItemSummary>
-        </div>
+        <SummaryCpt>
+          <SummaryHeadingCpt toggleSummary={this.toggleSummary}/>
+          <SummaryItemCnt>{archivedItemSummary}</SummaryItemCnt>
+          <SummaryItemCnt>{unarchivedItemSummary}</SummaryItemCnt>
+        </SummaryCpt>
         : 
-        <div>
-          <ListCpt toggleSummary={this.toggleSummary} />
+        <ListCpt>
+          <ListHeading toggleSummary={this.toggleSummary} />
           <Form addTimeSlip={this.addTimeSlip} />
-          <ul>{itemCnt}</ul>
-        </div>
+          <ul>{unarchivedItemList}</ul>
+        </ListCpt>
       }
       </div>
     )

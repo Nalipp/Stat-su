@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ItemSummaryCpt from './ItemSummaryCpt';
 import styled from 'styled-components';
 import { media } from '../style-utils';
 

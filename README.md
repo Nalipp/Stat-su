@@ -243,14 +243,15 @@ back inside react-ui run npm start and style the front end
 
 
   hamburger drop down to user page
-  - user summary screen with unarchive option for each deleted timeSlip (white background)
-  - choose different color themes?
+  - xuser summary screen with unarchive option for each deleted timeSlip (white background)
+  - change color
   - page should show all archived and unarchived timeSlips with concatenated discriptions with option to delete permentantly and add time
-  - link main title, total, createAt, lastUpdated to summary page
   - seed more archived data
 
 
   /-- current  
+
+  choose different color themes?
 
   reorganize state into children so that parent only holds state if they need to
 
