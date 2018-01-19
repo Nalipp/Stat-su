@@ -17,21 +17,20 @@ const CloseMenu = styled.span`
 `;
 
 const Heading = styled.div`
-  margin: 3rem;
+  margin: 0 3rem 3rem 3rem;
   font-size: 1.75rem;
-  color: ${props => props.theme.light};
+  color: ${props => props.theme.dark};
   letter-spacing: 0.375rem;
-  animation: ${fadeIn} 0.3s linear;
+  animation: ${fadeIn} 0.5s linear;
   ${media.tablet`
-    margin: 2rem;
-    font-size: 2rem;
+    margin: 0 3rem 3rem 3rem;
   `}
 `;
 
 const SummaryHeading = props =>
   <div>
     <CloseMenu onClick={props.toggleSummary}>
-      <Icons icon='close' size='mlarge' />
+      <Icons color='dark' icon='close' size='mlarge' />
     </CloseMenu>
     <Heading>
       Study Summary

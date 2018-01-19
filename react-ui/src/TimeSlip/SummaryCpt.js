@@ -5,8 +5,7 @@ import Icons from './../Icons';
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
-  width: 95%;
-  margin: 0 auto 5.625rem auto;
+  background: ${props => props.theme.light};
 
   ${media.tablet`
   `}

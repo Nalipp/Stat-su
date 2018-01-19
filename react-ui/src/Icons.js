@@ -1,11 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const sgvStyle = {
-  display: 'inline-block',
-  fill: 'white',
-  cursor: 'pointer',
-}
+import styled from 'styled-components';
 
 const icons = {
   play: 'M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 928c-229.75 0-416-186.25-416-416s186.25-416 416-416 416 186.25 416 416-186.25 416-416 416zM384 288l384 224-384 224z',
@@ -20,6 +15,15 @@ const icons = {
   edit: 'M896 293.504l-165.504-165.504c-12.501-12.501-28.928-18.731-45.269-18.731-16.384 0-32.725 6.229-45.227 18.731l-466.731 466.731c-12.501 12.501-23.808 31.019-32 50.688-8.192 19.755-13.269 40.917-13.269 58.581v192h192c17.664 0 38.741-5.077 58.496-13.269 19.755-8.192 38.229-19.499 50.731-32l466.773-466.731c12.501-12.501 18.731-28.928 18.731-45.269 0-16.384-6.229-32.725-18.731-45.227zM246.101 642.603l353.835-353.835 52.565 52.565-353.835 353.835-52.565-52.565zM320 810.667h-64l-42.667-42.667v-64c0-3.285 1.408-13.013 6.741-25.813 0.427-0.853 126.592 125.355 126.592 125.355-13.739 5.717-23.381 7.125-26.667 7.125zM381.397 777.899l-52.565-52.565 353.835-353.835 52.565 52.565-353.835 353.835zM765.397 393.899l-135.339-135.339 55.168-55.168 135.253 135.339-55.083 55.168z',
 };
 
+const light = props => props.theme.light;
+const dark = props => props.theme.dark;
+
+const Svg = styled.svg`
+  display: inline-block;
+  fill: ${props => props.color === 'dark' ? dark : light};
+  cursor: pointer;
+`;
+
 const customSize = {
   small: '16',
   normal: '22',
@@ -33,9 +37,9 @@ const customSize = {
 }
 
 const Icons = props => (
-  <svg style={sgvStyle} width={customSize[props.size]} height={customSize[props.size]} viewBox="0 0 1024 1024">
+  <Svg {...props} width={customSize[props.size]} height={customSize[props.size]} viewBox="0 0 1024 1024">
     <path d={icons[props.icon]}></path>
-  </svg>
+  </Svg>
 );
 
 Icons.propTypes = {
@@ -44,3 +48,4 @@ Icons.propTypes = {
 };
 
 export default Icons;
+
