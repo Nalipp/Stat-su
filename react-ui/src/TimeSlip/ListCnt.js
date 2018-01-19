@@ -3,6 +3,7 @@ import Form from './FormCnt';
 import ItemCnt from './ItemCnt';
 import ListCpt from './ListCpt';
 import SummaryCnt from './SummaryCnt';
+import ItemSummary from './ItemSummary';
 
 import * as apiCalls from './../api';
 
@@ -60,14 +61,22 @@ class ListCnt extends Component{
       )
     ));
 
+    const itemSummary = this.state.timeSlips.map(slip =>
+      <ItemSummary 
+        key={slip._id}
+        {...slip} 
+        onArchive={this.archiveTimeSlip.bind(this, slip)}
+        onDelete={this.deleteTimeSlip.bind(this, slip)}
+      />
+    );
+
     return (
       <div>
       { this.state.showSummary ? 
-        <SummaryCnt 
-          timeSlips={this.state.timeSlips}
-          onArchive={this.archiveTimeSlip}
-          onDelete={this.deleteTimeSlip}
-        />
+        <div>
+          <SummaryCnt />
+          <ul>{itemSummary}</ul>
+        </div>
         : 
         <div>
           <ListCpt toggleSummary={this.toggleSummary} />
