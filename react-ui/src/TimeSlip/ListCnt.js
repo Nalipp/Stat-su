@@ -4,6 +4,7 @@ import ItemCnt from './ItemCnt';
 import ListCpt from './ListCpt';
 import SummaryCpt from './SummaryCpt';
 import ItemSummary from './ItemSummary';
+import ItemSummaryCpt from './ItemSummaryCpt';
 
 import * as apiCalls from './../api';
 
@@ -51,31 +52,44 @@ class ListCnt extends Component{
 
   render () {
     const itemCnt = this.state.timeSlips.map(slip => (
-      (slip.completed === false ?
+      (slip.completed === false &&
         <ItemCnt 
           key={slip._id}
           {...slip} 
           onArchive={this.archiveTimeSlip.bind(this, slip)}
         />
-        : null
       )
     ));
 
-    const itemSummary = this.state.timeSlips.map(slip =>
-      <ItemSummary 
+    const completedItemSummary = this.state.timeSlips.map(slip => (
+      (slip.completed === false &&
+      <ItemSummaryCpt 
         key={slip._id}
         {...slip} 
         onArchive={this.archiveTimeSlip.bind(this, slip)}
         onDelete={this.deleteTimeSlip.bind(this, slip)}
       />
-    );
+      )
+    ));
+
+    const unCompletedItemSummary = this.state.timeSlips.map(slip => (
+      (slip.completed === true &&
+      <ItemSummaryCpt 
+        key={slip._id}
+        {...slip} 
+        onArchive={this.archiveTimeSlip.bind(this, slip)}
+        onDelete={this.deleteTimeSlip.bind(this, slip)}
+      />
+      )
+    ));
 
     return (
       <div>
       { this.state.showSummary ? 
         <div>
           <SummaryCpt toggleSummary={this.toggleSummary}/>
-          <ul>{itemSummary}</ul>
+          <ItemSummary>{completedItemSummary}</ItemSummary>
+          <ItemSummary>{unCompletedItemSummary}</ItemSummary>
         </div>
         : 
         <div>
@@ -90,7 +104,3 @@ class ListCnt extends Component{
 }
 
 export default ListCnt;
-        //
-        // {...slip} 
-        // onArchive={this.archiveTimeSlip.bind(this, slip)}
-        // onDelete={this.deleteTimeSlip.bind(this, slip)}

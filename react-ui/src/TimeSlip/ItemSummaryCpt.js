@@ -31,7 +31,7 @@ const ItemSummary = props =>
       <Icons size="small" icon="trash" />
     </Skinny>
     <ItemData>{props.total_time}</ItemData>
-    <ItemData>{props.completed}</ItemData>
+    <ItemData>{props.completed ? 'yes' : 'no'}</ItemData>
 
     <Skinny>
     {props.url ? 
