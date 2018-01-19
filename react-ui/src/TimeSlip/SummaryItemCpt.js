@@ -65,4 +65,13 @@ const ItemSummary = props =>
     <Description>{props.description.slice(0, 30) + '...'}</Description>
   </Item>
 
+ItemSummary.propTypes = {
+  completed: PropTypes.bool,
+  totalTime: PropTypes.number,
+  description: PropTypes.string,
+  total_time: PropTypes.number,
+  url: PropTypes.string,
+  language: PropTypes.string,
+}
+
 export default ItemSummary;

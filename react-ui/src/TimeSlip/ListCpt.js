@@ -1,7 +1,6 @@
 import React from 'react';
 import {media} from '../style-utils';
 import PropTypes from 'prop-types';
-import Icons from './../Icons';
 import styled from 'styled-components';
 
 const Wrapper = styled.section`

@@ -32,10 +32,12 @@ const Time = styled.span`
 const ItemSummary = props => {
   let totalActiveTime = 0;
   let totalArchivedTime = 0;
+
   props.timeSlips.forEach(v => {
     if (v.completed) totalActiveTime += v.total_time;
     else totalArchivedTime += v.total_time;
   });
+
   return <Items>
     <Heading>
       { props.archive === 'true' ? 'Active' : 'Archived' }
@@ -48,6 +50,15 @@ const ItemSummary = props => {
     </Time>
     {props.children}
   </Items>
+}
+
+ItemSummary.propTypes = {
+  timeSlips: PropTypes.arrayOf(PropTypes.object),
+  archive: PropTypes.func,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 }
 
 export default ItemSummary;

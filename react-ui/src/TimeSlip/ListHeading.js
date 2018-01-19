@@ -2,6 +2,7 @@ import React from 'react';
 import styled, {keyframes} from 'styled-components';
 import {media} from '../style-utils';
 import Icons from './../Icons';
+import PropTypes from 'prop-types';
 
 const fadeIn = keyframes`
   from {opacity: 0.1}
@@ -62,5 +63,9 @@ const ListHeading = (props) =>
       <H3>Track you productivity</H3>
     </Heading>
   </div>
+
+ListHeading.propTypes = {
+  toggleSummary: PropTypes.func,
+}
 
 export default ListHeading;
