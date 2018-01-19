@@ -17,10 +17,11 @@ const icons = {
 
 const light = props => props.theme.light;
 const dark = props => props.theme.dark;
+const faded = props => props.theme.faded;
 
 const Svg = styled.svg`
   display: inline-block;
-  fill: ${props => props.color === 'dark' ? dark : light};
+  fill: ${props => props.color === 'dark' ? dark : props.color === 'faded' ? faded : light};
   cursor: pointer;
 `;
 
@@ -45,6 +46,7 @@ const Icons = props => (
 Icons.propTypes = {
   icon: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired,
+  color: PropTypes.string,
 };
 
 export default Icons;

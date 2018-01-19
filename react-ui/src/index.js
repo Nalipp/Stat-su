@@ -11,6 +11,7 @@ const theme = {
   stop: 'tomato',
   start: '#72DA66',
   light: 'white',
+  faded: '#c2c7cd',
 }
 
 injectGlobal`

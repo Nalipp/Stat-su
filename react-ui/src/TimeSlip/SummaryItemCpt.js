@@ -3,46 +3,52 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icons from '../Icons';
 
+const light = props => props.theme.light;
+const dark = props => props.theme.dark;
+const faded = props => props.theme.faded;
+const baseColor = props => props.completed ? faded : dark;
+
 const Item = styled.li`
   list-style: none;
   display: flex;
-  border: 1px solid ${props => props.theme.light};
+  margin: .2rem 1rem 0 1rem;
+  padding: .1rem;
+  border-radius: .2rem;
+  color: ${baseColor};
+  border: .1rem solid ${baseColor};
 `;
 
-const ItemData = styled.span`
+const Normal = styled.span`
   width: 22%;
-  background: ${props => props.theme.background};
-  color: ${props => props.theme.dark};
+  background: ${light};
 `;
 
-const Skinny = ItemData.extend`
+const Skinny = Normal.extend`
   width: 5%;
   padding: .1rem;
 `;
 
-const Wide = ItemData.extend`
+const Wide = Normal.extend`
   width: 33%;
 `;
 
 const ItemSummary = props =>
   <Item {...props}>
     <Skinny>
-      <Icons size="small" icon="trash" />
+      <Icons 
+        color={props.completed ? 'faded' : 'dark'} 
+        size="small" icon="trash" />
     </Skinny>
-    <ItemData>{props.total_time}</ItemData>
-    <ItemData>{props.completed ? 'yes' : 'no'}</ItemData>
-
-    <Skinny>
-    {props.url ? 
-        <a href={props.url} target="_blank">
-          <Icons size="small" icon="link" />
-        </a>
-      :
-        ''
-    }
+    <Normal>{props.total_time}</Normal>
+    <Normal>{props.completed ? 'yes' : 'no'}</Normal>
+    <Skinny> {props.url &&
+      <a href={props.url} target="_blank">
+        <Icons 
+          color={props.completed ? 'faded' : 'dark'} 
+          size="small" icon="link" />
+      </a>}
     </Skinny>
-
-    <ItemData>{props.language}</ItemData>
+    <Normal>{props.language}</Normal>
     <Wide>{props.description.slice(0, 22)}</Wide>
   </Item>
 
