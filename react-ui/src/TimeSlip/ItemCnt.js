@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import TimeSlipLi from './ItemCpt';
+import ItemCpt from './ItemCpt';
 import * as apiCalls from './../api';
 
 class TimeSlipItem extends Component {
@@ -52,7 +52,7 @@ class TimeSlipItem extends Component {
     const { language, description, url, _id, onArchive, created_date, last_update} = this.props;
 
   return (
-    <TimeSlipLi 
+    <ItemCpt 
       id={_id}
       language={language}
       description={description}

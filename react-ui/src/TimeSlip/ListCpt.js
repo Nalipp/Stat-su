@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
 import {media} from '../style-utils';
+import Icons from './../Icons';
 
 const fadeIn = keyframes`
   from {opacity: 0.1}
@@ -39,12 +40,22 @@ const P = styled.p`
   `}
 `;
 
+const Menu = styled.span`
+  position: absolute;
+  top: 0;
+  right 0;
+  padding: 1.25rem 1.25rem 2.25rem 2.25rem;
+`;
+
 const Span = styled.span`
   color: ${props => props.theme.dark};
 `
 
-const ListCpt = () =>
+const ListCpt = (props) =>
   <Wrapper>
+    <Menu onClick={props.toggleSummary}>
+      <Icons icon='hamburger' size='large' />
+    </Menu>
     <H1>
       <Span>T</Span>Study
     </H1>

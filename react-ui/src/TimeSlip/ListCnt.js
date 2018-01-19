@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Form from './FormCnt';
 import ItemCnt from './ItemCnt';
 import ListCpt from './ListCpt';
+import SummaryCnt from './SummaryCnt';
+
 import * as apiCalls from './../api';
 
 class ListCnt extends Component{
@@ -9,9 +11,11 @@ class ListCnt extends Component{
     super(props)
     this.state = {
       timeSlips: [],
+      showSummary: false,
     }
     this.loadTimeSlips();
     this.addTimeSlip = this.addTimeSlip.bind(this);
+    this.toggleSummary = this.toggleSummary.bind(this);
   }
 
   async loadTimeSlips(){
@@ -24,12 +28,6 @@ class ListCnt extends Component{
     this.setState({timeSlips: [newTimeSlip, ...this.state.timeSlips]});
   }
 
-  async deleteTimeSlip(id) {
-    await apiCalls.deleteTimeSlip(id);
-    let timeSlips = this.state.timeSlips.filter(slip => slip._id !== id);
-    this.setState({timeSlips});
-  }
-
   async archiveTimeSlip(timeSlip) {
     let updatedTimeSlip = await apiCalls.archiveTimeSlip(timeSlip); 
     let timeSlips = this.state.timeSlips.map(timeSlip =>
@@ -38,6 +36,16 @@ class ListCnt extends Component{
         : timeSlip
       );
     this.setState({timeSlips});
+  }
+
+  async deleteTimeSlip(id) {
+    await apiCalls.deleteTimeSlip(id);
+    let timeSlips = this.state.timeSlips.filter(slip => slip._id !== id);
+    this.setState({timeSlips});
+  }
+
+  toggleSummary() {
+    this.setState({showSummary: !this.state.showSummary});
   }
 
   render () {
@@ -51,14 +59,29 @@ class ListCnt extends Component{
         : null
       )
     ));
+
     return (
       <div>
-        <ListCpt />
-        <Form addTimeSlip={this.addTimeSlip} />
-        <ul>{itemCnt}</ul>
+      { this.state.showSummary ? 
+        <SummaryCnt 
+          timeSlips={this.state.timeSlips}
+          onArchive={this.archiveTimeSlip}
+          onDelete={this.deleteTimeSlip}
+        />
+        : 
+        <div>
+          <ListCpt toggleSummary={this.toggleSummary} />
+          <Form addTimeSlip={this.addTimeSlip} />
+          <ul>{itemCnt}</ul>
+        </div>
+      }
       </div>
     )
   }
 }
 
 export default ListCnt;
+        //
+        // {...slip} 
+        // onArchive={this.archiveTimeSlip.bind(this, slip)}
+        // onDelete={this.deleteTimeSlip.bind(this, slip)}

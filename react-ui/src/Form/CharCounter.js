@@ -5,6 +5,7 @@ import { media } from '../style-utils';
 
 const baseColor = props => props.theme.light;
 const errorColor = props => props.theme.danger;
+const counterColor = props => props.valid ? baseColor : errorColor;
 
 const Counter = styled.span`
   display: inline-block;
@@ -12,27 +13,17 @@ const Counter = styled.span`
   height: 10px;
   width: 60px;
   margin: 1.2rem 0 0 .8rem;
-  color: ${baseColor};
+  color: ${counterColor};
   ${media.tablet`
     margin: 1.8rem 0 0 .8rem;
-    color: ${baseColor};
+    color: ${counterColor};
   `}
 `;
 
-const ErrorCounter = Counter.extend`
-  color: ${errorColor};
-`;
-
-const CharCounter = props => 
-  (props.valid ?
-    <Counter>
-      {props.charCount > 0 ? `${props.charCount} / ${props.charMax}` : null}
-    </Counter>
-  :
-    <ErrorCounter>
-      {props.charCount > 0 ? `${props.charCount} / ${props.charMax}` : null}
-    </ErrorCounter>
-  ) 
+const CharCounter = (props) => 
+  <Counter {...props}>
+    {props.charCount > 0 ? `${props.charCount} / ${props.charMax}` : null}
+  </Counter>
 
 CharCounter.propTypes = {
     charCount: PropTypes.number,

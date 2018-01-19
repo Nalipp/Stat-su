@@ -235,26 +235,34 @@ back inside react-ui run npm start and style the front end
   -1200px desktop media queries
   -1800px desktop jumbo media queries
 
-
-  /-- current  
-
-
   fix validations
   - remove all minimums
   - replace with max countdown?
 
+  /-- current  
+
+
+  hamburger drop down to user page
+  - user summary screen with unarchive option for each deleted timeSlip (white background)
+  - choose different color themes?
+  - page should show all archived and unarchived timeSlips with concatenated discriptions with option to delete permentantly and add time
+  - link main title, total, createAt, lastUpdated to summary page
+  - seed more archived data
+
 
   /-- current  
 
-  clean up timer screen render
-
-  upgrade dyno
-
-  refactor form to use props.children
+  reorganize state into children so that parent only holds state if they need to
 
   add hover affects on icons
 
-  create a footer  
+  clean up timer screen render
+  - figure out timer blink bug
+  - https://medium.com/@joethedave/achieving-ui-animations-with-react-the-right-way-562fa8a91935
+
+  change CharCounter.js to CharCounterCpt.js
+
+  upgrade dyno
 
   fix transistions
   - move transition from entire list to indiviual component (better for adding an item)
@@ -274,13 +282,6 @@ back inside react-ui run npm start and style the front end
   - update github
   
   drag and drop using React DnD  
-
-  hamburger drop down to user page
-  - user summary screen with unarchive option for each deleted timeSlip (white background)
-  - choose different color themes?
-  - page should show all archived and unarchived timeSlips with concatenated discriptions with option to delete permentantly and add time
-  - link main title, total, createAt, lastUpdated to summary page
-  - seed more archived data
 
   fix travis  
 

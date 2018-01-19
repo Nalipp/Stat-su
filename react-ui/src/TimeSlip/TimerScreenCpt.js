@@ -7,6 +7,7 @@ import { media } from '../style-utils';
 
 const startColor = props => props.theme.start;
 const stopColor = props => props.theme.stop;
+const timerColor = props => !props.timerRunning ? startColor : stopColor;
 
 const Blink = keyframes`
   0% {opacity: 1}
@@ -14,17 +15,12 @@ const Blink = keyframes`
   100% {opacity: 1}
 `;
 
-const FadeInSlight = keyframes`
-  from {opacity: .99}
+const FadeIn = keyframes`
+  from {opacity: .1}
   to {opacity: 1}
 `;
 
-const StartToStop = keyframes`
-  from {background: tomato}
-  to {background: #72DA66}
-`;
-
-const ScreenStyle = styled.div`
+const TimerScreen = styled.div`
   padding: 0 5%;
   position: fixed;
   width: 90%;
@@ -34,20 +30,12 @@ const ScreenStyle = styled.div`
   right: 0;
   left: 0;
   overflow-x: hidden;
+  background: ${timerColor};
+  animation: ${FadeIn} 0.3s linear;
   ${media.tablet`
     padding: 0 10%;
     width: 80%;
   `}
-`;
-
-const StartStyle = ScreenStyle.extend`
-  background: ${startColor};
-  animation: ${StartToStop} 0.3s linear;
-`;
-
-const StopStyle = ScreenStyle.extend`
-  background: ${stopColor};
-  animation: ${FadeInSlight} .6s linear;
 `;
 
 const H1 = styled.h1`
@@ -63,14 +51,16 @@ const H1 = styled.h1`
 const TotalTime = styled.p`
   text-align: center;
   font-size: 1.1rem;
+
+  > span {
+    animation: ${Blink} 1s linear;
+  }
+
   ${media.tablet`
     font-size: 1.4rem;
   `}
-
-  > span {
-    animation: ${Blink} 1s linear;}
-  }
 `
+
 const CloseScreen = styled.span`
   position: absolute;
   top: 0;
@@ -89,40 +79,23 @@ const TimerButton = styled.h2`
   cursor: pointer;
 `;
 
-const TimerScreenCpt = ({timerRunning, language, totalTimeConverted, hideScreenAndPostTime, setStartOrStopTime, timeConverted}) =>
-  (timerRunning ?
-  <StartStyle>
-    <H1>{language}</H1>
-    <TotalTime>Total Time : {totalTimeConverted}</TotalTime>
-    <CloseScreen onClick={hideScreenAndPostTime}>
+const TimerScreenCpt = (props) =>
+  <TimerScreen {...props}>
+    <H1>{props.language}</H1>
+    <TotalTime>Total Time : <span>{props.totalTimeConverted}</span></TotalTime>
+    <CloseScreen onClick={props.hideScreenAndPostTime}>
       <Icons size="xxlarge" icon="close" />
     </CloseScreen>
-    <TimerDisplay timeConverted={timeConverted} />
-    <TimerButton onClick={setStartOrStopTime}>
-      {timerRunning ? 
+    <TimerDisplay timeConverted={props.timeConverted} />
+    <TimerButton onClick={props.setStartOrStopTime}>
+      {props.timerRunning ? 
         <Icons icon='pause' size='xjumbo' />
       : 
         <Icons icon='play' size='xjumbo' />
       }
     </TimerButton>
-  </StartStyle>
-  :
-  <StopStyle>
-    <H1>{language}</H1>
-    <TotalTime>Total Time : <span>{totalTimeConverted}</span></TotalTime>
-    <CloseScreen onClick={hideScreenAndPostTime}>
-    <Icons size="xxlarge" icon="close" />
-    </CloseScreen>
-    <TimerDisplay timeConverted={timeConverted} />
-    <TimerButton onClick={setStartOrStopTime}>
-      {timerRunning ? 
-        <Icons icon='pause' size='xjumbo' />
-      : 
-        <Icons icon='play' size='xjumbo' />
-      }
-    </TimerButton>
-  </StopStyle>
-  )
+  </TimerScreen>
+  
 
 TimerScreenCpt.propTypes = {
   timmerRunning: PropTypes.bool,
