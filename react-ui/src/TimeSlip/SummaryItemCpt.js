@@ -53,7 +53,7 @@ const ItemSummary = props =>
         icon={props.completed ? 'unarchive' : 'archive'} 
       />
     </Icon>
-    <Timer>{formatTime(props.total_time)}</Timer>
+    <Timer>{formatTime.hhmmss(props.total_time)}</Timer>
     <Icon> {props.url &&
       <a href={props.url} target="_blank">
         <Icons 

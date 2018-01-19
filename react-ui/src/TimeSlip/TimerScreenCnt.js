@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import TimerScreenCpt from './TimerScreenCpt';
-import formatTime from '../time-utils';
 
 class Timer extends Component {
   constructor(props) {

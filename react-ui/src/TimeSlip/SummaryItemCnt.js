@@ -41,9 +41,9 @@ const ItemSummary = props => {
       { props.archive === 'true' ? 'Active' : 'Archived' }
     </Heading>
     <Time>
-      { props.archive === 'true' ? 
-        'total : ' + formatTime(totalActiveTime) :
-        'total : ' + formatTime(totalArchivedTime)
+      { props.archive === 'false' ? 
+        'total : ' + formatTime.hours(totalActiveTime) :
+        'total : ' + formatTime.hours(totalArchivedTime)
       }
     </Time>
     {props.children}

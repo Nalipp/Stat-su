@@ -33,7 +33,7 @@ class TimeSlipItem extends Component {
   }
 
   convertTime() {
-    const totalTimeConverted = formatTime(this.state.totalTime)
+    const totalTimeConverted = formatTime.mmss(this.state.totalTime)
     this.setState({totalTimeConverted});
   }
 

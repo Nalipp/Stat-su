@@ -1,18 +1,28 @@
-const convertTime = (milliseconds, format) => {
-  let date = new Date(null);
-  date.setMilliseconds(milliseconds);
-  let baseConverstion = date.toISOString()
-  let timeConverted;
+const media = {
+  mmss: (milliseconds) => {
+    let date = new Date(null);
+    date.setMilliseconds(milliseconds);
+    let baseConverstion = date.toISOString()
 
-  if (format === 'small') {
     if (baseConverstion[12] === '0') {
-      return timeConverted = baseConverstion.substr(14, 5);
-    } 
-  }
-  timeConverted = baseConverstion.substr(11, 8);
+      return baseConverstion.substr(14, 5);
+    }
+    return baseConverstion.substr(11, 8);
+  },
+  hhmmss: (milliseconds) => {
+    let date = new Date(null);
+    date.setMilliseconds(milliseconds);
+    let baseConverstion = date.toISOString()
 
-
-  return timeConverted;
+    return baseConverstion.substr(11, 8);
+  },
+  hours: (mil) => {
+    let sec = mil * 0.001;
+    let min = sec * 0.0166667;
+    let hour = min * 0.0166667;
+    return Math.floor(hour);
+  },
 }
 
-export default convertTime;
+export default media;
+
