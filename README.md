@@ -245,8 +245,9 @@ back inside react-ui run npm start and style the front end
   hamburger drop down to user page
   - xuser summary screen with unarchive option for each deleted timeSlip (white background)
   - xchange summray color
-  - xconvert summary time
+  - xextract time format into time-utils
   - breakpoint styling
+  - close summary with escape
   - hook up trash and archive / unarchive
   - clean up warnings and lint
   - page should show all archived and unarchived timeSlips with concatenated discriptions with option to delete permentantly and add time

@@ -5,6 +5,9 @@ import styled from 'styled-components';
 
 const Wrapper = styled.section`
   background: ${props => props.theme.light};
+  min-height: 100%;
+  width: 100%;
+  position: absolute;
 
   ${media.tablet`
   `}

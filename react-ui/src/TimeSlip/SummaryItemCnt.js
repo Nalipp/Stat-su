@@ -8,16 +8,25 @@ const fadeIn = keyframes`
   to {opacity: 1}
 `;
 
+const Heading = styled.div`
+  margin: .50rem 0 .50rem 1.5rem;
+  font-size: .8rem;
+  color: ${props => props.theme.dark};
+  letter-spacing: 0.15rem;
+  animation: ${fadeIn} 0.5s linear;
+`;
+
 const Items = styled.ul`
   display: block;
-  padding: 20px 0;
-  margin: 20px 0;
+  margin: 3rem 0;
   animation: ${fadeIn} .5s ease;
-  margin: 0 auto 5.625rem auto;
 `;
 
 const ItemSummary = props =>
   <Items>
+    <Heading>
+      {props.archive === 'true' ? 'Active' : 'Archived'}
+    </Heading>
     {props.children}
   </Items>
 

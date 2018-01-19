@@ -64,7 +64,7 @@ class ListCnt extends Component{
     ));
 
     const archivedItemSummary = this.state.timeSlips.map(slip => (
-      (slip.completed === false &&
+      (slip.completed === true &&
       <SummaryItemCpt 
         key={slip._id}
         {...slip} 
@@ -75,7 +75,7 @@ class ListCnt extends Component{
     ));
 
     const unarchivedItemSummary = this.state.timeSlips.map(slip => (
-      (slip.completed === true &&
+      (slip.completed === false &&
       <SummaryItemCpt
         key={slip._id}
         {...slip} 
@@ -90,8 +90,8 @@ class ListCnt extends Component{
       { this.state.showSummary ? 
         <SummaryCpt>
           <SummaryHeadingCpt toggleSummary={this.toggleSummary}/>
-          <SummaryItemCnt>{archivedItemSummary}</SummaryItemCnt>
-          <SummaryItemCnt>{unarchivedItemSummary}</SummaryItemCnt>
+          <SummaryItemCnt archive="true">{unarchivedItemSummary}</SummaryItemCnt>
+          <SummaryItemCnt archive="false">{archivedItemSummary}</SummaryItemCnt>
         </SummaryCpt>
         : 
         <ListCpt>
