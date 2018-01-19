@@ -24,6 +24,7 @@ const customSize = {
   small: '16',
   normal: '22',
   large: '28',
+  mlarge: '38',
   xlarge: '45',
   xxlarge: '60',
   jumbo: '130',

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Form from './FormCnt';
 import ItemCnt from './ItemCnt';
 import ListCpt from './ListCpt';
-import SummaryCnt from './SummaryCnt';
+import SummaryCpt from './SummaryCpt';
 import ItemSummary from './ItemSummary';
 
 import * as apiCalls from './../api';
@@ -74,7 +74,7 @@ class ListCnt extends Component{
       <div>
       { this.state.showSummary ? 
         <div>
-          <SummaryCnt />
+          <SummaryCpt toggleSummary={this.toggleSummary}/>
           <ul>{itemSummary}</ul>
         </div>
         : 
