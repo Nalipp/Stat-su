@@ -25,45 +25,59 @@ const Item = styled.li`
 const Timer = styled.span`
   box-sizing: border-box;
   margin-left: .1rem;
-  font-size: .55rem;
+  font-size: 7px;
   background: ${light};
-  width: 10%;
+  width: 13%;
 `;
 
 const Icon = Timer.extend`
   cursor: pointer;
-  width: 7%;
+  width: 6%;
+  font-size: 8px;
 `;
 
 const Language = Timer.extend`
-  width: 22%;
+  width: 20%;
+  font-size: 8px;
 `;
 
 const Description = Timer.extend`
-  width: 44%;
+  width: 52%;
+  font-size: 8px;
 `;
 
-const ItemSummary = props =>
-  <Item {...props}>
-    <Icon>
-      <Icons color="dark" size="small" icon="trash" /></Icon>
-    <Icon>
-      <Icons 
-        color="dark" size="small"
-        icon={props.completed ? 'unarchive' : 'archive'} 
-      />
-    </Icon>
-    <Timer>{formatTime.hhmmss(props.total_time)}</Timer>
-    <Icon> {props.url &&
-      <a href={props.url} target="_blank">
+const concat = (str, chars) => {
+  if (str.length > chars) str = str.slice(0, chars) + '...';
+  return str;
+}
+
+function ItemSummary(props) {
+  return (
+    <Item {...props}>
+      <Icon>
         <Icons 
-          color={props.completed ? 'faded' : 'dark'} 
-          size="small" icon="link" />
-      </a>}
-    </Icon>
-    <Language>{props.language}</Language>
-    <Description>{props.description.slice(0, 30) + '...'}</Description>
-  </Item>
+          color={props.completed ? 'slightFade' : 'dark'} 
+          size="small"
+          icon={props.completed ? 'unarchive' : 'archive'} />
+      </Icon>
+      <Timer>{formatTime.hhmmss(props.total_time)}</Timer>
+      <Icon> {props.url &&
+        <a href={props.url} target="_blank">
+          <Icons 
+            color={props.completed ? 'faded' : 'dark'} 
+            size="small" icon="link" />
+        </a>}
+      </Icon>
+      <Language>{concat(props.language, 15)}</Language>
+      <Description>{concat(props.description, 38)}</Description>
+      {props.completed && 
+        <Icon>
+          <Icons color="slightFade" size="small" icon="trash" />
+        </Icon>
+      }
+    </Item>
+  )
+}
 
 ItemSummary.propTypes = {
   completed: PropTypes.bool,

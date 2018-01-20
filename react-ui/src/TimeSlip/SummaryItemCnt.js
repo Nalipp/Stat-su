@@ -13,9 +13,12 @@ const Heading = styled.div`
   display: inline-block;
   margin: .50rem 0 .50rem 1.5rem;
   font-size: .8rem;
-  color: ${props => props.theme.dark};
   letter-spacing: 0.15rem;
   animation: ${fadeIn} 0.5s linear;
+`;
+
+const FadedHeading = Heading.extend`
+  color: ${props => props.theme.faded};
 `;
 
 const Items = styled.ul`
@@ -29,7 +32,11 @@ const Time = styled.span`
   padding-left: 1.2rem;
 `;
 
-const ItemSummary = props => {
+const FadedTime = Time.extend`
+  color: ${props => props.theme.faded};
+`;
+
+const ItemSummary = (props) => {
   let totalActiveTime = 0;
   let totalArchivedTime = 0;
 
@@ -38,23 +45,28 @@ const ItemSummary = props => {
     else totalArchivedTime += v.total_time;
   });
 
-  return <Items>
-    <Heading>
-      { props.archive === 'true' ? 'Active' : 'Archived' }
-    </Heading>
-    <Time>
-      { props.archive === 'false' ? 
-        'total : ' + formatTime.hours(totalActiveTime) :
-        'total : ' + formatTime.hours(totalArchivedTime)
-      }
-    </Time>
-    {props.children}
-  </Items>
+  return (
+    <Items>
+        { props.archive === 'true' 
+          ? 
+          <Heading>Active</Heading>
+          : 
+          <FadedHeading>Archived</FadedHeading> 
+        }
+        { props.archive === 'true' 
+          ? 
+          <Time>hours : {formatTime.hours(totalActiveTime)}</Time>
+          : 
+          <FadedTime>hours : {formatTime.hours(totalArchivedTime)}</FadedTime>
+        }
+      {props.children}
+    </Items>
+  )
 }
 
 ItemSummary.propTypes = {
   timeSlips: PropTypes.arrayOf(PropTypes.object),
-  archive: PropTypes.func,
+  archive: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node

@@ -18,15 +18,16 @@ const icons = {
 const light = props => props.theme.light;
 const dark = props => props.theme.dark;
 const faded = props => props.theme.faded;
+const slightFade = props => props.theme.slightFade;
 
 const Svg = styled.svg`
   display: inline-block;
-  fill: ${props => props.color === 'dark' ? dark : props.color === 'faded' ? faded : light};
+  fill: ${props => props.color === 'dark' ? dark : props.color === 'faded' ? faded : props.color === 'slightFade' ? slightFade : light};
   cursor: pointer;
 `;
 
 const customSize = {
-  small: '14',
+  small: '12',
   normal: '22',
   large: '28',
   mlarge: '38',

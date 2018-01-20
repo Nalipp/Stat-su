@@ -12,6 +12,7 @@ const theme = {
   start: '#72DA66',
   light: 'white',
   faded: '#c2c7cd',
+  slightFade: '#707c8a',
 }
 
 injectGlobal`

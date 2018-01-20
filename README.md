@@ -210,34 +210,36 @@ back inside react-ui run npm start and style the front end
   xadd to TimeSlipItem
   - xcreated (convert to date)
 
-  post last updated time and add to TimeSlip Item
+  xpost last updated time and add to TimeSlip Item
   - xtests
   - xupdated (on TimeSlip ui with seed data)
   - xupdate when posting to TimeSlip
 
   xlisten for escape keypress to close timmer popup
 
-  add icons
-  - link
-  - trash  
-  - play
-  - stop
+  xadd icons
+  - xlink
+  - xtrash  
+  - xplay
+  - xstop
 
-  refactor all css into styled components
+  xrefactor all css into styled components
 
-  file structure
+  xfile structure
 
-  refactor api calls
+  xrefactor api calls
 
-  media queries using template literal mixins
-  -600px mobile media queries
-  -900px tablet media queries
-  -1200px desktop media queries
-  -1800px desktop jumbo media queries
+  xmedia queries using template literal mixins
+  - x600px mobile media queries
+  - x900px tablet media queries
+  - x1200px desktop media queries
+  - x1800px desktop jumbo media queries
 
-  fix validations
-  - remove all minimums
-  - replace with max countdown?
+  xfix validations
+  - xremove all minimums
+  - xreplace with max countdown?
+
+
 
   /-- current  
 
@@ -248,16 +250,21 @@ back inside react-ui run npm start and style the front end
   - xextract time format into time-utils
   - xseed more archived data
   - xmore options for time conversion
-  - summary times should update without page refresh
+  - xclean up warnings and lint
+  - xpage should show all archived and unarchived timeSlips with concatenated discriptions with option to delete permentantly and add time
+  - archived summary style
 
-  - breakpoint styling
+  - breakpoint styling (fix spacing on moble, time needs more space and shorten description)
+
   - close summary with escape
   - hook up trash and archive / unarchive
-  - clean up warnings and lint
-  - page should show all archived and unarchived timeSlips with concatenated discriptions with option to delete permentantly and add time
+  - summary times should update without page refresh
+  - seed real data
 
 
   /-- current  
+
+
 
   choose different color themes?
 
