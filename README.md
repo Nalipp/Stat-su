@@ -244,6 +244,12 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
 
+  refactor summary components into cpt and cnt
+
+
+  /-- current  
+
+
   hamburger drop down to user page
   - xuser summary screen with unarchive option for each deleted timeSlip (white background)
   - xchange summray color
@@ -252,7 +258,7 @@ back inside react-ui run npm start and style the front end
   - xmore options for time conversion
   - xclean up warnings and lint
   - xpage should show all archived and unarchived timeSlips with concatenated discriptions with option to delete permentantly and add time
-  - archived summary style
+  - xarchived summary style
 
   - breakpoint styling (fix spacing on moble, time needs more space and shorten description)
 
@@ -260,10 +266,6 @@ back inside react-ui run npm start and style the front end
   - hook up trash and archive / unarchive
   - summary times should update without page refresh
   - seed real data
-
-
-  /-- current  
-
 
 
   choose different color themes?

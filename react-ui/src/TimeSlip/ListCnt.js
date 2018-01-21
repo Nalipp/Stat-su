@@ -3,11 +3,7 @@ import Form from './FormCnt';
 import UnarchivedItemCnt from './ItemCnt';
 import ListCpt from './ListCpt';
 import ListHeading from './ListHeading';
-import SummaryCpt from './SummaryCpt';
-import SummaryHeadingCpt from './SummaryHeadingCpt';
-import SummaryItemCnt from './SummaryItemCnt';
-import SummaryItemCpt from './SummaryItemCpt';
-
+import SummaryCnt from './SummaryCnt';
 import * as apiCalls from './../api';
 
 class ListCnt extends Component{
@@ -63,44 +59,14 @@ class ListCnt extends Component{
       )
     ));
 
-    const archivedItemSummary = this.state.timeSlips.map(slip => (
-      (slip.completed === true &&
-      <SummaryItemCpt 
-        key={slip._id}
-        {...slip} 
-        onArchive={this.archiveTimeSlip.bind(this, slip)}
-        onDelete={this.deleteTimeSlip.bind(this, slip)}
-      />
-      )
-    ));
-
-    const unarchivedItemSummary = this.state.timeSlips.map(slip => (
-      (slip.completed === false &&
-      <SummaryItemCpt
-        key={slip._id}
-        {...slip} 
-        onArchive={this.archiveTimeSlip.bind(this, slip)}
-        onDelete={this.deleteTimeSlip.bind(this, slip)}
-      />
-      )
-    ));
-
     return (
       <div>
       { this.state.showSummary ? 
-        <SummaryCpt>
-          <SummaryHeadingCpt toggleSummary={this.toggleSummary} />
-          <SummaryItemCnt 
-            timeSlips={this.state.timeSlips} 
-            archive="true">
-            {unarchivedItemSummary}
-          </SummaryItemCnt>
-          <SummaryItemCnt 
-            timeSlips={this.state.timeSlips} 
-            archive="false">
-            {archivedItemSummary}
-          </SummaryItemCnt>
-        </SummaryCpt>
+        <SummaryCnt 
+          archiveTimeSlip={this.archiveTimeSlip}
+          deleteTimeSlip={this.deleteTimeSlip}
+          timeSlips={this.state.timeSlips}
+          toggleSummary={this.toggleSummary} />
         : 
         <ListCpt>
           <ListHeading toggleSummary={this.toggleSummary} />
