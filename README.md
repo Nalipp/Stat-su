@@ -244,7 +244,10 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
 
-  refactor summary components into cpt and cnt
+  refactor
+  - xsummary components into cpt and cnt
+  - move total time calculation to parrent TimeSlipCnt
+  - update the total time calcusation state whenever time is submited and send the state to child summaryCnt
 
 
   /-- current  

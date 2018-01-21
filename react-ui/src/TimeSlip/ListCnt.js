@@ -11,7 +11,7 @@ class ListCnt extends Component{
     super(props)
     this.state = {
       timeSlips: [],
-      showSummary: true,
+      showSummary: false,
     }
     this.loadTimeSlips();
     this.addTimeSlip = this.addTimeSlip.bind(this);

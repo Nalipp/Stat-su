@@ -37,27 +37,19 @@ const FadedTime = Time.extend`
 `;
 
 const ItemSummary = (props) => {
-  let totalActiveTime = 0;
-  let totalArchivedTime = 0;
-
-  props.timeSlips.forEach(v => {
-    if (v.completed) totalActiveTime += v.total_time;
-    else totalArchivedTime += v.total_time;
-  });
-
   return (
     <Items>
-        { props.archive === 'true' 
+        { props.active === 'true' 
           ? 
           <Heading>Active</Heading>
           : 
           <FadedHeading>Archived</FadedHeading> 
         }
-        { props.archive === 'true' 
+        { props.active === 'true' 
           ? 
-          <Time>hours : {formatTime.hours(totalActiveTime)}</Time>
+          <Time>hours : {formatTime.hhmmss(props.totalTime)}</Time>
           : 
-          <FadedTime>hours : {formatTime.hours(totalArchivedTime)}</FadedTime>
+          <FadedTime>hours : {formatTime.hhmmss(props.totalTime)}</FadedTime>
         }
       {props.children}
     </Items>
@@ -65,8 +57,8 @@ const ItemSummary = (props) => {
 }
 
 ItemSummary.propTypes = {
-  timeSlips: PropTypes.arrayOf(PropTypes.object),
-  archive: PropTypes.string,
+  TotalTime: PropTypes.number,
+  active: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
