@@ -1,13 +1,7 @@
 import React from 'react';
-import ListCnt from './TimeSlip/ListCnt';
-import styled from 'styled-components';
-import {media} from './style-utils';
+import TimeSlipsCnt from './TimeSlip/TimeSlipsCnt';
 
-const Wrapper = styled.section`
-`
 const App = () =>
-  <Wrapper>
-    <ListCnt />
-  </Wrapper>
+  <TimeSlipsCnt />
 
 export default App;
