@@ -254,12 +254,13 @@ back inside react-ui run npm start and style the front end
 
   xremove timeSlips from TimeSlipCnt
 
+  xwhenever a time submission is made it should increase the totalActiveTime
+  1. xfind where totalTime state is updated
+  2. xpass a function from SummaryCnt that updates the totalActiveTime when totalTime is updated
+
 
   /-- current  
 
-
-  - total time bug
-  whenever a time submission is made it must increase the totalActiveTime
 
   remove hideTimeScreen from ItemCpt
 

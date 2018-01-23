@@ -27,6 +27,7 @@ class TimeSlipItem extends Component {
   postTime(id, currentTotal) {
     let totalTime = this.state.totalTime + currentTotal;
     this.setState({totalTime});
+    this.props.increaseTotalActiveTime(currentTotal);
     apiCalls.postTime(id, {totalTime}); 
   }
 
@@ -70,6 +71,7 @@ TimeSlipItem.propTypes = {
   description: PropTypes.string,
   totalTime: PropTypes.number,
   onArchive: PropTypes.func,
+  increaseTotalActiveTime: PropTypes.func,
 }
 
 export default TimeSlipItem;

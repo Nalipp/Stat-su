@@ -12,6 +12,7 @@ class ListCnt extends Component {
         key={slip._id}
         {...slip} 
         onArchive={this.props.archiveTimeSlip.bind(this, slip)}
+        increaseTotalActiveTime={this.props.increaseTotalActiveTime}
       />
     ));
 
@@ -32,6 +33,7 @@ ListCpt.propTypes = {
   addTimeSlip: PropTypes.func,
   totalActiveTime: PropTypes.number,
   totalArchivedTime: PropTypes.number,
+  increaseTotalActiveTime: PropTypes.func,
 };
 
 export default ListCnt;
