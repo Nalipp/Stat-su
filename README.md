@@ -248,6 +248,7 @@ back inside react-ui run npm start and style the front end
   - xsummary components into cpt and cnt
   - refactor ItemCnt to use time format from time-utils
   - change SummaryItemCnt to SummaryListCnt
+  - change SummaryHeadingCpt to CloseMenuCnt and style with MenuControlCpt
   - add delete functionality to summary
   - add archive functionality to summary
   - total time bug
