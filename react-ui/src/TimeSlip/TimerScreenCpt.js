@@ -80,7 +80,7 @@ const TimerButton = styled.h2`
   cursor: pointer;
 `;
 
-const TimerScreenCpt = (props) => {
+const TimerScreenCpt = props => {
   return (
     <TimerScreen {...props}>
       <H1>{props.language}</H1>

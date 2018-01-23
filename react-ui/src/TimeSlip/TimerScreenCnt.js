@@ -73,14 +73,11 @@ class Timer extends Component {
   }
 
   render() {
-    const { language, totalTime } = this.props
-
     return (
       <TimerScreenCpt 
+        {...this.props}
         timerRunning={this.state.timerRunning}
         handleKeyPress={this.handleKeyPress}
-        language={language}
-        totalTime={totalTime}
         timeCounter={this.state.timeCounter}
         hideScreenAndPostTime={this.hideScreenAndPostTime}
         setStartOrStopTime={this.setStartOrStopTime}

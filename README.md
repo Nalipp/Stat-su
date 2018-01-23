@@ -262,10 +262,6 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
 
-  remove hideTimeScreen from ItemCpt
-
-  - move total time calculation to parrent TimeSlipCnt
-  - update the total time calcusation state whenever time is submited and send the state to child summaryCnt
   - clean up code using ...props
 
 

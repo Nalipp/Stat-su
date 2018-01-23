@@ -4,7 +4,7 @@ import FormCpt from './../Form/FormCpt';
 import InputCpt from '../Form/inputCpt';
 import TextAreaCpt from '../Form/TextAreaCpt';
 
-class Form extends Component{
+class FormCnt extends Component{
   constructor(props){
     super(props)
     this.state = { 
@@ -121,8 +121,8 @@ class Form extends Component{
   }
 }
 
-Form.propTypes = {
+FormCnt.propTypes = {
   addTimeSlip: PropTypes.func
 }
 
-export default Form;
+export default FormCnt;

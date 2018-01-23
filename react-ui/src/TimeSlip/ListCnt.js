@@ -26,7 +26,7 @@ class ListCnt extends Component {
   }
 }
 
-ListCpt.propTypes = {
+ListCnt.propTypes = {
   activeTimeSlips: PropTypes.arrayOf(PropTypes.object),
   archiveTimeSlip: PropTypes.func,
   toggleSummary: PropTypes.func,

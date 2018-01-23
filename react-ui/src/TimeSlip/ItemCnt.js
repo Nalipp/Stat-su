@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ItemCpt from './ItemCpt';
-import formatTime from '../time-utils';
 import * as apiCalls from './../api';
 
 class TimeSlipItem extends Component {
@@ -40,17 +39,12 @@ class TimeSlipItem extends Component {
   }
 
   render() {
-    const { language, description, url, _id, onArchive, created_date, last_update} = this.props;
+    const { _id } = this.props;
 
   return (
     <ItemCpt 
       id={_id}
-      language={language}
-      description={description}
-      url={url}
-      onArchive={onArchive}
-      created_date={created_date}
-      last_update={last_update}
+      {...this.props}
       totalTime={this.state.totalTime}
       hideTimerScreen={this.hideTimerScreen}
       showTimerScreen={this.showTimerScreen}
