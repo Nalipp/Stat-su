@@ -47,9 +47,9 @@ const ItemSummary = (props) => {
         }
         { props.active === 'true' 
           ? 
-          <Time>hours : {props.totalTime}</Time>
+          <Time>hours : {formatTime.hhmmss(props.totalTime)}</Time>
           : 
-          <FadedTime>hours : {props.totalTime}</FadedTime>
+          <FadedTime>hours : {formatTime.hhmmss(props.totalTime)}</FadedTime>
         }
       {props.children}
     </Items>

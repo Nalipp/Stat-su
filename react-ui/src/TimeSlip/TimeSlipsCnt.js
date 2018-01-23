@@ -8,26 +8,20 @@ class TimeSlipsCnt extends Component {
     super(props)
     this.state = {
       timeSlips: [],
-      TotalActiveTime: 0,
-      TotalArchivedTime: 0,
       showSummary: false,
     }
     this.loadTimeSlips();
     this.toggleSummary = this.toggleSummary.bind(this);
     this.addTimeSlip = this.addTimeSlip.bind(this);
     this.archiveTimeSlip = this.archiveTimeSlip.bind(this);
-    this.calculateTotalTimes = this.calculateTotalTimes.bind(this);
-    this.recalculateTime = this.recalculateTime.bind(this);
   }
 
   async loadTimeSlips(){
     let timeSlips = await apiCalls.getTimeSlips();
-    this.setState({timeSlips}, () => this.calculateTotalTimes());
+    this.setState({timeSlips});
   }
 
   async archiveTimeSlip(timeSlip) {
-    this.recalculateTime(timeSlip.total_time, timeSlip.completed);
-
     let updatedTimeSlip = await apiCalls.archiveTimeSlip(timeSlip); 
     let timeSlips = this.state.timeSlips.map(timeSlip =>
       (timeSlip._id === updatedTimeSlip._id) 
@@ -52,40 +46,12 @@ class TimeSlipsCnt extends Component {
     this.setState({showSummary: !this.state.showSummary});
   }
 
-  calculateTotalTimes() {
-    let TotalActiveTime = 0;
-    let TotalArchivedTime = 0;
-
-    this.state.timeSlips.forEach(v => {
-      if (!v.completed) TotalActiveTime += v.total_time;
-      else TotalArchivedTime += v.total_time;
-    });
-
-    this.setState({TotalActiveTime, TotalArchivedTime});
-  }
-
-  recalculateTime(timeAmount, changingToActive) {
-    if (changingToActive) {
-      let TotalActiveTime = this.state.TotalActiveTime + timeAmount;
-      let TotalArchivedTime = this.state.TotalArchivedTime - timeAmount;
-      this.setState({TotalActiveTime});
-      this.setState({TotalArchivedTime});
-    } else {
-      let TotalActiveTime = this.state.TotalActiveTime - timeAmount;
-      let TotalArchivedTime = this.state.TotalArchivedTime + timeAmount;
-      this.setState({TotalActiveTime});
-      this.setState({TotalArchivedTime});
-    }
-  }
-
   render() {
     return (
       <div>
         { this.state.showSummary ? 
           <SummaryCnt 
             timeSlips={this.state.timeSlips}
-            totalActiveTime={this.state.totalActiveTime} 
-            totalArchivedTime={this.state.totalArchivedTime} 
             toggleSummary={this.toggleSummary} 
             archiveTimeSlip={this.archiveTimeSlip}
             deleteTimeSlip={this.deleteTimeSlip}
