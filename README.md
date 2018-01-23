@@ -247,7 +247,10 @@ back inside react-ui run npm start and style the front end
   refactor
   - xsummary components into cpt and cnt
   - refactor ItemCnt to use time format from time-utils
-          // there is a bug with total time missing now (hard reset??)
+  - change SummaryItemCnt to SummaryListCnt
+  - add delete functionality to summary
+  - add archive functionality to summary
+  - total time bug
   - move total time calculation to parrent TimeSlipCnt
   - update the total time calcusation state whenever time is submited and send the state to child summaryCnt
 

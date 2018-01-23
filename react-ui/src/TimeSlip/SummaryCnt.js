@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SummaryCpt from './SummaryCpt';
 import SummaryHeadingCpt from './SummaryHeadingCpt';
-import SummaryItemCnt from './SummaryItemCnt';
+import SummaryListCnt from './SummaryListCnt';
 import SummaryItemCpt from './SummaryItemCpt';
 
 const SummaryCnt = props => {
@@ -32,16 +32,16 @@ const SummaryCnt = props => {
   return (
     <SummaryCpt>
       <SummaryHeadingCpt toggleSummary={props.toggleSummary} />
-      <SummaryItemCnt 
+      <SummaryListCnt 
         totalTime={props.totalActiveTime} 
         active="true">
         {activeSummary}
-      </SummaryItemCnt>
-      <SummaryItemCnt 
+      </SummaryListCnt>
+      <SummaryListCnt 
         totalTime={props.totalArchivedTime} 
         active="false">
         {archivedSummary}
-      </SummaryItemCnt>
+      </SummaryListCnt>
     </SummaryCpt>
   )
 }
