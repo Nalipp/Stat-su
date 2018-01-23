@@ -16,8 +16,7 @@ class TimeSlipsCnt extends Component {
     this.addTimeSlip = this.addTimeSlip.bind(this);
     this.archiveTimeSlip = this.archiveTimeSlip.bind(this);
     this.calculateTotalTimes = this.calculateTotalTimes.bind(this);
-    this.recalculateActiveTime = this.recalculateActiveTime.bind(this);
-    this.recalculateArchivedTime = this.recalculateArchivedTime.bind(this);
+    this.recalculateTime = this.recalculateTime.bind(this);
   }
 
   async loadTimeSlips(){
@@ -26,14 +25,8 @@ class TimeSlipsCnt extends Component {
   }
 
   async archiveTimeSlip(timeSlip) {
+    this.recalculateTime(timeSlip.total_time, timeSlip.completed);
 
-    if (timeSlip.completed) {
-      this.recalculateActiveTime(timeSlip.total_time, '+')
-      this.recalculateArchivedTime(timeSlip.total_time, '-')
-    } else {
-      this.recalculateArchivedTime(timeSlip.total_time, '+')
-      this.recalculateActiveTime(timeSlip.total_time, '-')
-    }
     let updatedTimeSlip = await apiCalls.archiveTimeSlip(timeSlip); 
     let timeSlips = this.state.timeSlips.map(timeSlip =>
       (timeSlip._id === updatedTimeSlip._id) 
@@ -70,23 +63,17 @@ class TimeSlipsCnt extends Component {
     this.setState({TotalActiveTime, TotalArchivedTime});
   }
 
-  recalculateActiveTime(timeAmount, operator) {
-    if (operator === '+') {
+  recalculateTime(timeAmount, changingToActive) {
+    if (changingToActive) {
       let TotalActiveTime = this.state.TotalActiveTime + timeAmount;
-      this.setState({TotalActiveTime})
+      let TotalArchivedTime = this.state.TotalArchivedTime - timeAmount;
+      this.setState({TotalActiveTime});
+      this.setState({TotalArchivedTime});
     } else {
       let TotalActiveTime = this.state.TotalActiveTime - timeAmount;
-      this.setState({TotalActiveTime})
-    }
-  }
-
-  recalculateArchivedTime(timeAmount, operator) {
-    if (operator === '+') {
       let TotalArchivedTime = this.state.TotalArchivedTime + timeAmount;
-      this.setState({TotalArchivedTime})
-    } else {
-      let TotalArchivedTime = this.state.TotalArchivedTime - timeAmount;
-      this.setState({TotalArchivedTime})
+      this.setState({TotalActiveTime});
+      this.setState({TotalArchivedTime});
     }
   }
 
