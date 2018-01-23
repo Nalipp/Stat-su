@@ -7,7 +7,6 @@ class TimeSlipsCnt extends Component {
   constructor(props){
     super(props)
     this.state = {
-      timeSlips: [],
       activeTimeSlips: [],
       archivedTimeSlips: [],
       totalActiveTime: 0,
@@ -26,7 +25,7 @@ class TimeSlipsCnt extends Component {
 
   async loadTimeSlips(){
     let timeSlips = await apiCalls.getTimeSlips();
-    this.setState({timeSlips}, () => this.partitionActiveAndArchived());
+    this.partitionActiveAndArchived(timeSlips);
   }
 
   async archiveTimeSlip(timeSlip) {
@@ -62,13 +61,13 @@ class TimeSlipsCnt extends Component {
     this.setState({showSummary: !this.state.showSummary});
   }
 
-  partitionActiveAndArchived() {
+  partitionActiveAndArchived(timeSlips) {
     let activeTimeSlips = [];
     let archivedTimeSlips = [];
     let totalActiveTime = 0;
     let totalArchivedTime = 0;
 
-    this.state.timeSlips.forEach(slip => {
+    timeSlips.forEach(slip => {
       if (!slip.completed) {
         totalActiveTime += slip.total_time;
         activeTimeSlips.push(slip);

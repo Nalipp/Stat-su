@@ -279,7 +279,7 @@ back inside react-ui run npm start and style the front end
 
   - better transistions
   - close summary with escape
-  - seed real data
+  - seed real data (fix time format bug)
 
 
   choose different color themes?
@@ -322,6 +322,20 @@ back inside react-ui run npm start and style the front end
 
 
   \* ****************************************************************************** \*
+  thoughts
+
+  Before leaning Readux I wanted to build a project without it
+
+  Even though there is only one model there are three different possible screens being displayed
+
+  Passing state across all three screens is becoming burdensome
+
+  Refactor into better containers and components it is also difficult without a test suite to rely on
+
+  Instead it is probably better to implement Redux to handle state, then refactor and add tests
+
+
+  \* ****************************************************************************** \*
   future plans
 
 
@@ -332,6 +346,8 @@ back inside react-ui run npm start and style the front end
   React Router
 
   Redux 
+
+  testing suite
 
 
   ---- phase 3 -----
