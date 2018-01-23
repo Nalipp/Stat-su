@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ListCnt from './ListCnt';
 import * as apiCalls from './../api';
+import SummaryCnt from './SummaryCnt';
 
 class TimeSlipsCnt extends Component {
   constructor(props){
@@ -79,16 +80,26 @@ class TimeSlipsCnt extends Component {
 
   render() {
     return (
-      <ListCnt 
-        timeSlips={this.state.timeSlips} 
-        showSummary={this.state.showSummary}
-        archiveTimeSlip={this.archiveTimeSlip}
-        deleteTimeSlip={this.deleteTimeSlip}
-        toggleSummary={this.toggleSummary}
-        addTimeSlip={this.addTimeSlip}
-        totalActiveTime={this.state.TotalActiveTime}
-        totalArchivedTime={this.state.TotalArchivedTime}
-      />
+      <div>
+        { this.state.showSummary ? 
+          <SummaryCnt 
+            timeSlips={this.state.timeSlips}
+            totalActiveTime={this.state.totalActiveTime} 
+            totalArchivedTime={this.state.totalArchivedTime} 
+            toggleSummary={this.toggleSummary} 
+            archiveTimeSlip={this.archiveTimeSlip}
+            deleteTimeSlip={this.deleteTimeSlip}
+            />
+          : 
+          <ListCnt 
+            timeSlips={this.state.timeSlips} 
+            toggleSummary={this.toggleSummary}
+            addTimeSlip={this.addTimeSlip}
+            archiveTimeSlip={this.archiveTimeSlip}
+            deleteTimeSlip={this.deleteTimeSlip}
+          />
+        }
+      </div>
     )
   }
 }

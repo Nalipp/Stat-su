@@ -47,9 +47,9 @@ const ItemSummary = (props) => {
         }
         { props.active === 'true' 
           ? 
-          <Time>hours : {formatTime.hhmmss(props.totalTime)}</Time>
+          <Time>hours : {props.totalTime}</Time>
           : 
-          <FadedTime>hours : {formatTime.hhmmss(props.totalTime)}</FadedTime>
+          <FadedTime>hours : {props.totalTime}</FadedTime>
         }
       {props.children}
     </Items>
@@ -57,7 +57,7 @@ const ItemSummary = (props) => {
 }
 
 ItemSummary.propTypes = {
-  TotalTime: PropTypes.number,
+  totalTime: PropTypes.number,
   active: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),

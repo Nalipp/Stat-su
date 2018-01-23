@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SummaryCnt from './SummaryCnt';
 import Form from './FormCnt';
 import UnarchivedItemCnt from './ItemCnt';
 import ListCpt from './ListCpt';
@@ -19,31 +18,17 @@ class ListCnt extends Component {
     ));
 
     return (
-      <div>
-      { this.props.showSummary ? 
-        <SummaryCnt 
-          archiveTimeSlip={this.props.archiveTimeSlip}
-          deleteTimeSlip={this.props.deleteTimeSlip}
-          timeSlips={this.props.timeSlips}
-          toggleSummary={this.props.toggleSummary} 
-          totalActiveTime={this.props.totalActiveTime} 
-          totalArchivedTime={this.props.totalArchivedTime} 
-          />
-        : 
-        <ListCpt>
-          <ListHeading toggleSummary={this.props.toggleSummary} />
-          <Form addTimeSlip={this.props.addTimeSlip} />
-          <ul>{unarchivedItemList}</ul>
-        </ListCpt>
-      }
-      </div>
+      <ListCpt>
+        <ListHeading toggleSummary={this.props.toggleSummary} />
+        <Form addTimeSlip={this.props.addTimeSlip} />
+        <ul>{unarchivedItemList}</ul>
+      </ListCpt>
     )
   }
 }
 
 ListCpt.propTypes = {
   timeSlips: PropTypes.arrayOf(PropTypes.object),
-  showSummary: PropTypes.bool,
   archiveTimeSlip: PropTypes.func,
   toggleSummary: PropTypes.func,
   addTimeSlip: PropTypes.func,
