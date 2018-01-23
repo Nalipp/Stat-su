@@ -50,7 +50,7 @@ class TimeSlipItem extends Component {
       onArchive={onArchive}
       created_date={created_date}
       last_update={last_update}
-      timeTotal={this.state.totalTime}
+      totalTime={this.state.totalTime}
       hideTimerScreen={this.hideTimerScreen}
       showTimerScreen={this.showTimerScreen}
       timerScreenShowing={this.state.timerScreenShowing}

@@ -252,14 +252,20 @@ back inside react-ui run npm start and style the front end
   5. xdo the same for delete, and archive
   6. xhook up archive functionality to test if changes are made to the SummaryCnt without page refresh
 
+  xremove timeSlips from TimeSlipCnt
+
+
   /-- current  
 
 
-  remove timeSlips from TimeSlipCnt
-
   - total time bug
+  whenever a time submission is made it must increase the totalActiveTime
+
+  remove hideTimeScreen from ItemCpt
+
   - move total time calculation to parrent TimeSlipCnt
   - update the total time calcusation state whenever time is submited and send the state to child summaryCnt
+  - clean up code using ...props
 
 
   /-- current  

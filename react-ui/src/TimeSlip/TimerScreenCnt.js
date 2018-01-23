@@ -46,8 +46,8 @@ class Timer extends Component {
   }
 
   calculateAndPost() {
-    let timeTotal = Date.now() - this.state.startTime;
-    this.props.postTime(this.props.id, timeTotal);
+    let totalTime = Date.now() - this.state.startTime;
+    this.props.postTime(this.props.id, totalTime);
   }
 
   setStartOrStopTime() {
@@ -73,15 +73,15 @@ class Timer extends Component {
   }
 
   render() {
-    const { language, totalTimeConverted } = this.props
+    const { language, totalTime } = this.props
 
     return (
       <TimerScreenCpt 
         timerRunning={this.state.timerRunning}
         handleKeyPress={this.handleKeyPress}
         language={language}
-        totalTimeConverted={totalTimeConverted}
-        timeTotal={this.state.timeCounter}
+        totalTime={totalTime}
+        timeCounter={this.state.timeCounter}
         hideScreenAndPostTime={this.hideScreenAndPostTime}
         setStartOrStopTime={this.setStartOrStopTime}
         timmerRunning={this.timmerRunning}
@@ -92,10 +92,10 @@ class Timer extends Component {
 
 Timer.propTypes = {
   language: PropTypes.string,
-  totalTimeConverted: PropTypes.string,
   id: PropTypes.string, 
   hideTimerScreen: PropTypes.func,
   postTime: PropTypes.func,
+  totalTime: PropTypes.number,
 }
 
 export default Timer;

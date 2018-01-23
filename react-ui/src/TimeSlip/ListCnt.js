@@ -8,11 +8,11 @@ import PropTypes from 'prop-types';
 class ListCnt extends Component {
   render () {
     const activeTimeSlips = this.props.activeTimeSlips.map(slip => (
-        <ItemCnt 
-          key={slip._id}
-          {...slip} 
-          onArchive={this.props.archiveTimeSlip.bind(this, slip)}
-        />
+      <ItemCnt 
+        key={slip._id}
+        {...slip} 
+        onArchive={this.props.archiveTimeSlip.bind(this, slip)}
+      />
     ));
 
     return (

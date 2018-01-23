@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Icons from './../Icons';
 import TimerDisplay from './TimerDisplayCpt';
 import { media } from '../style-utils';
+import format from '../time-utils';
 
 const startColor = props => props.theme.start;
 const stopColor = props => props.theme.stop;
@@ -79,32 +80,37 @@ const TimerButton = styled.h2`
   cursor: pointer;
 `;
 
-const TimerScreenCpt = (props) =>
-  <TimerScreen {...props}>
-    <H1>{props.language}</H1>
-    <TotalTime>Total Time : <span>{props.totalTimeConverted}</span></TotalTime>
-    <CloseScreen onClick={props.hideScreenAndPostTime}>
-      <Icons size="xxlarge" icon="close" />
-    </CloseScreen>
-    <TimerDisplay timeTotal={props.timeTotal} />
-    <TimerButton onClick={props.setStartOrStopTime}>
-      {props.timerRunning ? 
-        <Icons icon='pause' size='xjumbo' />
-      : 
-        <Icons icon='play' size='xjumbo' />
-      }
-    </TimerButton>
-  </TimerScreen>
+const TimerScreenCpt = (props) => {
+  return (
+    <TimerScreen {...props}>
+      <H1>{props.language}</H1>
+      <TotalTime>
+        Total Time : <span>{format.mmss(props.totalTime)}</span>
+      </TotalTime>
+      <CloseScreen onClick={props.hideScreenAndPostTime}>
+        <Icons size="xxlarge" icon="close" />
+      </CloseScreen>
+      <TimerDisplay timeCounter={props.timeCounter} />
+      <TimerButton onClick={props.setStartOrStopTime}>
+        {props.timerRunning ? 
+          <Icons icon='pause' size='xjumbo' />
+        : 
+          <Icons icon='play' size='xjumbo' />
+        }
+      </TimerButton>
+    </TimerScreen>
+  )
+}
   
 
 TimerScreenCpt.propTypes = {
   timmerRunning: PropTypes.bool,
   language: PropTypes.string,
-  totalTimeConverted: PropTypes.string,
   hideScreenAndPostTime: PropTypes.func,
   setStartOrStopTime: PropTypes.func,
   timerRunning: PropTypes.bool,
-  timeTotal: PropTypes.number,
+  totalTime: PropTypes.number,
+  timeCounter: PropTypes.number,
 }
 
 export default TimerScreenCpt;

@@ -16,10 +16,10 @@ class TimeSlipsCnt extends Component {
     this.loadTimeSlips();
     this.toggleSummary = this.toggleSummary.bind(this);
     this.addTimeSlip = this.addTimeSlip.bind(this);
+    this.deleteTimeSlip = this.deleteTimeSlip.bind(this);
     this.archiveTimeSlip = this.archiveTimeSlip.bind(this);
     this.partitionActiveAndArchived = this.partitionActiveAndArchived.bind(this);
     this.recalculateTimeOnArchive = this.recalculateTimeOnArchive.bind(this);
-    this.deleteTimeSlip = this.deleteTimeSlip.bind(this);
     this.recalculateTimeOnDelete = this.recalculateTimeOnDelete.bind(this);
   }
 

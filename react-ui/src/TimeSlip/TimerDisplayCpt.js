@@ -16,10 +16,10 @@ const Display = styled.h1`
 `;
 
 const TimerDisplay = (props) =>
-  <Display>{format.mmss(props.timeTotal)}</Display>
+  <Display>{format.mmss(props.timeCounter)}</Display>
 
 TimerDisplay.propTypes = {
-  timeTotal: PropTypes.number,
+  timeCounter: PropTypes.number,
 }
 
 export default TimerDisplay;
