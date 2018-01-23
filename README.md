@@ -239,18 +239,24 @@ back inside react-ui run npm start and style the front end
   - xremove all minimums
   - xreplace with max countdown?
 
+  - xsummary components into cpt and cnt
+  - xrefactor ItemCnt to use time format from time-utils
+  - xchange SummaryItemCnt to SummaryListCnt
+  - xchange SummaryHeadingCpt to CloseMenuCnt and style with MenuControlCpt
 
+  - move the filtering mecanism to the TimeSlipContainer and setState for the results to fix bug of Summary time not updating
+  1. xfilter on page load for TimeSlipContainer into setState ActiveTimeSlips and ArchivedTimeSlips (pass each to SummaryListCnt)
+  2. xupdate SummarylistCnt to iterate over the new states arrays instead of filtering all
+  3. xrefactor ListCnt to that is only recieves active time slips instead of filtering out again
+  4. xupdate TimeSlipsCnt to setState to activeTimeSlips when a new slip is created
+  5. xdo the same for delete, and archive
+  6. xhook up archive functionality to test if changes are made to the SummaryCnt without page refresh
 
   /-- current  
 
 
-  refactor
-  - xsummary components into cpt and cnt
-  - refactor ItemCnt to use time format from time-utils
-  - change SummaryItemCnt to SummaryListCnt
-  - change SummaryHeadingCpt to CloseMenuCnt and style with MenuControlCpt
-  - add delete functionality to summary
-  - add archive functionality to summary
+  remove timeSlips from TimeSlipCnt
+
   - total time bug
   - move total time calculation to parrent TimeSlipCnt
   - update the total time calcusation state whenever time is submited and send the state to child summaryCnt
@@ -271,9 +277,8 @@ back inside react-ui run npm start and style the front end
 
   - breakpoint styling (fix spacing on moble, time needs more space and shorten description)
 
+  - better transistions
   - close summary with escape
-  - hook up trash and archive / unarchive
-  - summary times should update without page refresh
   - seed real data
 
 

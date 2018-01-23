@@ -6,27 +6,22 @@ import SummaryListCnt from './SummaryListCnt';
 import SummaryItemCpt from './SummaryItemCpt';
 
 const SummaryCnt = props => {
-  console.log(props)
-  const activeSummary = props.timeSlips.map(slip => (
-    (slip.completed === false &&
-      <SummaryItemCpt 
-        key={slip._id}
-        {...slip} 
-        onArchive={props.archiveTimeSlip.bind(this, slip)}
-        onDelete={props.deleteTimeSlip.bind(this, slip)}
-      />
-    )
+  const activeSummary = props.activeTimeSlips.map(slip => (
+    <SummaryItemCpt 
+      key={slip._id}
+      {...slip} 
+      onArchive={props.archiveTimeSlip.bind(this, slip)}
+      onDelete={props.deleteTimeSlip.bind(this, slip)}
+    />
   ));
 
-  const archivedSummary = props.timeSlips.map(slip => (
-    (slip.completed === true &&
-      <SummaryItemCpt
-        key={slip._id}
-        {...slip} 
-        onArchive={props.archiveTimeSlip.bind(this, slip)}
-        onDelete={props.deleteTimeSlip.bind(this, slip)}
-      />
-    )
+  const archivedSummary = props.archivedTimeSlips.map(slip => (
+    <SummaryItemCpt
+      key={slip._id}
+      {...slip} 
+      onArchive={props.archiveTimeSlip.bind(this, slip)}
+      onDelete={props.deleteTimeSlip.bind(this, slip)}
+    />
   ));
 
   return (
@@ -47,7 +42,8 @@ const SummaryCnt = props => {
 }
 
 SummaryCnt.propTypes = {
-  timeSlips: PropTypes.arrayOf(PropTypes.object),
+  activeTimeSlips: PropTypes.arrayOf(PropTypes.object),
+  archivedTimeSlips: PropTypes.arrayOf(PropTypes.object),
   totalActiveTime: PropTypes.number.isRequired,
   totalArchivedTime: PropTypes.number,
   toggleSummary: PropTypes.func,

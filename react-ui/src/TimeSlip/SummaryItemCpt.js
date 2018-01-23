@@ -58,6 +58,7 @@ function ItemSummary(props) {
         <Icons 
           color={props.completed ? 'slightFade' : 'dark'} 
           size="small"
+          onClick={props.onArchive}
           icon={props.completed ? 'unarchive' : 'archive'} />
       </Icon>
       <Timer>{formatTime.hhmmss(props.total_time)}</Timer>
@@ -72,7 +73,10 @@ function ItemSummary(props) {
       <Description>{concat(props.description, 38)}</Description>
       {props.completed && 
         <Icon>
-          <Icons color="slightFade" size="small" icon="trash" />
+          <Icons 
+            color="slightFade" 
+            onClick={props.onDelete}
+            size="small" icon="trash" />
         </Icon>
       }
     </Item>
@@ -86,6 +90,8 @@ ItemSummary.propTypes = {
   total_time: PropTypes.number,
   url: PropTypes.string,
   language: PropTypes.string,
+  onArchive: PropTypes.func,
+  onDelete: PropTypes.func,
 }
 
 export default ItemSummary;

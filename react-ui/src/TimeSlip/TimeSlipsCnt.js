@@ -8,74 +8,99 @@ class TimeSlipsCnt extends Component {
     super(props)
     this.state = {
       timeSlips: [],
-      TotalActiveTime: 0,
-      TotalArchivedTime: 0,
+      activeTimeSlips: [],
+      archivedTimeSlips: [],
+      totalActiveTime: 0,
+      totalArchivedTime: 0,
       showSummary: false,
     }
     this.loadTimeSlips();
     this.toggleSummary = this.toggleSummary.bind(this);
     this.addTimeSlip = this.addTimeSlip.bind(this);
     this.archiveTimeSlip = this.archiveTimeSlip.bind(this);
-    this.calculateTotalTimes = this.calculateTotalTimes.bind(this);
-    this.recalculateTime = this.recalculateTime.bind(this);
+    this.partitionActiveAndArchived = this.partitionActiveAndArchived.bind(this);
+    this.recalculateTimeOnArchive = this.recalculateTimeOnArchive.bind(this);
+    this.deleteTimeSlip = this.deleteTimeSlip.bind(this);
+    this.recalculateTimeOnDelete = this.recalculateTimeOnDelete.bind(this);
   }
 
   async loadTimeSlips(){
     let timeSlips = await apiCalls.getTimeSlips();
-    this.setState({timeSlips}, () => this.calculateTotalTimes());
+    this.setState({timeSlips}, () => this.partitionActiveAndArchived());
   }
 
   async archiveTimeSlip(timeSlip) {
-    this.recalculateTime(timeSlip.total_time, timeSlip.completed);
+    this.recalculateTimeOnArchive(timeSlip.total_time, timeSlip.completed);
 
     let updatedTimeSlip = await apiCalls.archiveTimeSlip(timeSlip); 
-    let timeSlips = this.state.timeSlips.map(timeSlip =>
-      (timeSlip._id === updatedTimeSlip._id) 
-        ? {...timeSlip, completed: !timeSlip.completed}
-        : timeSlip
-      );
-    this.setState({timeSlips});
+
+    if (updatedTimeSlip.completed) {
+      this.setState({ archivedTimeSlips: [...this.state.archivedTimeSlips, updatedTimeSlip] })
+      let activeTimeSlips = this.state.activeTimeSlips.filter(slip => slip._id !== updatedTimeSlip._id);
+      this.setState({activeTimeSlips})
+    } else {
+      this.setState({ activeTimeSlips: [...this.state.activeTimeSlips, updatedTimeSlip] })
+      let archivedTimeSlips = this.state.archivedTimeSlips.filter(slip => slip._id !== updatedTimeSlip._id);
+      this.setState({archivedTimeSlips})
+    }
   }
 
-  async deleteTimeSlip(id) {
-    await apiCalls.deleteTimeSlip(id);
-    let timeSlips = this.state.timeSlips.filter(slip => slip._id !== id);
-    this.setState({timeSlips});
+  async deleteTimeSlip(timeSlip) {
+    await apiCalls.deleteTimeSlip(timeSlip._id);
+    let activeTimeSlips = this.state.activeTimeSlips.filter(slip => slip._id !== timeSlip._id);
+    let archivedTimeSlips = this.state.archivedTimeSlips.filter(slip => slip._id !== timeSlip._id);
+    this.recalculateTimeOnDelete(timeSlip.total_time)
+    this.setState({activeTimeSlips, archivedTimeSlips});
   }
 
   async addTimeSlip(language, url, description){
     let newTimeSlip = await apiCalls.createTimeSlip(language, url, description);
-    this.setState({timeSlips: [newTimeSlip, ...this.state.timeSlips]});
+    this.setState({activeTimeSlips: [newTimeSlip, ...this.state.activeTimeSlips]});
   }
 
   toggleSummary() {
     this.setState({showSummary: !this.state.showSummary});
   }
 
-  calculateTotalTimes() {
-    let TotalActiveTime = 0;
-    let TotalArchivedTime = 0;
+  partitionActiveAndArchived() {
+    let activeTimeSlips = [];
+    let archivedTimeSlips = [];
+    let totalActiveTime = 0;
+    let totalArchivedTime = 0;
 
-    this.state.timeSlips.forEach(v => {
-      if (!v.completed) TotalActiveTime += v.total_time;
-      else TotalArchivedTime += v.total_time;
+    this.state.timeSlips.forEach(slip => {
+      if (!slip.completed) {
+        totalActiveTime += slip.total_time;
+        activeTimeSlips.push(slip);
+      } else {
+        totalArchivedTime += slip.total_time;
+        archivedTimeSlips.push(slip);
+      }
     });
 
-    this.setState({TotalActiveTime, TotalArchivedTime});
+    this.setState({
+      activeTimeSlips, 
+      archivedTimeSlips, 
+      totalActiveTime, 
+      totalArchivedTime
+    });
   }
 
-  recalculateTime(timeAmount, changingToActive) {
+  recalculateTimeOnArchive(timeAmount, changingToActive) {
     if (changingToActive) {
-      let TotalActiveTime = this.state.TotalActiveTime + timeAmount;
-      let TotalArchivedTime = this.state.TotalArchivedTime - timeAmount;
-      this.setState({TotalActiveTime});
-      this.setState({TotalArchivedTime});
+      let totalActiveTime = this.state.totalActiveTime + timeAmount;
+      let totalArchivedTime = this.state.totalArchivedTime - timeAmount;
+      this.setState({totalActiveTime, totalArchivedTime});
     } else {
-      let TotalActiveTime = this.state.TotalActiveTime - timeAmount;
-      let TotalArchivedTime = this.state.TotalArchivedTime + timeAmount;
-      this.setState({TotalActiveTime});
-      this.setState({TotalArchivedTime});
+      let totalActiveTime = this.state.totalActiveTime - timeAmount;
+      let totalArchivedTime = this.state.totalArchivedTime + timeAmount;
+      this.setState({totalActiveTime, totalArchivedTime});
     }
+  }
+
+  recalculateTimeOnDelete(timeAmount) {
+    let totalArchivedTime = this.state.totalArchivedTime - timeAmount;
+    this.setState({totalArchivedTime});
   }
 
   render() {
@@ -83,16 +108,17 @@ class TimeSlipsCnt extends Component {
       <div>
         { this.state.showSummary ? 
           <SummaryCnt 
-            timeSlips={this.state.timeSlips}
-            totalActiveTime={this.state.TotalActiveTime} 
-            totalArchivedTime={this.state.TotalArchivedTime} 
+            activeTimeSlips={this.state.activeTimeSlips}
+            archivedTimeSlips={this.state.archivedTimeSlips}
+            totalActiveTime={this.state.totalActiveTime} 
+            totalArchivedTime={this.state.totalArchivedTime} 
             toggleSummary={this.toggleSummary} 
             archiveTimeSlip={this.archiveTimeSlip}
             deleteTimeSlip={this.deleteTimeSlip}
             />
           : 
           <ListCnt 
-            timeSlips={this.state.timeSlips} 
+            activeTimeSlips={this.state.activeTimeSlips} 
             toggleSummary={this.toggleSummary}
             addTimeSlip={this.addTimeSlip}
             archiveTimeSlip={this.archiveTimeSlip}
