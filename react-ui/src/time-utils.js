@@ -2,7 +2,7 @@ const media = {
   mmss: (milliseconds) => {
     let date = new Date(null);
     date.setMilliseconds(milliseconds);
-    let baseConverstion = date.toISOString()
+    let baseConverstion = date.toISOString();
 
     if (baseConverstion[12] === '0') {
       return baseConverstion.substr(14, 5);
@@ -12,7 +12,7 @@ const media = {
   hhmmss: (milliseconds) => {
     let date = new Date(null);
     date.setMilliseconds(milliseconds);
-    let baseConverstion = date.toISOString()
+    let baseConverstion = date.toISOString();
 
     return baseConverstion.substr(11, 8);
   },

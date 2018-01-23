@@ -9,32 +9,25 @@ class TimeSlipItem extends Component {
     super(props)
     this.state = {
       timerScreenShowing: false,
-      totalTime: null,
-      totalTimeConverted: '00:00:00',
+      totalTime: 0,
     }
     this.showTimerScreen = this.showTimerScreen.bind(this);
     this.hideTimerScreen = this.hideTimerScreen.bind(this);
     this.loadTimeSlip = this.loadTimeSlip.bind(this);
     this.loadTimeSlip(this.props._id)
     this.postTime = this.postTime.bind(this);
-    this.convertTime = this.convertTime.bind(this);
   }
 
   async loadTimeSlip(id) {
     let timeSlip = await apiCalls.getTimeSlip(id);
     let totalTime = timeSlip.total_time;
-    this.setState({totalTime}, () => this.convertTime());
+    this.setState({totalTime});
   }
 
   postTime(id, currentTotal) {
     let totalTime = this.state.totalTime + currentTotal;
-    this.setState({totalTime}, () => this.convertTime());
+    this.setState({totalTime});
     apiCalls.postTime(id, {totalTime}); 
-  }
-
-  convertTime() {
-    const totalTimeConverted = formatTime.mmss(this.state.totalTime)
-    this.setState({totalTimeConverted});
   }
 
   showTimerScreen() {
@@ -57,7 +50,7 @@ class TimeSlipItem extends Component {
       onArchive={onArchive}
       created_date={created_date}
       last_update={last_update}
-      totalTimeConverted={this.state.totalTimeConverted}
+      timeTotal={this.state.totalTime}
       hideTimerScreen={this.hideTimerScreen}
       showTimerScreen={this.showTimerScreen}
       timerScreenShowing={this.state.timerScreenShowing}

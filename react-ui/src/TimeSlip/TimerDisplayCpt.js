@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { media } from '../style-utils';
+import format from '../time-utils';
 
 const Display = styled.h1`
   text-align: center;
@@ -15,10 +16,10 @@ const Display = styled.h1`
 `;
 
 const TimerDisplay = (props) =>
-  <Display>{props.timeConverted}</Display>
+  <Display>{format.mmss(props.timeTotal)}</Display>
 
 TimerDisplay.propTypes = {
-  timeConverted: PropTypes.string,
+  timeTotal: PropTypes.number,
 }
 
 export default TimerDisplay;

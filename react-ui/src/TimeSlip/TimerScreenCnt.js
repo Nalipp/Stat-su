@@ -8,7 +8,6 @@ class Timer extends Component {
     this.state = {
       timerRunning: false,
       timeCounter: 0,
-      timeConverted: '00:00',
       TimerId: null,
       startTime: null,
     }
@@ -60,26 +59,10 @@ class Timer extends Component {
     }
   }
 
-  convertTime(milliseconds) {
-    let date = new Date(null);
-    date.setSeconds(milliseconds);
-    let baseConverstion = date.toISOString()
-    let timeConverted;
-
-    if (baseConverstion[12] === '0') {
-      timeConverted = baseConverstion.substr(14, 5);
-    } else {
-      timeConverted = baseConverstion.substr(11, 8);
-    }
-
-    this.setState({timeConverted});
-  }
-
   startTick() {
     let timeCounter = this.state.timeCounter;
     let TimerId = setInterval(() => {
-      timeCounter += 1;
-      this.convertTime(timeCounter);
+      timeCounter += 1000;
       this.setState({timeCounter});
     }, 1000)
     this.setState({TimerId});
@@ -98,7 +81,7 @@ class Timer extends Component {
         handleKeyPress={this.handleKeyPress}
         language={language}
         totalTimeConverted={totalTimeConverted}
-        timeConverted={this.state.timeConverted}
+        timeTotal={this.state.timeCounter}
         hideScreenAndPostTime={this.hideScreenAndPostTime}
         setStartOrStopTime={this.setStartOrStopTime}
         timmerRunning={this.timmerRunning}

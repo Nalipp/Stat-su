@@ -86,7 +86,7 @@ const TimerScreenCpt = (props) =>
     <CloseScreen onClick={props.hideScreenAndPostTime}>
       <Icons size="xxlarge" icon="close" />
     </CloseScreen>
-    <TimerDisplay timeConverted={props.timeConverted} />
+    <TimerDisplay timeTotal={props.timeTotal} />
     <TimerButton onClick={props.setStartOrStopTime}>
       {props.timerRunning ? 
         <Icons icon='pause' size='xjumbo' />
@@ -104,7 +104,7 @@ TimerScreenCpt.propTypes = {
   hideScreenAndPostTime: PropTypes.func,
   setStartOrStopTime: PropTypes.func,
   timerRunning: PropTypes.bool,
-  timeConverted: PropTypes.string,
+  timeTotal: PropTypes.number,
 }
 
 export default TimerScreenCpt;

@@ -4,6 +4,7 @@ import Icons from './../Icons';
 import PropTypes from 'prop-types';
 import TimerScreen from './TimerScreenCnt';
 import { media } from '../style-utils';
+import format from '../time-utils';
 
 const fadeIn = keyframes`
   from {opacity: 0.1}
@@ -137,12 +138,12 @@ const A = styled.a`
   padding: .375rem;
 `;
 
-const LiCpt = ({id, language, description, url, onArchive, created_date, last_update, totalTimeConverted, hideTimerScreen, showTimerScreen, timerScreenShowing, postTime}) =>
+const LiCpt = ({id, language, description, url, onArchive, created_date, last_update, timeTotal, hideTimerScreen, showTimerScreen, timerScreenShowing, postTime}) =>
   <Li>
     <Div>
       <H2>{language ? language : '-'}</H2>
       <StartBtn onClick={showTimerScreen}>Start</StartBtn>
-      <TotalTime>{totalTimeConverted}</TotalTime>
+      <TotalTime>{format.hhmmss(timeTotal)}</TotalTime>
     </Div>
     <Description>{description}</Description>
     <BottomNav>
@@ -174,7 +175,7 @@ const LiCpt = ({id, language, description, url, onArchive, created_date, last_up
         key={id}
         id={id}
         language={language} 
-        totalTimeConverted={totalTimeConverted}
+        totalTime={timeTotal}
         hideTimerScreen={hideTimerScreen}
         showTimerScreen={showTimerScreen}
         postTime={postTime}
@@ -190,7 +191,7 @@ LiCpt.propTypes = {
   url: PropTypes.string,
   created_date: PropTypes.string,
   last_update: PropTypes.string,
-  totalTimeConverted: PropTypes.string,
+  timeTotal: PropTypes.number,
   hideTimerScreen: PropTypes.func,
   showTimerScreen: PropTypes.func,
   timerScreenShowing: PropTypes.bool,

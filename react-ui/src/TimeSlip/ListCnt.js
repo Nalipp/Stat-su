@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import SummaryCnt from './SummaryCnt';
 import Form from './FormCnt';
 import UnarchivedItemCnt from './ItemCnt';
 import ListCpt from './ListCpt';
 import ListHeading from './ListHeading';
-import SummaryCnt from './SummaryCnt';
 import PropTypes from 'prop-types';
 
 class ListCnt extends Component {
