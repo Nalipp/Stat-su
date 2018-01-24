@@ -12,7 +12,7 @@ export const media = {
     }
   `,
   desktop: (...args) => css`
-    @media (min-width: 1200px)  {
+    @media (min-width: 1100px)  {
       ${ css(...args) }
     }
   `,
@@ -23,7 +23,7 @@ export const media = {
   `
 }
 
-export function truncate(width) {
+export const truncate = (width) => {
   return `
     width: ${width};
     white-space: nowrap;

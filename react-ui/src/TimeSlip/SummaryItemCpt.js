@@ -22,11 +22,15 @@ const Item = styled.li`
 
   ${media.tablet`
     padding: .2rem;
-    margin-bottom: .25rem;
+    margin-bottom: .3rem;
   `};
   ${media.desktop`
+    padding: .3rem;
+    margin-bottom: .4rem;
   `};
   ${media.jumboDesktop`
+    padding: .4rem;
+    margin-bottom: .5rem;
   `};
 `;
 
@@ -40,6 +44,14 @@ const Timer = styled.span`
   ${media.tablet`
     font-size: .75rem;
     padding: 0 .4rem;
+  `};
+  ${media.desktop`
+    font-size: 1rem;
+    padding: 0 .5rem;
+  `};
+  ${media.jumboDesktop`
+    font-size: 1.25rem;
+    padding: 0 .7rem;
   `};
 `;
 

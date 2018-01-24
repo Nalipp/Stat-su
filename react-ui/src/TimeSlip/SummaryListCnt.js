@@ -10,16 +10,20 @@ const fadeIn = keyframes`
 `;
 
 const Wrapper = styled.section`
-  margin: 4rem auto;
+  margin: 2rem auto;
   width: 90%;
 
   ${media.tablet`
+    margin: 3rem auto;
     width: 70%;
   `};
   ${media.desktop`
-    width: 60%
+    margin: 4rem auto;
+    width: 43%;
   `};
   ${media.jumboDesktop`
+    margin: 5rem auto;
+    width: 40%;
   `};
 `;
 
@@ -35,8 +39,12 @@ const Heading = styled.div`
     letter-spacing: 0.3rem;
   `};
   ${media.desktop`
+    font-size: 1.6rem;
+    letter-spacing: 0.4rem;
   `};
   ${media.jumboDesktop`
+    font-size: 2.5rem;
+    letter-spacing: 0.5rem;
   `};
 `;
 
@@ -57,8 +65,10 @@ const Time = styled.span`
     font-size: .7rem;
   `};
   ${media.desktop`
+    font-size: 1rem;
   `};
   ${media.jumboDesktop`
+    font-size: 1.2rem;
   `};
 `;
 

@@ -258,25 +258,29 @@ back inside react-ui run npm start and style the front end
   1. xfind where totalTime state is updated
   2. xpass a function from SummaryCnt that updates the totalActiveTime when totalTime is updated
 
+  xadd truncate to language and description
 
   /-- current  
 
-
-  add truncate to language and description
-  switch to arrow function
-
-
-  /-- current  
-
+  
   summary media breakpoints
   - open all files that need to be updated
 
   icon issues
+  redice size of MenuControlCpt on smaller devices and larger on desktop
   if you change the icons file you need to make sure it dosen't affect the other icons in the project, 
   options to try
   1. make the size property optional, if size is not specified then it will expand to the with of the wrapper
   2. make a different icon utils file for summary
 
+
+
+  /-- current  
+
+
+  move SummaryListCnt to SummaryListCpt
+
+  why is description placeholder a different font??
 
   hamburger drop down to user page
   - xuser summary screen with unarchive option for each deleted timeSlip (white background)

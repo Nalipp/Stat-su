@@ -8,12 +8,18 @@ const Wrapper = styled.section`
   min-height: 100%;
   width: 100%;
   position: absolute;
+  padding: 1rem 0;
 
   ${media.tablet`
+    padding: 3rem 0;
   `}
   ${media.desktop`
+    padding: 4rem 0;
+    display: flex;
+    justify-content: space-around;
   `}
   ${media.jumboDesktop`
+    padding: 6rem 0;
   `}
 `;
 
