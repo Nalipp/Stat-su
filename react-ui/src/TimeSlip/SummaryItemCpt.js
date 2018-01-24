@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icons from '../Icons';
 import formatTime from '../time-utils';
-import {media} from '../style-utils';
+import { media, truncate } from '../style-utils';
 
 const light = props => props.theme.light;
 const dark = props => props.theme.dark;
@@ -12,72 +12,80 @@ const baseColor = props => props.completed ? faded : dark;
 
 const Item = styled.li`
   padding: .1rem;
-  width: 90%;
   list-style: none;
+  margin-bottom: .15rem;
   display: flex;
   align-items: center; 
-  margin: .2rem auto 0 auto;
   border-radius: .2rem;
   color: ${baseColor};
   border: .1rem solid ${baseColor};
+
+  ${media.tablet`
+    padding: .2rem;
+    margin-bottom: .25rem;
+  `};
+  ${media.desktop`
+  `};
+  ${media.jumboDesktop`
+  `};
 `;
 
 const Timer = styled.span`
   box-sizing: border-box;
-  margin-left: .1rem;
+  padding: 0 .2rem;
   font-size: 7px;
   background: ${light};
   width: 13%;
+
+  ${media.tablet`
+    font-size: .75rem;
+    padding: 0 .4rem;
+  `};
 `;
 
-const Icon = Timer.extend`
+const IconWrapper = Timer.extend`
   cursor: pointer;
   width: 6%;
   font-size: 8px;
 `;
 
 const Language = Timer.extend`
-  width: 20%;
+  ${ truncate('20%') }
   font-size: 8px;
 `;
 
 const Description = Timer.extend`
-  width: 52%;
+  ${ truncate('52%') }
   font-size: 8px;
 `;
-
-const concat = (str, chars) => {
-  if (str.length > chars) str = str.slice(0, chars) + '...';
-  return str;
-}
 
 function ItemSummary(props) {
   return (
     <Item {...props}>
-      <Icon>
+      <IconWrapper>
         <Icons 
           color={props.completed ? 'slightFade' : 'dark'} 
           size="small"
           onClick={props.onArchive}
           icon={props.completed ? 'unarchive' : 'archive'} />
-      </Icon>
+      </IconWrapper>
       <Timer>{formatTime.hhmmss(props.total_time)}</Timer>
-      <Icon> {props.url &&
+      <IconWrapper> {props.url &&
         <a href={props.url} target="_blank">
           <Icons 
             color={props.completed ? 'faded' : 'dark'} 
             size="small" icon="link" />
         </a>}
-      </Icon>
-      <Language>{concat(props.language, 15)}</Language>
-      <Description>{concat(props.description, 38)}</Description>
+      </IconWrapper>
+      <Language>{props.language}</Language>
+      <Description>{props.description}</Description>
       {props.completed && 
-        <Icon>
+        <IconWrapper>
           <Icons 
             color="slightFade" 
             onClick={props.onDelete}
             size="small" icon="trash" />
-        </Icon>
+        </IconWrapper>
       }
     </Item>
   )

@@ -11,7 +11,7 @@ class TimeSlipsCnt extends Component {
       archivedTimeSlips: [],
       totalActiveTime: 0,
       totalArchivedTime: 0,
-      showSummary: false,
+      showSummary: true,
     }
     this.loadTimeSlips();
     this.toggleSummary = this.toggleSummary.bind(this);

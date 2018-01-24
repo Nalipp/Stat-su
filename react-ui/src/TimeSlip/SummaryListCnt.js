@@ -9,12 +9,35 @@ const fadeIn = keyframes`
   to {opacity: 1}
 `;
 
+const Wrapper = styled.section`
+  margin: 4rem auto;
+  width: 90%;
+
+  ${media.tablet`
+    width: 70%;
+  `};
+  ${media.desktop`
+    width: 60%
+  `};
+  ${media.jumboDesktop`
+  `};
+`;
+
 const Heading = styled.div`
   display: inline-block;
-  margin: .50rem 0 .50rem 1.5rem;
+  margin: .50rem 0;
   font-size: .8rem;
-  letter-spacing: 0.15rem;
+  letter-spacing: 0.2rem;
   animation: ${fadeIn} 0.5s linear;
+
+  ${media.tablet`
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+  `};
+  ${media.desktop`
+  `};
+  ${media.jumboDesktop`
+  `};
 `;
 
 const FadedHeading = Heading.extend`
@@ -23,13 +46,20 @@ const FadedHeading = Heading.extend`
 
 const Items = styled.ul`
   display: block;
-  margin: 3rem 0;
   animation: ${fadeIn} .5s ease;
 `;
 
 const Time = styled.span`
   font-size: .5rem;
   padding-left: 1.2rem;
+
+  ${media.tablet`
+    font-size: .7rem;
+  `};
+  ${media.desktop`
+  `};
+  ${media.jumboDesktop`
+  `};
 `;
 
 const FadedTime = Time.extend`
@@ -38,7 +68,8 @@ const FadedTime = Time.extend`
 
 const ItemSummary = (props) => {
   return (
-    <Items>
+    <Wrapper>
+      <Items>
         { props.active === 'true' 
           ? 
           <Heading>Active</Heading>
@@ -51,8 +82,9 @@ const ItemSummary = (props) => {
           : 
           <FadedTime>hours : {formatTime.hhmmss(props.totalTime)}</FadedTime>
         }
-      {props.children}
-    </Items>
+        {props.children}
+      </Items>
+    </Wrapper>
   )
 }
 

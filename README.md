@@ -262,10 +262,20 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
 
-  - clean up code using ...props
+  add truncate to language and description
+  switch to arrow function
 
 
   /-- current  
+
+  summary media breakpoints
+  - open all files that need to be updated
+
+  icon issues
+  if you change the icons file you need to make sure it dosen't affect the other icons in the project, 
+  options to try
+  1. make the size property optional, if size is not specified then it will expand to the with of the wrapper
+  2. make a different icon utils file for summary
 
 
   hamburger drop down to user page
@@ -290,6 +300,8 @@ back inside react-ui run npm start and style the front end
   reorganize state into children so that parent only holds state if they need to
 
   add hover affects on icons
+
+  - clean up code using ...props
 
   clean up timer screen render
   - figure out timer blink bug
