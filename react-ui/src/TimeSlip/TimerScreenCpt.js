@@ -39,7 +39,7 @@ const TimerScreen = styled.div`
   `}
 `;
 
-const H1 = styled.h1`
+const Language = styled.h1`
   text-align: center;
   font-size: 1.8rem;
   margin: 2.2rem 0 1.4rem 0;
@@ -83,7 +83,7 @@ const TimerButton = styled.h2`
 const TimerScreenCpt = props => {
   return (
     <TimerScreen {...props}>
-      <H1>{props.language}</H1>
+      <Language>{props.language}</Language>
       <TotalTime>
         Total Time : <span>{format.mmss(props.totalTime)}</span>
       </TotalTime>

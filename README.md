@@ -260,27 +260,22 @@ back inside react-ui run npm start and style the front end
 
   xadd truncate to language and description
 
-  /-- current  
-
-  
-  move SummaryListCnt to SummaryListCpt
-
+  xmove SummaryListCnt to SummaryListCpt
 
   /-- current  
-
-  summary media breakpoints
-
-  icon issues
-  click on icon container instead of icon
-  redice size of MenuControlCpt on smaller devices and larger on desktop
-  if you change the icons file you need to make sure it dosen't affect the other icons in the project, 
-  options to try
-  1. make the size property optional, if size is not specified then it will expand to the with of the wrapper
-  2. make a different icon utils file for summary
-
 
 
   why is description placeholder a different font??
+
+  fix transistions
+  - https://medium.com/@joethedave/achieving-ui-animations-with-react-the-right-way-562fa8a91935
+  - figure out timer blink bug
+  - move transition from entire list to indiviual component (better for adding an item)
+  
+
+  /-- current  
+
+  organize files into folders
 
   hamburger drop down to user page
   - xuser summary screen with unarchive option for each deleted timeSlip (white background)
@@ -292,24 +287,25 @@ back inside react-ui run npm start and style the front end
   - xpage should show all archived and unarchived timeSlips with concatenated discriptions with option to delete permentantly and add time
   - xarchived summary style
 
-  - breakpoint styling (fix spacing on moble, time needs more space and shorten description)
-
   - better transistions
   - close summary with escape
   - seed real data (fix time format bug)
 
+  icon issues
+  - click on icon container instead of icon
+  - redice size of MenuControlCpt on smaller devices and larger on desktop
+  - add hover affects on icons
+  - if you change the icons file you need to make sure it dosen't affect the other icons in the project, 
+  options to try
+  1. make the size property optional, if size is not specified then it will expand to the with of the wrapper
+  2. make a different icon utils file for summary
+
+
+  remove auto caplitailization on mobile devices
 
   choose different color themes?
 
-  reorganize state into children so that parent only holds state if they need to
-
-  add hover affects on icons
-
-  - clean up code using ...props
-
-  clean up timer screen render
-  - figure out timer blink bug
-  - https://medium.com/@joethedave/achieving-ui-animations-with-react-the-right-way-562fa8a91935
+  clean up code using ...props
 
   ui
   - more space above main title (now that there is a hamburger) make the hamburger smaller?
@@ -318,9 +314,6 @@ back inside react-ui run npm start and style the front end
 
   upgrade dyno
 
-  fix transistions
-  - move transition from entire list to indiviual component (better for adding an item)
-
   change language to topic in entire project
 
   update readme
@@ -328,7 +321,6 @@ back inside react-ui run npm start and style the front end
   - how to use icons
   - (other explinations?)
 
-  remove auto caplitailization on mobile devices
 
   change project name
   - change to statsu.io

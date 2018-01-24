@@ -59,6 +59,10 @@ const IconWrapper = Timer.extend`
   cursor: pointer;
   width: 6%;
   font-size: 8px;
+
+  &:hover {
+    transform: translateY(1px);
+  }
 `;
 
 const Language = Timer.extend`

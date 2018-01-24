@@ -22,7 +22,15 @@ const slightFade = props => props.theme.slightFade;
 
 const Svg = styled.svg`
   display: inline-block;
-  fill: ${props => props.color === 'dark' ? dark : props.color === 'faded' ? faded : props.color === 'slightFade' ? slightFade : light};
+  fill: ${
+    props => props.color === 'dark'  
+    ? dark 
+    : props.color === 'faded' 
+    ? faded 
+    : props.color === 'slightFade' 
+    ? slightFade 
+    : light
+  };
   cursor: pointer;
 `;
 

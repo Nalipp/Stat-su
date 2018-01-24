@@ -29,7 +29,7 @@ const Div = styled.div`
   align-items: center;
 `;
 
-const H2 = styled.h2`
+const Language = styled.h2`
   font-size: 1rem;
   padding-right: .625rem;
   flex: 9;
@@ -91,17 +91,25 @@ const BottomNav = styled.div`
   margin-top: .25rem;
 `;
 
-const Url = styled.span`
+const UrlWrapper = styled.span`
   cursor: pointer;
   flex-grow: 1;
+
+  &:hover {
+    transform: translateY(1px);
+  }
 `;
 
-const Archive = styled.span`
+const ArchiveWrapper = styled.span`
   cursor: pointer;
   flex-grow: 1;
   ${media.tablet`
     margin: .25rem 0 .25rem 1.2rem;
   `}
+
+  &:hover {
+    transform: translateY(1px);
+  }
 `;
 
 const TimeWrapper = styled.div`
@@ -141,16 +149,16 @@ const A = styled.a`
 const ItemCpt = ({id, language, description, url, onArchive, created_date, last_update, totalTime, hideTimerScreen, showTimerScreen, timerScreenShowing, postTime}) =>
   <Li>
     <Div>
-      <H2>{language ? language : '-'}</H2>
+      <Language>{language ? language : '-'}</Language>
       <StartBtn onClick={showTimerScreen}>Start</StartBtn>
       <TotalTime>{format.hhmmss(totalTime)}</TotalTime>
     </Div>
     <Description>{description}</Description>
     <BottomNav>
-      <Archive onClick={onArchive}>
+      <ArchiveWrapper onClick={onArchive}>
         <Icons icon='archive' size='normal' />
-      </Archive>
-      <Url>
+      </ArchiveWrapper>
+      <UrlWrapper>
         {url ? (
           <A
             href={url} 
@@ -160,7 +168,7 @@ const ItemCpt = ({id, language, description, url, onArchive, created_date, last_
           </A>
           ) : null
         }
-      </Url>
+      </UrlWrapper>
       <TimeWrapper>
         <TimeStamp>Created: 
           <Time>{created_date.slice(0, 10)}</Time>
