@@ -263,10 +263,15 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
   
+  move SummaryListCnt to SummaryListCpt
+
+
+  /-- current  
+
   summary media breakpoints
-  - open all files that need to be updated
 
   icon issues
+  click on icon container instead of icon
   redice size of MenuControlCpt on smaller devices and larger on desktop
   if you change the icons file you need to make sure it dosen't affect the other icons in the project, 
   options to try
@@ -274,11 +279,6 @@ back inside react-ui run npm start and style the front end
   2. make a different icon utils file for summary
 
 
-
-  /-- current  
-
-
-  move SummaryListCnt to SummaryListCpt
 
   why is description placeholder a different font??
 
