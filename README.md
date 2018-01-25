@@ -274,13 +274,12 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
 
-  transistion between archived and unarchived
+  move Icons svg into seperate file
+  organize files into folders
 
 
   /-- current  
 
-  organize files into folders
-  move Icons svg into seperate file
 
   hamburger drop down to user page
   - xuser summary screen with unarchive option for each deleted timeSlip (white background)
@@ -292,7 +291,6 @@ back inside react-ui run npm start and style the front end
   - xpage should show all archived and unarchived timeSlips with concatenated discriptions with option to delete permentantly and add time
   - xarchived summary style
 
-  - better transistions
   - close summary with escape
   - seed real data (fix time format bug)
 
@@ -334,6 +332,8 @@ back inside react-ui run npm start and style the front end
   - update github
   
   fix travis  
+
+  transistion between archived and unarchived on summary and list
 
 
   \* ****************************************************************************** \*
