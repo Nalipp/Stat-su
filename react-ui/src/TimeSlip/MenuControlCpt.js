@@ -18,7 +18,7 @@ const Menu = styled.span`
   `}
 `;
 
-const MenuCpt = (props) => 
+const MenuCpt = props => 
   <Menu>
     {props.children}
   </Menu>

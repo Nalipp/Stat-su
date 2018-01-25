@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {keyframes} from 'styled-components';
 import {media} from '../style-utils';
 import PropTypes from 'prop-types';
-import MenuHamburgerCnt from './MenuHamburgerCnt';
+import MenuControlCnt from './MenuControlCnt';
 
 const fadeIn = keyframes`
   from {opacity: 0.1}
@@ -46,7 +46,7 @@ const Heading = styled.section`
 
 const ListHeading = (props) =>
   <div>
-    <MenuHamburgerCnt toggleVisibility={props.toggleSummary} />
+    <MenuControlCnt iconType={'hamburger'} toggleVisibility={props.toggleSummary} />
     <Heading>
       <MainHeading>
         Stat<Span>su</Span>
