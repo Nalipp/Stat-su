@@ -292,13 +292,14 @@ back inside react-ui run npm start and style the front end
 
   - xmore padding on the top of the mobile timerScreen
 
-
-  /-- current  
-
   xicon issues
   - xinclude the close icon for timer screen as a controlCpt
   - xprops option for setting colors
-  - style height and width media breakpoints in MenuControlsCpt to control icon size
+  - xstyle height and width media breakpoints in MenuControlsCpt to control icon size
+
+
+  /-- current  
+
 
   move timerScreenShowing ? from ItemCpt to ItemCnt
 
@@ -309,7 +310,6 @@ back inside react-ui run npm start and style the front end
   ui
   time is getting cut of on desktop (need to reduce font size of time only)
   still don't have escape functionality for summry screen
-  - more space above main title (now that there is a hamburger) make the hamburger smaller?
 
   remove auto caplitailization on mobile devices
 
