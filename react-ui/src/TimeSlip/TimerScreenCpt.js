@@ -6,11 +6,22 @@ import TimerDisplay from './TimerDisplayCpt';
 import { media } from '../style-utils';
 import format from '../time-utils';
 
-const startColor = props => props.theme.start;
-const stopColor = props => props.theme.stop;
-const timerColor = props => props.timerRunning ? stopColor : startColor;
-const timeAnimation = props => !props.timerRunning && props.timeCounter > 0 && Blink;
-const fade = props => !props.timerRunning && props.timeCounter > 0 ? FadeStartToStop : !props.timerRunning ? FadeIn : FadeStopToStart; 
+/* eslint-disable no-unused-expressions */
+
+const timerColor = props => 
+  props.timerRunning 
+  ? props.theme.stop 
+  : props.theme.start;
+
+const timeAnimation = props => 
+  !props.timerRunning 
+  && props.timeCounter > 0 
+  && Blink;
+
+const fade = props =>
+  !props.timerRunning && props.timeCounter > 0 
+  ? FadeStartToStop 
+  : !props.timerRunning ? FadeIn : FadeStopToStart; 
 
 const Blink = keyframes`
   0% {opacity: 1}
@@ -67,11 +78,9 @@ const Language = styled.h1`
 const TotalTime = styled.p`
   text-align: center;
   font-size: 1.1rem;
-
-  > span {
-    animation: ${timeAnimation} .5s linear;
-  }
-
+    > span {
+      animation: ${timeAnimation} .5s linear;
+    }
   ${media.tablet`
     font-size: 1.4rem;
   `}
@@ -107,10 +116,9 @@ const TimerScreenCpt = props => {
       </CloseScreen>
       <TimerDisplay timeCounter={props.timeCounter} />
       <TimerButton onClick={props.setStartOrStopTime}>
-        {props.timerRunning ? 
-          <Icons icon='pause' size='xjumbo' />
-        : 
-          <Icons icon='play' size='xjumbo' />
+        { props.timerRunning 
+          ? <Icons icon='pause' size='xjumbo' />
+          : <Icons icon='play' size='xjumbo' />
         }
       </TimerButton>
     </TimerScreen>

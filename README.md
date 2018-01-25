@@ -268,16 +268,12 @@ back inside react-ui run npm start and style the front end
 
   /-- current  
 
+  turn timerScreenCpt sloppy code into conditional statement
 
-
+  transistion between archived and unarchived
 
 
   /-- current  
-
-  - https://medium.com/@joethedave/achieving-ui-animations-with-react-the-right-way-562fa8a91935
-  - figure out timer blink bug
-  - move transition from entire list to indiviual component (better for adding an item)
-  
 
   organize files into folders
 
@@ -307,14 +303,15 @@ back inside react-ui run npm start and style the front end
 
   remove auto caplitailization on mobile devices
 
-  choose different color themes?
-
   clean up code using ...props
 
   ui
   - more space above main title (now that there is a hamburger) make the hamburger smaller?
 
+  choose different color themes?
+
   change CharCounter.js to CharCounterCpt.js
+  change HamburgerMenuCnt to MenuHamburgerCnt and MenuCloseCnt
 
   upgrade dyno
 
@@ -331,8 +328,6 @@ back inside react-ui run npm start and style the front end
   - change heroku url
   - update github
   
-  drag and drop using React DnD  
-
   fix travis  
 
 
@@ -363,6 +358,8 @@ back inside react-ui run npm start and style the front end
   Redux 
 
   testing suite
+
+  drag and drop using React DnD  
 
 
   ---- phase 3 -----
