@@ -270,15 +270,26 @@ back inside react-ui run npm start and style the front end
 
   xfix timeslip update in summary by reloading all timeslips on summary page load
 
+  xmove Icons svg into seperate file
+
 
   /-- current  
 
 
-  move Icons svg into seperate file
+
+  needs a transistion delay to prevent too many archive requests all at once
+  1. make an animation that takes over the entire screen for a specifed amount of time
+  2. move the animation into style-utils that can be called from anywhere in the project
+  3. implement a button on the summary page that runs the animation on click
+
+
+
+  /-- current  
+
+
   organize files into folders
 
-
-  /-- current  
+  click on icon wrapper not on icon
 
 
   hamburger drop down to user page
@@ -295,14 +306,7 @@ back inside react-ui run npm start and style the front end
   - seed real data (fix time format bug)
 
   icon issues
-  - click on icon container instead of icon
   - redice size of MenuControlCpt on smaller devices and larger on desktop
-  - add hover affects on icons
-  - if you change the icons file you need to make sure it dosen't affect the other icons in the project, 
-  options to try
-  1. make the size property optional, if size is not specified then it will expand to the with of the wrapper
-  2. make a different icon utils file for summary
-
 
   remove auto caplitailization on mobile devices
 

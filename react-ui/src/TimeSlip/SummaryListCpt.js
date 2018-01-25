@@ -81,16 +81,14 @@ const ItemSummary = (props) => {
     <Wrapper>
       <Items>
         { props.active === 'true' 
-          ? 
-          <Heading>Active</Heading>
-          : 
-          <FadedHeading>Archived</FadedHeading> 
+          ? <Heading>Active</Heading>
+          : <FadedHeading>Archived</FadedHeading> 
         }
         { props.active === 'true' 
-          ? 
-          <Time>hours : {formatTime.hhmmss(props.totalTime)}</Time>
-          : 
-          <FadedTime>hours : {formatTime.hhmmss(props.totalTime)}</FadedTime>
+          ? <Time>hours : {formatTime.hhmmss(props.totalTime)}</Time>
+          : <FadedTime>
+              hours : {formatTime.hhmmss(props.totalTime)}
+            </FadedTime>
         }
         {props.children}
       </Items>

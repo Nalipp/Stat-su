@@ -8,6 +8,7 @@ import format from '../time-utils';
 
 /* eslint-disable no-unused-expressions */
 
+
 const timerColor = props => 
   props.timerRunning 
   ? props.theme.stop 
