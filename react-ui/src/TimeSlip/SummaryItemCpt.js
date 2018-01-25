@@ -5,10 +5,10 @@ import Icons from '../Icons';
 import formatTime from '../time-utils';
 import { media, truncate } from '../style-utils';
 
-const light = props => props.theme.light;
-const dark = props => props.theme.dark;
-const faded = props => props.theme.faded;
-const baseColor = props => props.completed ? faded : dark;
+const baseColor = props => 
+  props.completed 
+  ? props.theme.faded
+  : props.theme.dark;
 
 const Item = styled.li`
   padding: .1rem;
@@ -38,7 +38,7 @@ const Timer = styled.span`
   box-sizing: border-box;
   padding: 0 .2rem;
   font-size: 7px;
-  background: ${light};
+  background: ${props => props.theme.light};
   width: 13%;
 
   ${media.tablet`

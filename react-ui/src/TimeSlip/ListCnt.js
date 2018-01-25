@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Form from './FormCnt';
+import FormCnt from './FormCnt';
 import ItemCnt from './ItemCnt';
 import ListCpt from './ListCpt';
 import ListHeading from './ListHeading';
@@ -12,14 +12,13 @@ class ListCnt extends Component {
         key={slip._id}
         {...slip} 
         onArchive={this.props.archiveTimeSlip.bind(this, slip)}
-        increaseTotalActiveTime={this.props.increaseTotalActiveTime}
       />
     ));
 
     return (
       <ListCpt>
         <ListHeading toggleSummary={this.props.toggleSummary} />
-        <Form addTimeSlip={this.props.addTimeSlip} />
+        <FormCnt addTimeSlip={this.props.addTimeSlip} />
         <ul>{activeTimeSlips}</ul>
       </ListCpt>
     )
@@ -33,7 +32,6 @@ ListCnt.propTypes = {
   addTimeSlip: PropTypes.func,
   totalActiveTime: PropTypes.number,
   totalArchivedTime: PropTypes.number,
-  increaseTotalActiveTime: PropTypes.func,
 };
 
 export default ListCnt;

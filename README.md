@@ -266,9 +266,13 @@ back inside react-ui run npm start and style the front end
   xblink TotalTime in timerScreen after time submit only
   xfade in screen color on timerScreen start to stop
 
+  xclean up timerScreenCpt conditional statements
+
+  xfix timeslip update in summary by reloading all timeslips on summary page load
+
+
   /-- current  
 
-  turn timerScreenCpt sloppy code into conditional statement
 
   transistion between archived and unarchived
 
@@ -276,6 +280,7 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
   organize files into folders
+  move Icons svg into seperate file
 
   hamburger drop down to user page
   - xuser summary screen with unarchive option for each deleted timeSlip (white background)

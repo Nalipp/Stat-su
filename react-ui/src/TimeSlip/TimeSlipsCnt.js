@@ -21,7 +21,6 @@ class TimeSlipsCnt extends Component {
     this.partitionActiveAndArchived = this.partitionActiveAndArchived.bind(this);
     this.recalculateTimeOnArchive = this.recalculateTimeOnArchive.bind(this);
     this.recalculateTimeOnDelete = this.recalculateTimeOnDelete.bind(this);
-    this.increaseTotalActiveTime = this.increaseTotalActiveTime.bind(this);
   }
 
   async loadTimeSlips(){
@@ -59,7 +58,7 @@ class TimeSlipsCnt extends Component {
   }
 
   toggleSummary() {
-    this.setState({showSummary: !this.state.showSummary});
+    this.setState({showSummary: !this.state.showSummary}, () => this.loadTimeSlips());
   }
 
   partitionActiveAndArchived(timeSlips) {
@@ -103,11 +102,6 @@ class TimeSlipsCnt extends Component {
     this.setState({totalArchivedTime});
   }
 
-  increaseTotalActiveTime(timeAmount) {
-    let totalActiveTime = this.state.totalActiveTime + timeAmount;
-    this.setState({totalActiveTime});
-  }
-
   render() {
     return (
       <div>
@@ -128,7 +122,6 @@ class TimeSlipsCnt extends Component {
             addTimeSlip={this.addTimeSlip}
             archiveTimeSlip={this.archiveTimeSlip}
             deleteTimeSlip={this.deleteTimeSlip}
-            increaseTotalActiveTime={this.increaseTotalActiveTime}
           />
         }
       </div>
