@@ -7,6 +7,8 @@ const Menu = styled.span`
   top: 0;
   right 0;
   padding: 1.25rem 1.25rem 2.25rem 2.25rem;
+  height: 30px;
+  width: 30px;
 `;
 
 const MenuCpt = (props) => 

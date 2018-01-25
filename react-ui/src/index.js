@@ -13,6 +13,7 @@ const theme = {
   light: 'white',
   faded: '#c2c7cd',
   slightFade: '#707c8a',
+  transparentBackground: 'rgba(255, 255, 255, .6)',
 }
 
 injectGlobal`

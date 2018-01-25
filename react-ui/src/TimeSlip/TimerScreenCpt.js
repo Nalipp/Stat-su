@@ -5,9 +5,9 @@ import Icons from './../Icons';
 import TimerDisplay from './TimerDisplayCpt';
 import { media } from '../style-utils';
 import format from '../time-utils';
+import MenuControlCnt from './MenuControlCnt';
 
 /* eslint-disable no-unused-expressions */
-
 
 const timerColor = props => 
   props.timerRunning 
@@ -69,7 +69,7 @@ const TimerScreen = styled.div`
 const Language = styled.h1`
   text-align: center;
   font-size: 1.8rem;
-  margin: 2.2rem 0 1.4rem 0;
+  margin: 3.5rem 0 1.4rem 0;
   ${media.tablet`
     font-size: 2.4rem;
     margin: 6rem 0 2rem 0;
@@ -87,18 +87,6 @@ const TotalTime = styled.p`
   `}
 `
 
-const CloseScreen = styled.span`
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0 1rem 2rem 1.6rem;
-  color: ${props => props.theme.light};
-  cursor: pointer;
-  ${media.tablet`
-    padding: 1.4rem 1.6rem 2rem 2rem;
-  `}
-`;
-
 const TimerButton = styled.h2`
   text-align: center;
   padding: 2.5rem 0;
@@ -112,9 +100,11 @@ const TimerScreenCpt = props => {
         <TotalTime {...props}>
           Total Time : <span>{format.mmss(props.totalTime)}</span>
         </TotalTime>
-      <CloseScreen onClick={props.hideScreenAndPostTime}>
-        <Icons size="xxlarge" icon="close" />
-      </CloseScreen>
+      <MenuControlCnt 
+        color={'white'} 
+        iconType={'close'}
+        toggleVisibility={props.hideScreenAndPostTime} 
+      />
       <TimerDisplay timeCounter={props.timeCounter} />
       <TimerButton onClick={props.setStartOrStopTime}>
         { props.timerRunning 

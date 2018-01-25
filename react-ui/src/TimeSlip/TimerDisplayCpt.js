@@ -7,7 +7,7 @@ import format from '../time-utils';
 const Display = styled.h1`
   text-align: center;
   font-size: 4rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   overflow: hidden;
   ${media.tablet`
     font-size: 6.5rem;

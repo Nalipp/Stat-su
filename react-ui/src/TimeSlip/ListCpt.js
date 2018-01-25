@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.section`
   width: 90%;
-  margin: 0 auto 5.625rem auto;
+  margin: 6rem auto 5rem auto;
 
   ${media.tablet`
     width: 60%;

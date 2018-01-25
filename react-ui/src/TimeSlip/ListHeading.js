@@ -1,15 +1,15 @@
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
 import {media} from '../style-utils';
-import Icons from './../Icons';
 import PropTypes from 'prop-types';
+import MenuHamburgerCnt from './MenuHamburgerCnt';
 
 const fadeIn = keyframes`
   from {opacity: 0.1}
   to {opacity: 1}
 `;
 
-const H1 = styled.h1`
+const MainHeading = styled.h1`
   font-size: 3.75rem;
   color: ${props => props.theme.light};
   letter-spacing: 0.375rem;
@@ -34,13 +34,6 @@ const H3 = styled.p`
   `}
 `;
 
-const Menu = styled.span`
-  position: absolute;
-  top: 0;
-  right 0;
-  padding: 1.25rem 1.25rem 2.25rem 2.25rem;
-`;
-
 const Heading = styled.section`
   margin: 3.75rem 0;
   align-items: center;
@@ -53,13 +46,11 @@ const Heading = styled.section`
 
 const ListHeading = (props) =>
   <div>
-    <Menu onClick={props.toggleSummary}>
-      <Icons icon='hamburger' size='large' />
-    </Menu>
+    <MenuHamburgerCnt toggleVisibility={props.toggleSummary} />
     <Heading>
-      <H1>
-        <Span>T</Span>Study
-      </H1>
+      <MainHeading>
+        Stat<Span>su</Span>
+      </MainHeading>
       <H3>Track you productivity</H3>
     </Heading>
   </div>

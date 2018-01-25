@@ -1,44 +1,76 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SummaryCpt from './SummaryCpt';
-import CloseMenuCnt from './CloseMenuCnt';
+import MenuControlCnt from './MenuControlCnt';
 import SummaryListCpt from './SummaryListCpt';
 import SummaryItemCpt from './SummaryItemCpt';
+import DelayAnimationScreenCpt from './DelayAnimationScreenCpt';
 
-const SummaryCnt = props => {
-  const activeSummary = props.activeTimeSlips.map(slip => (
-    <SummaryItemCpt 
-      key={slip._id}
-      {...slip} 
-      onArchive={props.archiveTimeSlip.bind(this, slip)}
-      onDelete={props.deleteTimeSlip.bind(this, slip)}
-    />
-  ));
+class SummaryCnt extends Component {
+  constructor(props) {
+  super(props)
+    this.state = {
+      showAnimationDelayScreen: false,
+    }
+    this.toggleSpinnerState = this.toggleSpinnerState.bind(this);
+  }
 
-  const archivedSummary = props.archivedTimeSlips.map(slip => (
-    <SummaryItemCpt
-      key={slip._id}
-      {...slip} 
-      onArchive={props.archiveTimeSlip.bind(this, slip)}
-      onDelete={props.deleteTimeSlip.bind(this, slip)}
-    />
-  ));
+  toggleSpinnerState() {
+    this.setState({
+      showAnimationDelayScreen : !this.state.showAnimationDelayScreen
+    })
+  }
 
-  return (
-    <SummaryCpt>
-      <CloseMenuCnt toggleVisibility={props.toggleSummary} />
-      <SummaryListCpt 
-        totalTime={props.totalActiveTime} 
-        active="true">
-        {activeSummary}
-      </SummaryListCpt>
-      <SummaryListCpt 
-        totalTime={props.totalArchivedTime} 
-        active="false">
-        {archivedSummary}
-      </SummaryListCpt>
-    </SummaryCpt>
-  )
+  render() {
+    const { 
+      activeTimeSlips,
+      archiveTimeSlip,
+      deleteTimeSlip,
+      archivedTimeSlips,
+      toggleSummary,
+      totalActiveTime,
+      totalArchivedTime
+    } = this.props;
+
+    const activeSummary = activeTimeSlips.map(slip => (
+      <SummaryItemCpt 
+        key={slip._id}
+        {...slip} 
+        onArchive={archiveTimeSlip.bind(this, slip)}
+        onDelete={deleteTimeSlip.bind(this, slip)}
+        toggleSpinnerState={this.toggleSpinnerState}
+      />
+    ));
+
+    const archivedSummary = archivedTimeSlips.map(slip => (
+      <SummaryItemCpt
+        key={slip._id}
+        {...slip} 
+        onArchive={archiveTimeSlip.bind(this, slip)}
+        onDelete={deleteTimeSlip.bind(this, slip)}
+        toggleSpinnerState={this.toggleSpinnerState}
+      />
+    ));
+
+    return (
+      <div>
+        {this.state.showAnimationDelayScreen && <DelayAnimationScreenCpt />}
+        <SummaryCpt>
+          <MenuControlCnt iconType={'close'} color={'dark'} toggleVisibility={toggleSummary} />
+          <SummaryListCpt 
+            totalTime={totalActiveTime} 
+            active="true">
+            {activeSummary}
+          </SummaryListCpt>
+          <SummaryListCpt 
+            totalTime={totalArchivedTime} 
+            active="false">
+            {archivedSummary}
+          </SummaryListCpt>
+        </SummaryCpt>
+      </div>
+    )
+  }
 }
 
 SummaryCnt.propTypes = {

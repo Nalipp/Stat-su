@@ -6,12 +6,13 @@ import MenuControlCpt from './MenuControlCpt';
 const CloseMenuCnt = props => 
   <div onClick={props.toggleVisibility}>
     <MenuControlCpt>
-      <Icons color='dark' icon='close' size='mlarge' />
+      <Icons color={props.color} icon='close' />
     </MenuControlCpt>
   </div>
 
 CloseMenuCnt.propTypes = {
   toggleVisibility: PropTypes.func,
+  color: PropTypes.string,
 }
 
 export default CloseMenuCnt;

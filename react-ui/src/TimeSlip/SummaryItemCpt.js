@@ -76,13 +76,31 @@ const Description = Timer.extend`
 `;
 
 function ItemSummary(props) {
+
+  const delayedArchive = () => {
+    props.toggleSpinnerState();
+
+    setTimeout(() => {
+      props.onArchive();
+      props.toggleSpinnerState();
+    }, 350);
+  }
+
+  const delayedDelete = () => {
+    props.toggleSpinnerState();
+
+    setTimeout(() => {
+      props.onDelete();
+      props.toggleSpinnerState();
+    }, 500);
+  }
+
   return (
     <Item {...props}>
-      <IconWrapper>
+      <IconWrapper onClick={delayedArchive}>
         <Icons 
           color={props.completed ? 'slightFade' : 'dark'} 
           size="small"
-          onClick={props.onArchive}
           icon={props.completed ? 'unarchive' : 'archive'} />
       </IconWrapper>
       <Timer>{formatTime.hhmmss(props.total_time)}</Timer>
@@ -96,10 +114,9 @@ function ItemSummary(props) {
       <Language>{props.language}</Language>
       <Description>{props.description}</Description>
       {props.completed && 
-        <IconWrapper>
+        <IconWrapper onClick={delayedDelete}>
           <Icons 
             color="slightFade" 
-            onClick={props.onDelete}
             size="small" icon="trash" />
         </IconWrapper>
       }
@@ -116,6 +133,7 @@ ItemSummary.propTypes = {
   language: PropTypes.string,
   onArchive: PropTypes.func,
   onDelete: PropTypes.func,
+  toggleSpinnerState: PropTypes.func,
 }
 
 export default ItemSummary;

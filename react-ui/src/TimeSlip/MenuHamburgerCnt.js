@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const HamburgerMenuCnt = props => 
   <div onClick={props.toggleVisibility}>
     <MenuControlCpt>
-      <Icons icon='hamburger' size='large' />
+      <Icons icon='hamburger'/>
     </MenuControlCpt>
   </div>
 

@@ -272,27 +272,13 @@ back inside react-ui run npm start and style the front end
 
   xmove Icons svg into seperate file
 
+  xadd transistion delay to prevent too many archive requests all at once
+  1. xmove the sthowAnimationScreen state in SummaryCnt
+  2. xdelete the ListSummaryCnt component file and remove from SummaryCnt and reimplement the LisSummaryCpt in SummaryCnt instead
+  3. xconditionaly display the SummaryCpt only or the SummaryCpt and the delayAnimationScreenCpt together
+  4. xpass a function to SummaryItemCpt that controls the state of showAnimationScreen in the parrent SummaryCnt
 
-  /-- current  
-
-
-
-  needs a transistion delay to prevent too many archive requests all at once
-  1. make an animation that takes over the entire screen for a specifed amount of time
-  2. move the animation into style-utils that can be called from anywhere in the project
-  3. implement a button on the summary page that runs the animation on click
-
-
-
-  /-- current  
-
-
-  organize files into folders
-
-  click on icon wrapper not on icon
-
-
-  hamburger drop down to user page
+  xhamburger drop down to user page
   - xuser summary screen with unarchive option for each deleted timeSlip (white background)
   - xchange summray color
   - xextract time format into time-utils
@@ -302,42 +288,71 @@ back inside react-ui run npm start and style the front end
   - xpage should show all archived and unarchived timeSlips with concatenated discriptions with option to delete permentantly and add time
   - xarchived summary style
 
-  - close summary with escape
-  - seed real data (fix time format bug)
+  xclick on icon wrapper not on icon
 
-  icon issues
-  - redice size of MenuControlCpt on smaller devices and larger on desktop
+  - xmore padding on the top of the mobile timerScreen
+
+
+  /-- current  
+
+  xicon issues
+  - xinclude the close icon for timer screen as a controlCpt
+  - xprops option for setting colors
+  - style height and width media breakpoints in MenuControlsCpt to control icon size
+
+  move timerScreenShowing ? from ItemCpt to ItemCnt
+
+
+  /-- current  
+
+
+  ui
+  time is getting cut of on desktop (need to reduce font size of time only)
+  still don't have escape functionality for summry screen
+  - more space above main title (now that there is a hamburger) make the hamburger smaller?
 
   remove auto caplitailization on mobile devices
 
+  timer delay for archive on listItem
+
+  organize files into folders
+  - change CharCounter.js to CharCounterCpt.js
+  - change HamburgerMenuCnt to MenuHamburgerCnt and MenuCloseCnt
+
   clean up code using ...props
 
-  ui
-  - more space above main title (now that there is a hamburger) make the hamburger smaller?
 
-  choose different color themes?
 
-  change CharCounter.js to CharCounterCpt.js
-  change HamburgerMenuCnt to MenuHamburgerCnt and MenuCloseCnt
+  /-- portfolio stage
 
-  upgrade dyno
-
-  change language to topic in entire project
-
-  update readme
-  - include explination of styled components (theme explination)
-  - how to use icons
-  - (other explinations?)
-
+  seed real data (fix time format bug)
 
   change project name
   - change to statsu.io
   - change heroku url
   - update github
-  
-  fix travis  
 
-  transistion between archived and unarchived on summary and list
+  upgrade dyno
+
+  update readme
+  - include explination of styled components (theme explination)
+  - how to use icons
+  - (other explinations?)
+  - thoughts
+  
+  /-- portfolio stage
+
+
+  /-- later
+
+  change delayedDelete in SummaryItemCpt to a popup screen that asks if you are sure you want to delete
+
+  choose different color themes?
+
+  fix travis  
+  
+  /-- later
+
 
 
   \* ****************************************************************************** \*

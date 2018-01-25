@@ -42,7 +42,7 @@ const Icons = props => (
 
 Icons.propTypes = {
   icon: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired,
+  size: PropTypes.string,
   color: PropTypes.string,
 };
 
