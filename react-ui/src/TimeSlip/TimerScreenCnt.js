@@ -81,7 +81,6 @@ class Timer extends Component {
         timeCounter={this.state.timeCounter}
         hideScreenAndPostTime={this.hideScreenAndPostTime}
         setStartOrStopTime={this.setStartOrStopTime}
-        timmerRunning={this.timmerRunning}
       />
     )
   }

@@ -8,17 +8,32 @@ import format from '../time-utils';
 
 const startColor = props => props.theme.start;
 const stopColor = props => props.theme.stop;
-const timerColor = props => !props.timerRunning ? startColor : stopColor;
+const timerColor = props => props.timerRunning ? stopColor : startColor;
+const timeAnimation = props => !props.timerRunning && props.timeCounter > 0 && Blink;
+const fade = props => !props.timerRunning && props.timeCounter > 0 ? FadeStartToStop : !props.timerRunning ? FadeIn : FadeStopToStart; 
 
 const Blink = keyframes`
   0% {opacity: 1}
-  33% {opacity: .1}
+  20% {opacity: .1}
+  40% {opacity: 1}
+  70% {opacity: 1}
+  80% {opacity: .1}
   100% {opacity: 1}
 `;
 
 const FadeIn = keyframes`
   from {opacity: .1}
   to {opacity: 1}
+`;
+
+const FadeStopToStart = (props) => keyframes`
+  from {background: ${props.theme.start}}
+  to {background: ${props.theme.stop}}
+`;
+
+const FadeStartToStop = (props) => keyframes`
+  from {background: ${props.theme.stop}}
+  to {background: ${props.theme.start}}
 `;
 
 const TimerScreen = styled.div`
@@ -32,7 +47,7 @@ const TimerScreen = styled.div`
   left: 0;
   overflow-x: hidden;
   background: ${timerColor};
-  animation: ${FadeIn} 0.3s linear;
+  animation: ${fade} 0.3s linear;
   ${media.tablet`
     padding: 0 10%;
     width: 80%;
@@ -54,7 +69,7 @@ const TotalTime = styled.p`
   font-size: 1.1rem;
 
   > span {
-    animation: ${Blink} 1s linear;
+    animation: ${timeAnimation} .5s linear;
   }
 
   ${media.tablet`
@@ -84,9 +99,9 @@ const TimerScreenCpt = props => {
   return (
     <TimerScreen {...props}>
       <Language>{props.language}</Language>
-      <TotalTime>
-        Total Time : <span>{format.mmss(props.totalTime)}</span>
-      </TotalTime>
+        <TotalTime {...props}>
+          Total Time : <span>{format.mmss(props.totalTime)}</span>
+        </TotalTime>
       <CloseScreen onClick={props.hideScreenAndPostTime}>
         <Icons size="xxlarge" icon="close" />
       </CloseScreen>
@@ -104,7 +119,6 @@ const TimerScreenCpt = props => {
   
 
 TimerScreenCpt.propTypes = {
-  timmerRunning: PropTypes.bool,
   language: PropTypes.string,
   hideScreenAndPostTime: PropTypes.func,
   setStartOrStopTime: PropTypes.func,

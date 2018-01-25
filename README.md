@@ -262,18 +262,22 @@ back inside react-ui run npm start and style the front end
 
   xmove SummaryListCnt to SummaryListCpt
 
+  xfix transistions
+  xblink TotalTime in timerScreen after time submit only
+  xfade in screen color on timerScreen start to stop
+
   /-- current  
 
 
-  why is description placeholder a different font??
 
-  fix transistions
+
+
+  /-- current  
+
   - https://medium.com/@joethedave/achieving-ui-animations-with-react-the-right-way-562fa8a91935
   - figure out timer blink bug
   - move transition from entire list to indiviual component (better for adding an item)
   
-
-  /-- current  
 
   organize files into folders
 
