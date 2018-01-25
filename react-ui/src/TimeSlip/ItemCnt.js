@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ItemCpt from './ItemCpt';
 import * as apiCalls from './../api';
+import TimerScreenCnt from './TimerScreenCnt';
 
 class TimeSlipItem extends Component {
   constructor(props) {
@@ -38,19 +39,30 @@ class TimeSlipItem extends Component {
   }
 
   render() {
-    const { _id } = this.props;
+    const { _id, language, total_time } = this.props;
 
-  return (
-    <ItemCpt 
-      id={_id}
-      {...this.props}
-      totalTime={this.state.totalTime}
-      hideTimerScreen={this.hideTimerScreen}
-      showTimerScreen={this.showTimerScreen}
-      timerScreenShowing={this.state.timerScreenShowing}
-      showTimerScreenShowing={this.showTimerScreenShowing}
-      postTime={this.postTime}
-    />
+    return (
+      <div>
+        {this.state.timerScreenShowing 
+          ? 
+          <TimerScreenCnt
+            key={_id}
+            id={_id}
+            language={language} 
+            totalTime={total_time}
+            hideTimerScreen={this.hideTimerScreen}
+            showTimerScreen={this.showTimerScreen}
+            postTime={this.postTime}
+          />
+          :
+          <ItemCpt 
+            id={_id}
+            {...this.props}
+            totalTime={this.state.totalTime}
+            showTimerScreen={this.showTimerScreen}
+          />
+        }
+      </div>
     )
   }
 }

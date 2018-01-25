@@ -2,7 +2,6 @@ import React from 'react';
 import styled, {keyframes} from 'styled-components';
 import Icons from './../Icons';
 import PropTypes from 'prop-types';
-import TimerScreenCnt from './TimerScreenCnt';
 import { media } from '../style-utils';
 import format from '../time-utils';
 
@@ -146,7 +145,7 @@ const A = styled.a`
   padding: .375rem;
 `;
 
-const ItemCpt = ({id, language, description, url, onArchive, created_date, last_update, totalTime, hideTimerScreen, showTimerScreen, timerScreenShowing, postTime}) =>
+const ItemCpt = ({id, language, description, url, onArchive, created_date, last_update, totalTime, showTimerScreen}) =>
   <Li>
     <Div>
       <Language>{language ? language : '-'}</Language>
@@ -178,18 +177,6 @@ const ItemCpt = ({id, language, description, url, onArchive, created_date, last_
         </TimeStamp>
       </TimeWrapper>
     </BottomNav>
-    {timerScreenShowing ? 
-      <TimerScreenCnt
-        key={id}
-        id={id}
-        language={language} 
-        totalTime={totalTime}
-        hideTimerScreen={hideTimerScreen}
-        showTimerScreen={showTimerScreen}
-        postTime={postTime}
-      />
-      : null
-    }
   </Li>
 
 ItemCpt.propTypes = {
@@ -200,10 +187,7 @@ ItemCpt.propTypes = {
   created_date: PropTypes.string,
   last_update: PropTypes.string,
   totalTime: PropTypes.number.isRequired,
-  hideTimerScreen: PropTypes.func,
   showTimerScreen: PropTypes.func,
-  timerScreenShowing: PropTypes.bool,
-  postTime: PropTypes.func,
   onArchive: PropTypes.func,
 }
 
