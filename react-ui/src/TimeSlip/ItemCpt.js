@@ -145,39 +145,62 @@ const A = styled.a`
   padding: .375rem;
 `;
 
-const ItemCpt = ({id, language, description, url, onArchive, created_date, last_update, totalTime, showTimerScreen}) =>
-  <Li>
-    <Div>
-      <Language>{language ? language : '-'}</Language>
-      <StartBtn onClick={showTimerScreen}>Start</StartBtn>
-      <TotalTime>{format.hhmmss(totalTime)}</TotalTime>
-    </Div>
-    <Description>{description}</Description>
-    <BottomNav>
-      <ArchiveWrapper onClick={onArchive}>
-        <Icons icon='archive' size='normal' />
-      </ArchiveWrapper>
-      <UrlWrapper>
-        {url ? (
-          <A
-            href={url} 
-            rel="noopener noreferrer"
-            target="_blank">
-            <Icons icon='link' size='large' />
-          </A>
-          ) : null
-        }
-      </UrlWrapper>
-      <TimeWrapper>
-        <TimeStamp>Created: 
-          <Time>{created_date.slice(0, 10)}</Time>
-        </TimeStamp>
-        <TimeStamp>Updated: 
-          <Time>{last_update.slice(0, 10)}</Time>
-        </TimeStamp>
-      </TimeWrapper>
-    </BottomNav>
-  </Li>
+
+const ItemCpt = ({
+  language,
+  description,
+  url,
+  onArchive,
+  created_date,
+  last_update,
+  totalTime,
+  toggleSpinnerState,
+  showTimerScreen}) => {
+
+  const delayedArchive = () => {
+    toggleSpinnerState();
+
+    setTimeout(() => {
+      onArchive();
+      toggleSpinnerState();
+    }, 400);
+  }
+
+  return (
+    <Li>
+      <Div>
+        <Language>{language ? language : '-'}</Language>
+        <StartBtn onClick={showTimerScreen}>Start</StartBtn>
+        <TotalTime>{format.hhmmss(totalTime)}</TotalTime>
+      </Div>
+      <Description>{description}</Description>
+      <BottomNav>
+        <ArchiveWrapper onClick={delayedArchive}>
+          <Icons icon='archive' size='normal' />
+        </ArchiveWrapper>
+        <UrlWrapper>
+          {url ? (
+            <A
+              href={url} 
+              rel="noopener noreferrer"
+              target="_blank">
+              <Icons icon='link' size='large' />
+            </A>
+            ) : null
+          }
+        </UrlWrapper>
+        <TimeWrapper>
+          <TimeStamp>Created: 
+            <Time>{created_date.slice(0, 10)}</Time>
+          </TimeStamp>
+          <TimeStamp>Updated: 
+            <Time>{last_update.slice(0, 10)}</Time>
+          </TimeStamp>
+        </TimeWrapper>
+      </BottomNav>
+    </Li>
+  )
+}
 
 ItemCpt.propTypes = {
   id: PropTypes.string,
@@ -189,6 +212,7 @@ ItemCpt.propTypes = {
   totalTime: PropTypes.number.isRequired,
   showTimerScreen: PropTypes.func,
   onArchive: PropTypes.func,
+  toggleSpinnerState: PropTypes.func,
 }
 
 export default ItemCpt;

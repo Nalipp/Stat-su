@@ -297,11 +297,17 @@ back inside react-ui run npm start and style the front end
   - xprops option for setting colors
   - xstyle height and width media breakpoints in MenuControlsCpt to control icon size
 
+  x move timerScreenShowing ? from ItemCpt to ItemCnt
+
 
   /-- current  
 
 
-  move timerScreenShowing ? from ItemCpt to ItemCnt
+
+  timer delay for archive on listItem
+  1. open delay for archive and delete in Summary
+  2. implemenent the same for archive in ListItem
+
 
 
   /-- current  
@@ -312,8 +318,6 @@ back inside react-ui run npm start and style the front end
   still don't have escape functionality for summry screen
 
   remove auto caplitailization on mobile devices
-
-  timer delay for archive on listItem
 
   organize files into folders
   - change CharCounter.js to CharCounterCpt.js

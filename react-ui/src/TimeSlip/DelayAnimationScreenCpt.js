@@ -6,9 +6,10 @@ const SpinnerAnimation = keyframes`
 `;
 
 const AnimationScreen = styled.section`
-  height: 100%;
+  height: 115%;
   width: 100%;
   position: fixed;
+  margin-top: -15%;
   background: ${props => props.theme.transparentBackground};
   z-index: 1;
 `;

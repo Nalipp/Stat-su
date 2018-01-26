@@ -39,7 +39,7 @@ class TimeSlipItem extends Component {
   }
 
   render() {
-    const { _id, language, total_time } = this.props;
+    const { _id, language, total_time, toggleSpinnerState } = this.props;
 
     return (
       <div>
@@ -76,6 +76,7 @@ TimeSlipItem.propTypes = {
   description: PropTypes.string,
   totalTime: PropTypes.number,
   onArchive: PropTypes.func,
+  toggleSpinnerState: PropTypes.func,
 }
 
 export default TimeSlipItem;

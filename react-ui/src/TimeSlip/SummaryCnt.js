@@ -56,7 +56,11 @@ class SummaryCnt extends Component {
       <div>
         {this.state.showAnimationDelayScreen && <DelayAnimationScreenCpt />}
         <SummaryCpt>
-          <MenuControlCnt iconType={'close'} color={'dark'} toggleVisibility={toggleSummary} />
+          <MenuControlCnt 
+            iconType={'close'} 
+            color={'dark'} 
+            toggleVisibility={toggleSummary} 
+          />
           <SummaryListCpt 
             totalTime={totalActiveTime} 
             active="true">
