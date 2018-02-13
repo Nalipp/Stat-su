@@ -303,16 +303,24 @@ back inside react-ui run npm start and style the front end
   /-- current  
 
 
-  time is not updating!!
 
-  timer delay for archive on listItem
-  1. open delay for archive and delete in Summary
-  2. implemenent the same for archive in ListItem
+  seed m-lab data
 
 
 
   /-- current  
 
+
+  time is not updating!!
+
+  update readme
+
+  create add button
+
+
+  timer delay for archive on listItem
+  1. open delay for archive and delete in Summary
+  2. implemenent the same for archive in ListItem
 
   ui
   time is getting cut of on desktop (need to reduce font size of time only)
